@@ -1,0 +1,197 @@
+/* Note:   test.css is a highly simplified css that can be used to debug layout
+           problems.  If something doesn't work properly, try switching over to 
+           test.css and see if that works.  If it does, then work backwards until
+           you find the thing that's breaking your layout.
+   Author: David Argles (d.argles@gmx.com)
+   Date:   09.03.13
+*/
+
+body.float 
+{
+  background-color:     #cc9;
+  font-family:          "Verdana", "ComicSans", "Arial", sans-serif;
+}
+div.containerFloat
+{
+  margin: 		0  auto;
+  width:		98%;
+  max-width:		950px;
+  min-width:            280px;
+  height:		auto;
+  margin-top:		0.3em;
+  box-shadow:           0px 10px 20px rgba(0,0,0,0.6);
+  border-radius:        10px 10px 10px 10px;
+}
+div.menuBar
+{
+  padding:		5px 5px 5px 5px; /* top-l, top-r, bottom-r, bottom-l */
+  height:		100%;		  /*height of menu*/
+  font-size:		medium;	          /* Set font size to be normal */
+  text-align:           center;           /*centre text on button*/
+}
+div.contentFloat
+{
+  padding:              10px;             /*padding around text on main page area*/
+  background-color:     white;
+  font-size:		medium;	          /* Set font size to be normal */
+}
+a.menuButton, a.menuButtonDouble, a.menuButtonDoubleBottom
+{
+  width:                80px;
+  margin-left:		10px;
+  text-decoration:      none;
+  background-color:     #ccc;   /* browser-safe; was #745; */
+  color:                black;
+  padding:              2px;
+  margin-bottom:	1.2em;
+  float:		left;
+  border-width:         1px;
+  border-style:		solid;
+  border-color:         #969;  /* browser-safe; was 967 */
+  border-radius: 	5px 5px 5px 5px;
+}
+a.menuButton
+  {height: 1.2em; /* 17px; */}
+a.menuButton:hover /*mouse over*/
+{
+  background-color:     #969;  /* browser-safe; was 967 */
+  border-color:         #363;  /* browser-safe; was a78 */
+}
+a.menuButton:active     /*when clicked*/
+{
+  border:               inset;
+}
+img.header
+{
+  margin-left:		15px;
+  float:		left;
+  height:		50px;
+  /*width:		40px;*/
+}
+img.picRight
+{
+  float:		right;
+  margin-top:		40px;
+  margin-right:		40px;
+}
+p.mini-head
+{
+  font-weight:  bold;
+  font-size:    1.25em;
+  font-family:  sans-serif;
+  margin-left:  1.5em;
+}
+p.footer
+{
+  color:	gray;		/* Set font colour to be grey */
+  margin: 	10px;
+  font-style: 	italic;
+}
+h1
+{
+ color:         black;
+ font-size:     2em;
+ font-weight:   bold;
+ font-family:   sans-serif;
+ margin-top:    0.65em;
+ margin-bottom: 0.65em;
+}
+h2
+{
+ color:         green;
+ font-size:     1.5em;
+ font-weight:   bold;
+ font-family:   sans-serif;
+}
+img.picRight, img.picWideRight
+{
+  float:        right;
+  margin-top:   0em;
+  margin-right: 10%;
+}
+img.picWideRight
+{
+  margin-top:   -1.7em;
+  margin-right: 3em;
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is 480px or less (i.e. a typical mobile phone layout)
+ */
+@media only screen and (max-width: 480px)
+{
+  div.menubar
+  {
+    margin:		0 auto;
+    width:		100%;
+    padding:		0px;
+    height:		30px;
+  }
+  div.contentFloat
+  {
+    margin-top:         3.2em;
+    border-radius: 	0px 0px 10px 10px; /* top-l, top-r, bot-r, bot-l */
+  }
+  a.menuButton, a.menuButtonDouble, a.menuButtonDoubleBottom
+  {
+    margin:		0.2em;
+    background-color:	#ccc;
+    font-size:          small;
+    border-width:       0px;
+    border-radius: 	5px 5px 5px 5px;
+  }
+  a.menuButtonOther
+  {
+    margin:		0 auto;
+    background-color:	#aaa;
+    border-width:       0px;
+    border-radius: 	5px 5px 0px 0px;
+  }
+  a.menuButtonDouble, a.menuButtonDoubleBottom
+  {height:1.2em; /* 17px; */ width:100px;}
+  a.menuButtonDoubleBottom
+  {margin-left:0px; text-align:center;}
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is at least 481px (i.e. 1px more than a typical mobile phone in landscape mode)
+ */
+@media only screen and (min-width: 481px)
+{
+  div.menuBar
+  {
+    width:              100px;           /*width of menu*/
+    float:		left;
+    padding:		10px 5px 5px 5px; 
+    height:		100%;		/*height of menu*/
+  }
+  div.contentFloat
+  {
+    margin-left:	110px;
+    border-radius: 	0px 10px 10px 0px;
+  }
+  a.menuButton,a.menuButtonOther
+  {
+    margin-left:	8px;
+    margin-bottom:	1.2em;
+    float:		left;
+    border-width:       1px;
+    border-style:	solid;
+    border-color:       #969;  /* browser-safe; was 967 */
+    border-radius: 	5px 5px 5px 5px;
+  }
+  a.menuButtonDouble, a.menuButtonDoubleBottom
+  {height: 2.4em; /* 17px; */}
+  a.menuButtonDoubleBottom
+  {margin-left: -140px; text-align: center;}
+  p.footer
+  {
+    color:		gray;		/* Set font colour to be grey */
+    font-size:		small;		/* Set font size to be small */
+    margin: 		10px;
+    border-top-style:	solid;
+    border-top-width:	thin;
+    font-style: 	italic;
+  }
+}
+

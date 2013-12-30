@@ -1,0 +1,181 @@
+/*
+ * gallery.css (for wessex-scd)
+ *
+ * Latest Edit:
+ * 23.07.2013 @ 21:35h
+ * by David (d.argles@gmx.com)
+ * This is now set up to be an addition to normal.css and handles stuff that 
+ * specifically relates to the gallery.
+ *
+ */
+ 
+hr.float {/*margin-left: 3em; width: 85%*/}
+
+div.img
+  {
+  margin:0.5em;
+  border:none; /*1px solid #0000ff */
+  background-color:  #ccc; /* Same as div.galleryIndent */
+  /* box-shadow:        0em 0em 0.5em rgba(0,0,0,0.6) inset;
+  border-radius:     0.3em 0.3em 0.3em 0.3em; */
+  height:auto;
+  width:auto;
+  float:left;
+  text-align:center;
+  }
+div.img img
+  {
+  display:inline;
+  margin:3px;
+  border:none; /* 1px solid #ffffff; */
+  border-radius:     0.2em 0.2em 0.2em 0.2em;
+  }
+div.img a:hover img
+  {
+  opacity:0.4;
+  }
+div.desc
+  {
+  /* overflow-y:hidden; */
+  text-align:center;
+  /*font-size:small;*/
+  font-weight:normal;
+  width:120px;
+  height:auto; /* 1.6em */ /*4em*/;
+  margin:2px;
+  }
+div.galleryIndent
+  {
+  /*width:             87%;*/
+  float:             left;
+  /*margin-left:       6%; */
+  margin-top:        1em;
+  margin-bottom:     3em;
+  background-color:  #ccc;
+  box-shadow:        0em 0.6em 1.2em rgba(0,0,0,0.6);
+  border-radius:     0.6em 0.6em 0.6em 0.6em;
+  }
+div.galleryPadLeft
+  {
+  width:             6.6em;
+  float:             left;
+  }
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is no more than 469px wide (i.e. 2 thumnails wide)
+ */
+@media only screen and (max-width: 469px)
+{
+  div.galleryIndent
+  {
+    width:             280px;
+    margin-left:       0%;
+  }
+  img.gallery
+  {
+    width:             260px;
+    height:            auto;
+  }
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is between 470px and 480px wide (i.e. 3 thumnails wide, mobile screen)
+ */
+@media only screen and (min-width: 470px) and (max-width: 480px)
+{
+  div.galleryIndent
+  {
+    width:             420px;
+    margin-left:       0%;
+  }
+  img.gallery
+  {
+    width:             300px;
+    height:            auto;
+  }
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is between 481px and 633px wide (i.e. 2 thumnails wide)
+ */
+@media only screen and (min-width: 481px) and (max-width: 633px)
+{
+  div.galleryIndent
+  {
+    width:             282px;
+    margin-left:       8%;
+  }
+  div.galleryPadLeft
+  {
+    width:             0em;
+  }
+  img.gallery
+  {
+    width:             300px;
+    height:            auto;
+  }
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is between 634px and 787px wide (i.e. 3 thumnails wide)
+ */
+@media only screen and (min-width: 634px) and (max-width: 787px)
+{
+  div.galleryIndent
+  {
+    width:             420px;
+    margin-left:       8%;
+  }
+  div.galleryPadLeft
+  {
+    width:             0em;
+  }
+  img.gallery
+  {
+    width:             400px;
+    height:            auto;
+  }
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is between 788px and 948px wide (i.e. 4 thumnails wide)
+ */
+@media only screen and (min-width: 788px) and (max-width: 948px)
+{
+  div.galleryIndent
+  {
+    width:             560px;
+    margin-left:       8%;
+  }
+  div.galleryPadLeft
+  {
+    width:             0em;
+  }
+  img.gallery
+  {
+    width:             500px;
+    height:            auto;
+  }
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is at least 949px (i.e. max width; 5 thumbnails wide)
+ */
+@media only screen and (min-width: 949px)
+{
+  div.galleryIndent
+  {
+    width:             700px;
+    margin-left:       6%
+  }
+  div.galleryPadLeft
+  {
+    width:             0em;
+  }
+  img.gallery
+  {
+    width:             500px;
+    height:            auto;
+  }
+}
+/* End of gallery.css */

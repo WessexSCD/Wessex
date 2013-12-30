@@ -1,0 +1,156 @@
+Outstanding issues:
+* !IMPORTANT! 404 Not Found pages (09dec2013)
+* W3C compliance on iframes (31may2013)
+* Backwards compatibility (16aug2013)
+* Auto-generated pages (16aug2013)
+* Customised 404 error responses (16nov2013)
+******************************************************************************************
+* Filename:      z_comments.txt
+* Author:        David Argles (daargles@gmail.com)
+* Time/Date:     As below
+* Purpose:       Basically, this is intended as a "ToDo" file, but I'd like to record other
+*                thoughts (e.g. "not too bothered about legacy browsers") as well.
+******************************************************************************************
+
+Theme:        404 Not Found errors
+Day/time:     09/12/13 11:12
+Author:       David
+
+* I need to go through and check where we are with customised 404 pages.  I -think- most sites don't have a customised 404 page.  Winchester's 404 page seems to work well.  I copied it over to SCOSHA and it *doesn't* seem to work well - I need to sort this out.
+
+Action:  I need to make time to check this out.
+Response: (1) 09.12.2013 @ 12:36h: Have now checked (and sorted) the SCOSHA Not Found page - .htaccess needs to be edited for each individual club website.  Maybe I can find a way to automate this?
+
++++
+
+Theme:        404 Not Found errors
+Day/time:   16/11/13 08:53
+Author:         David
+
+* It dawned on me that the same message is sent to all on a 404 Not Found error saying that an email has been sent etc...  This is not true, the email is only sent if it's clear that it is a genuine broken link.  My thought is that it would be good to deliver a specific email depending on the context.  It shouldn't take long; I'll aim to do this when I get a moment, assuming you're happy, Donald.
+
+Action:  email sent to Donald; I'll do the coding so long as the reply is positive.
+Response: (16/11/13 @ 13:08) Hmm... I've gone ahead and just made the changes.  Time to check with Donald and see if that was OK... :-S
+
++++
+
+Theme:     Auto-generated Pages
+Date/time: 16/08/13 10:15
+Author:    David
+
+* This is an off the wall thought for consideration.  I *think* it would be relatively easy to have auto-generated pages, where the page content is a text file ("index.txt", "gallery.txt", etc) which is auto-compiled on the fly by a single index.php.  The advantage of this approach is that the auto-generating code could ensure that coding mistakes in the HTML are eliminated.
+  Against this is the thought that we might as well go for a CMS (like WordPress) if we go this far.  Although... a CMS definitely requires a MySQL database behind it, whereas an auto-generation system wouldn't.
+
+Action: This would be a fun discussion for the next time we meet.
++++
+Theme:     Backwards Compatibility
+Date/time: 16/08/13 10:06
+Author:    David
+
+* These sites display but very badly in IE6 (Windows XP).  I *think* it might be reasonably do-able to rearrange the css definitions so that very old browsers cope rather better.
+
+Action: It might be worth me having a look sometime at the way the css files are set up to see if we can provide a reasonable default for very old browsers.
+Response: (21aug2013) I've had a look, and it's not a question of tinkering with the current css files - IE8 and less (particularly IE6, 7 and 8) require a completely different approach :-( .
++++
+Theme:     UK Cookie Law
+Date/time: 29/07/13 12:56
+Author:    David
+
+* I've been assuming that we don't use session variables and that we don't need to declare anything to comply with the UK Cookie Law.  However, I've done a quick check.  The (new) individual club sites are basically compliant.  There is a small issue with the embedded Google Maps which trigger three cookies, but these are not really a problem.  The old sites connect to Streetmap which is a nightmare from the cookie point of view - it uses 59 cookies on a standard map page, one or two of which set off all sorts of warning klaxons!  Still, we're not connecting to Streetmap by default on the new sites, so this shouldn't really be a problem.  The main wessex-scd site connects to GoStats by default, but again, this doesn't look to be a big deal.
+* I -thought- I was using cookies to connect between gallery.php and viewer.php (information needs to be transferred between the two pages), but it seems the variables I transfer don't count.  Excellent :-) !
+* At some stage, we might want to consider whether we want to put a little unobtrusive notice in the page footers that directs folk to a privacy policy and some thoughts safety online.  This is not a big deal - examples can be seen at the foot of minisail.org.uk, and of the documents at http://minisail.org.uk/?page_id=548 (privacy policy) and http://minisail.org.uk/?p=519 (thought on safety online).
+
+Action: At some stage, we might want to discuss whether we need to do anything to be strictly compliant.
++++
+Theme:     W3C compliance on iframes
+Date/time: 31/05/13 11:33
+Author:    David
+
+* We're using iframes on the location map page and for any videos that might be included in a site.  However, the W3C has an issue with iframes.  What we've got ('class="map"' in the case of the maps) works well and sorts out issues that arise with a responsive layout (the iframe needs to resize depending on browser width).  However, the W3C checker complains at this, so it would be nice to explore the issue at some stage and see if we can find a compliant way of sorting things out.
+
+Action: At some stage, it would be good to explore this and see what a good answer would be.
++++
+Theme:     The gallery facility
+Date/time: 29/05/13 21:42
+Author:    David
+
+* I've been making the assumption that displayGallery() will work if called within an ordinary page.  It *sort of* will, but after viewing the full-sized pictures, viewer.php will return to gallery.php (or rather, will try to) rather than returning to the calling page.  That's not a big job to fix, it just needs sorting by looking up $_REFERER or whatever the call is.  And I think I ought to actually *test* this out, rather than assuming it will work... :-S
+* Also, I reckon it would be most helpful if there could be a call to gallery that displays only one named subdirectory, for example.
+
+Action 1: viewer.php needs fixing. Fixed - 30-05-13@12:19  Basic testing done, but ought to be tested in a new build club site to make sure.
+Action 2: investigate and write the mini-gallery call. Completed: 30-05-2013@12:19
++++
+Theme:     W3C badges
+Date/time: 18/05/13 16:44
+Author:    David
+
+* At the moment, the W3C badges appear at the foot of every page.  That's handy whilst developing (a single click to check conformity), but now we're nearly done, we might want to only display the badges on the club's home page?
+
+Action: to discuss, please.
++++
+Theme:     Footer message
+Date/time: 09/05/13 09:51
+Author:    David
+
+* Ooh - I nearly forgot.  We ought to sort out what we want to do about the footer message.  Something a bit more professional-looking?
+
+Action: I'd like to discuss this, please.
++++
+Theme:     Maps
+Date/time: 03/05/13 07:14
+Author:    David
+
+* I've added a map page to Uppingham-new in order to put maps on the agenda.  Winchester-new has three examples; I've just included the Google Maps example in Uppingham.
+* I'm not happy with the "flag" that Google insists on putting on the embedded map - it tends to obscure things, especially at low screen widths.
+* Another idea which I'd like to explore is to go to Streetmap, ask for a "printer-friendly page", download it, and use that as a graphic on a map page which is then linked to the Streetmap site.  I think that might be clearer and simpler all round.
+
+Action 1: DA to implement the linked graphic idea. Done - see Uppingham-new.
+Action 2: I'd like to discuss this, please. Done: we've agreed to go with the embedded Google map.
++++
+Theme:     Responsive Layout
+Date/time: 28/03/13 17:25
+Author:    David
+
+* Basic changes implemented; now need to define the various layouts for different browser widths.
+* Also need to consider the positions of the graphics (dancers and thistle) which seems to go wrong at certain widths.
+
+Action: Completed, apart from final checking and tidying
++++
+Theme:     CSS v TABLES
+Date/time: 19/02/13 19:56
+Author:    Donald
+
+* What I'm looking for is a cross between Developers' Toolbar and the ability to see a complete pages css borders, as you can see all table cell borders - see http://cid-73fe6cc4e90a21ef.skydrive.live.com/browse.aspx/ScreenSnapshots/table-borders-example.PNG.
+
+Reply:
+I don't know about a tool to do this, except that the Chrome Developers Tool Set does allow you to highlight individual items so that the browser will display the margin, border, padding and content, all in different colours in the original display.
+
+There are lists of available tools on the web, such as:
+  http://www.1stwebdesigner.com/css/powerful-css-tools-generators-automate-workflow/
+but I can't see exactly what you're looking for there.
+- David
++++
+Theme:     LAYOUT ISSUE
+Date/time: 18/02/13 08:35
+Author:    Donald
+
+* I'd like to deal with for example the 4 pictures immediately below "BurnsNight" [in "Uppingham-new"]. Can we centre them? Donald
+
+Action: Corrected
++++
+Theme:     LAYOUT ISSUE
+Date/time: 18/02/13 08:35
+Author:    Donald
+
+* The text centering (e.g. h5 {text-align: center...) and the embedded video is centred about 10% too far to the right. 
+
+Action: Corrected
++++
+Theme:     BROWSER COMPATIBILITY
+Date/time: 15/02/13 19:45
+Author:    Donald
+
+"...don't work in early browser versions ... IE6". I have a limited interest in dealing with the failings of those antiques. So if it is alright with you to ignore them, I'll go with that.
++++
+end of file
++++

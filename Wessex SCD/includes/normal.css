@@ -1,0 +1,338 @@
+/**
+ * Primary styles
+ *
+ * Authors: Donald Mackay donaldlmackay@yahoo.co.uk and David Argles d.argles@gmx.com
+ *
+ * This version: 18.07.13 @ 10:59h
+ */
+ 
+body        { font-family:"Times New Roman",Serif; margin: 0;}
+#navigation { position: absolute;left: 0;width: 9em;}
+#content    { margin-left: 9em; margin-right: 0em;}
+#error      { color: red;}
+A:link      { text-decoration: none}
+A:visited   { text-decoration: none}
+A:active    { text-decoration: none}
+A:hover     { text-decoration: underline; color: red;}
+.indent     { margin-left: 2em; }
+.indent-ul  { margin-left: 3em; }
+.left-nav
+{
+ border-style:     solid;
+ border-width:     0.19em;
+ border-color:     blue;
+ color:            blue;
+ background-color: #FFFFdf;
+}
+h1, h2, h3, h4, h5 {font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
+h1
+{
+ color: black;
+ font-size:     2em;
+ margin-top:    0.65em;
+ margin-bottom: 0.65em;
+}
+h1.error
+{
+ color: red;
+}
+h2
+{
+ color: green;
+ font-size:   1.5em;
+}
+h3
+{
+ color: green;
+ font-size:   1.25em;
+ margin-top:    1.1em;
+ margin-bottom: 0.65em;
+ padding: 0;
+ border:  0;
+
+}
+h4
+{
+ color: green;
+ font-size:   1.00em;
+ padding-left: 0.0em;
+ margin-top:   1.5em;
+
+}
+h4.centre {text-align: center;}
+h5        {text-align: center; font-size: 1.2em}
+p
+{
+ margin-top:    1.00em;
+ margin-bottom: 1.00em;
+ margin-right:  1.00em;
+ /* line-height:	120%; 	Controls standard line spacing; default is 120% (I think) */
+}
+p.footer {color: gray; font-style: italic;}
+p.centre {text-align: center;}
+p.icentre {text-align: center; font-style: italic;}
+p.mini-head {font-weight: bold; font-size: 1.25em; font-family: sans-serif; margin-left: 1.5em;}
+p.clear {clear: both;}
+
+img.picRight, img.picWideRight
+{
+  float:        right;
+  margin-top:   0em;
+  margin-right: 10%;
+}
+img.picWideRight
+{
+  margin-top:   -3em;
+  margin-right: 5%;/*3em;*/
+}
+.hilite
+{
+ color: black;
+ font-size:   1.0em;
+ font-weight: bold;
+ font-family: sans-serif;
+ margin-left: 2em;
+}
+/* Table formatting */
+ table.c10    {}
+ table.c9     {}
+ table.c8     {text-align: left;}
+ table.c7     {text-align: left; }
+ table.c6     {text-align: left;}
+ table.tbl, table.tblNarrow
+              {margin-left: 2em; width: 592px; height: 52px; text-align: left;}
+ table.tblNarrow
+              {width: 292px;}
+ th, td	      {padding-left: 15px;}
+ tr.top	      {vertical-align: top;}
+ td.right     {text-align:right;}
+ td.c5        {vertical-align: top; padding-left: 0px;}
+ div.c4       {margin-left: 0px;}
+ p.c3         {text-align: left}
+ td.c2        {width: 10px;}
+ td.c1        {width: 110px;}
+/* The following definition affects the display of the events calendar */
+ table.events {font-size:medium;}
+ td.events    {width: 200px; padding-bottom:0.5em;}
+
+/* The next bit defines the layout of the website */
+body.float
+{
+  background-color:  #cc9;
+  font-family:       "Verdana", "ComicSans", "Arial", sans-serif;
+}
+/* This is the main container for the whole page.  We can use it to enable variable width etc */
+div.container
+{
+  max-width:         950px; /* Limits the maximum width of the page content */
+}
+/* This is an alternative container that provides a floating layout */
+div.containerFloat
+{
+  margin:            0  auto; /* "0 auto" allows us to get centred stuff in enclosed divs */
+  width:             98%;  
+  max-width:         950px; /* Limits the maximum width of the page content */
+  min-width:         290px; /* Limits the minimum width of the page content */
+  height:            auto;
+  background-repeat: repeat;
+  /* The background image (a tartan) is variable and is therefore set in template.inc, not here */
+  margin-top:        0.3em; 
+  margin-bottom:     0.5em; 
+  box-shadow:        0em 0.6em 1.2em rgba(0,0,0,0.6);
+  border-radius:     0.6em 0.6em 0.6em 0.6em;
+}
+/* This is the container for the menu */
+div.menuBar
+{
+  padding:	    5px 5px 5px 5px; /* top-l, top-r, bottom-r, bottom-l */
+  /*height:           100%;              height of menuBar*/
+  font-size:        medium;            /*Set font size to be normal*/
+  text-align:       center;            /*centre text on button*/
+}
+div.content, div.contentFloat
+{
+  padding:              1em;            /*padding around text on main page area*/
+  border-radius: 	0px 10px 10px 0px; /* top-l, top-r, bottom-r, bottom-l */
+}
+div.content
+{
+  margin-left:		9em;
+}
+div.contentFloat
+{
+  background-image:	url('../graphics/paper-cyan.jpg');
+  margin-right:         0em;
+}
+ul.links{list-style-type:none;}
+ul.links li{margin-top:1em;}
+ul.menu{list-style-type:none;}
+li.menu{display:inline;}
+/* The following div allows us to present centred content */
+div.centre {margin: 0 auto; text-align: center;}
+/* We also need to format the menu buttons */
+a.menuButton, a.menuButtonDouble, a.menuButtonDoubleBottom
+{
+  width:                6em; /* 80px; */
+  text-decoration:      none;
+  background-color:     white;
+  color:                blue;
+  padding:              0.2em;
+  margin-bottom:        1.2em;
+  border-width:         0.2em;
+  border-style:         solid;
+  border-color:         blue;
+  border-radius:        5px 5px 5px 5px; /*Produces fancy rounded edges to the buttons in modern browsers*/
+}
+a.menuButton
+  {height: 1.2em; /* 17px; */}
+a.menuButtonDoubleBottom
+  {margin-left: -7.7em; text-align: center;}
+a.menuButton:hover, a.menuButtonDouble:hover, a.menuButtonDoubleBottom:hover /*mouse over*/
+  {background-color: #969; border-color: #363;} /*browser-safe colours*/
+a.menuButton:active a.menuButtonDouble:active a.menuButtonDoubleBottom:active /*when clicked*/
+  {border: inset;}
+iframe.map{width:625px; height:500px; /*frameborder:0; scrolling:no; marginheight:0; marginwidth:0;*/}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is 480px or less (i.e. a typical mobile phone layout)
+ */
+@media only screen and (max-width: 480px)
+{
+  .indent{margin-left:0;}
+  div.menubar
+  {
+    margin:		0 auto;
+    width:		100%;
+    padding:            0;
+    height:             3em;
+  }
+  div.contentFloat
+  {
+    margin-top:         3.2em; 
+    border-radius: 	0px 0px 10px 10px;
+  }
+  img.picWideRight
+  {
+    margin-top:         3em;
+  }
+  a.menuButton, a.menuButtonDouble, a.menuButtonOther
+  {
+    margin:		0.1em 0.2em 0.1em 0.2em;
+    padding:            0.2em 0.2em 0.2em 0.2em;
+    width:              5.8em; /* 80px; */
+    float:              left;
+    height:             1.2em;
+    font-size:          small;
+    background-color:	#ccc;
+    border-width:       0px;
+    border-radius: 	5px 5px 5px 5px;
+  }
+  a.menuButtonDouble
+  {
+    height:             1.2em;
+    width:              7.3em;
+  }
+  a.menuButtonDoubleBottom
+  {
+    margin-left:0;
+    width:8em;
+    height:1.2em;
+  }
+  a.menuButtonOther
+  {
+    margin:		0 auto;
+    background-color:	#aaa;
+    border-width:       0px;
+    border-radius: 	5px 5px 0px 0px;
+  }
+  iframe.map{width:250px; height:300px;}
+  /* The following definition affects the display of the events calendar */
+  table.events {font-size:small;}
+  td.events  {width:60px;}
+}
+/*************************************************************************************
+ * The following definition fixes the placing of the Two Dancers graphic if the screen width
+ * width is 350px or less
+ */
+@media only screen and (max-width: 350px)
+{
+  img.picWideRight{margin-top:6em;}
+}
+/*************************************************************************************
+ * The following definition fixes the menu bar if the screen width
+ * is 390px or less (i.e. a typical mobile phone portrait layout)
+ */
+@media only screen and (max-width: 390px)
+{
+  div.contentFloat{margin-top: 4.2em;}
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is at least 481px (i.e. 1px more than a typical mobile phone in landscape mode), but 
+ * less than 799px
+ */
+@media only screen and (min-width: 481px) and (max-width: 799px)
+{
+  div.menuBar
+  {
+    /* This is the container for the menu bar.  It's designed to float to the left of the main "container" div */
+    width:            7em;             /*width of menu*/
+    float:            left;
+    /* background-color: transparent; */
+    padding:          0.5em 0em 0em 0.3em; /*1st parameter defines the padding at the top*/
+  }
+  div.contentFloat
+  {
+    margin-left:          7.4em;
+  }
+  img.picWideRight
+  {
+    margin-top:   -3em;
+  }
+  a.menuButton, a.menuButtonDouble, a.menuButtonDoubleBottom
+  {
+    float:                left;
+    margin-left:          0em;
+  }
+  a.menuButtonDouble, a.menuButtonDoubleBottom {height:2.4em;}
+  a.menuButtonDoubleBottom {margin-left:-8.1em;}
+  iframe.map{width:300px; height:400px;}
+}
+/*************************************************************************************
+ * The following definition fixes the two dancers graphic for screen widths between 481px
+ * and 649px
+ */
+@media only screen and (min-width: 481px) and (max-width: 649px)
+{
+  img.picWideRight{margin-top:3em;}
+  /* The following definition affects the display of the events calendar */
+  td.events  {width:120px;}
+
+}
+/*************************************************************************************
+ * The following definitions define specific things for the layout if the screen width
+ * is at least 800px
+ */
+@media only screen and (min-width: 800px)
+{
+  div.menuBar
+  {
+  /* This is the container for the menu bar.  It's designed to float to the left of the main "container" div */
+    width:            7em;             /*width of menu*/
+    float:            left;
+    /* background-color: transparent; */
+    padding:          0.5em 0em 0em 0.3em; /*1st parameter defines the padding at the top*/
+  }
+  div.contentFloat
+  {
+    margin-left:          7.4em;
+  }
+  a.menuButton, a.menuButtonDouble, a.menuButtonDoubleBottom
+  {
+    float:                left;
+    margin-left:          0em;
+  }
+  a.menuButtonDouble, a.menuButtonDoubleBottom {height:2.4em;}
+  a.menuButtonDoubleBottom {margin-left:-8.1em;}
+}
+/* End of normal.css */

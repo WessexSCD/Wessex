@@ -1,0 +1,733 @@
+******************************************************************************************
+*  NOT currently updating 
+******************************************************************************************
+* Filename:	    z_updates-log.txt
+* Author:       David Argles (daargles@gmail.com)
+* Time/Date:    As below
+* Purpose:      (1) to record updates to files in the include directory; and
+*               (2) to use this file as a "token" to note when one of us is updating stuff
+******************************************************************************************
+Time: 	23-12-13, 08:01
+Coder:	David
+Notes:
+* Ah-ha!  Insight - our NFP problems are coming from bots that are following old, cached links.  That would be a problem whether it's a bot or a real person, and we don't want to know in any case.  So the concept is to identify when the request has come from a source that no longer exists - i.e. $referer points to a page that doesn't exist.  If this is the case, we can generate an appropriate error message and switch off the email response.  This is now implemented in notfound.php.
+
+Time: 	23-12-13, 06:39
+Coder:	David
+Notes:
+* Updated notfound.php so that it now only shows the case-sensitive "try this page instead" message if the suggested new page actually exists.
+
+--- end of update ---
+
+Time: 	20-12-13, 17:16
+Coder:	David
+Notes:
+* Oops!  Forgot to screen out requests for favicon.ico when I updated notfound.php yesterday.  Now sorted.
+
+--- end of update ---
+
+Time: 	19-12-13, 23:42
+Coder:	David
+Notes:
+* We were getting drowned in "Not Found" emails from some web crawlers looking for links from cahced versions of our old pages.  I've dealt with this by creating a "bots-last.txt" file that records the hostname of the last machine to look for "robots.txt" (more efficient than trying to access the last line of "bots-log.txt").  If there's a match with the current hostname, don't send an email.  This will only work for good bots; any that ignore robots.txt will still trigger loads of Not Found messages.  But then we haven't had any bad bots yet.  My email to Donald or 19thDec2013@08:24 applies.
+
+--- end of update ---
+
+Time: 	11-12-13, 08:39
+Coder:	David
+Notes:
+* Minor change: edited the link to Minicrib in common_scd_links to be "minicrib.org.uk".
+
+--- end of update ---
+
+Time: 	24-11-13, 10:13
+Coder:	David
+Notes:
+* Commented out the "height = 100%" line in normal.css.  It seems to have fixed the 2px shift problem :-)
+
+--- end of update ---
+
+Time: 	18-11-13, 10:30
+Coder:	David
+Notes:
+* It seems that there's a few problems following the Winchester update due to folks following old links to, in particular newsletters and dance fliers.  These have changed location in the new structure, and they also have kept their old case (they haven't been updated to ensure they are all lower case).  Also, Winchester is unique in having had a page "AboutSCD.html" in the old site, whereas all the other sites had an "about.html" (so the new winchester site follows suit and uses about.php rather than aboutscd.php).
+  With these issues in mind, I've added two special help lines to the Winchester 404 page which offers help in directing to the new locations for (a) newsletters, and (b) dance fliers.
+* It also seemed much more helpful to have a menu on the left of the 404 page, so I've added that in.  We ought to discuss this, but it seems urgent to get as much help in place as possible for any who might be struggling because of the updated sites, so I've just done it... Hope that's OK, Donald.  I'll email next to mention what I've done and why.
+
+--- end of update ---
+
+Time: 	16-11-13, 21:32
+Coder:	David
+Notes:
+* A couple of Not Found errors came in tonight which underlined the fact that it's not helpful when the 404 page suggests a URL for another page which also does't exist.  This is the case for *every* request for a xxx.html page.  So notfound.php now checks for that and replaces .html with .php before suggesting an alternative page.
+* Ideally, it should also check that *any* page it suggests actually exists - but that's for another day...
+
+--- end of update ---
+
+Time: 	16-11-13, 16:56
+Coder:	David
+Notes:
+* OK, all re-instated now.  Found a logic error which would have been in the original update, so some good has come out of today's disaster.
+* Also - A LESSON!  I got into the habit of editing directly on the server because it's quicker when checking for problems.  So:
+  DA: MAKE SURE I download any files locally, edit, then upload to check.  It might take longer, but it's less pain the long run ;-)
+* Another thing I didn't record before is that I've inserted comments in notfound.php - there were none before.  I've commented to PHPdoc standards (see http://www.phpdoc.org/).
+
+--- end of update ---
+
+Time: 	16-11-13, 14:09
+Coder:	David
+Notes:
+* DISASTER!  Took a break for lunch, came to do the backup, and found... notfound.php consisted of 0 bytes :'(
+* Have replaced the blank notfound.php with a copy from my tablet, but it means that all of today's edits have been lost.  Hey ho, will have to do it all again, then...
+
+--- end of update ---
+
+Time: 	16-11-13, 13:10
+Coder:	David
+Notes:
+* Hmm... I went ahead and made the changes to notfound.php (see z_comments.txt) - hope that's OK, Donald.  Basically, I've done the following:
+  - created three different messages to suit the various error scenarios;
+  - set it to deliver a special message if it's a request for robots.txt;
+  - set up a "you might like to check your spelling" type of response if there's no referer, and removed the note that "an email has been sent" (because it hasn't);
+  - left the default as before, which is what most folk should see, and should only happen if there's a genuine broken link (which we need to know about).
+
+--- end of update ---
+
+Time: 	12-11-13, 00:56
+Coder:	David
+Notes:
+* Argh!  Have just updated <Winchester> to <winchester>.  Had all sorts of problems trying to work out why a call to wessex-scd.org.uk/winchester/ was going to index.html rather than index.php.  Some lessons learnt:
+  - There should be a priority specified in Apache, but often it won't be what you expect, 
+    and you may not be able to control it on a third-party server.
+  - It should be possible to over-ride server settings with a .htaccess file.  But it 
+    didn't seem to work on our server :-P
+  - I've changed the main site index.html to point to <winchester/index.php> rather than 
+    <winchester/>.  This speeds up page access times (by a whole 1ms over a total load 
+    time of some 612ms...), and makes *sure* that index.php is loaded, not index.html.
+  - The bulk of the problem is caching.  Different browsers work different ways.  In 
+    theory, clicking the reload/refresh button should refresh, or failing that, pressing 
+    return in the URL bar should do it.  But the only safe way appears to be pressing 
+    <ctrl-f5>, which apparently works in all browsers.
+  - And... it's important to refresh the *calling page* (i.e. the main site index.html) 
+    not the called page (winchester/index.php).
+
+--- end of update ---
+
+Time: 	02-09-13, 05:14
+Coder:	David
+Notes:
+* notfound.php updated to ignore any "Not Found" errors if:
+  - there's no referer - that just means it's a bot probing for stuff rather than an actual broken link;
+  - the requester inludes "js...modernizr" - that's an error on the old site which is driving me bonkers with loads of Not Found errors.
+
+--- end of update ---
+
+Time: 	22-08-13, 00:40
+Coder:	David
+Notes:
+* template.inc now updated so that it recognises IE8 and below and switches to using msie6.css instead of normal.css.  msie6.css still needs sorting out though!  That could be a long process...
+
+--- end of update ---
+
+Time: 	21-08-13, 05:21
+Coder:	David
+Notes:
+* Oops!  Forgot to record that I needed to add htmlHeaderRootdir() to template.inc to allow for files (like notfound.php) which are in the root directory, rather than in  a club's sub-directory.
+
+--- end of update ---
+
+Time: 	19-08-13, 16:35
+Coder:	David
+Notes:
+* I was getting deluged by emails from bots triggering the "I can't find a robots.txt file" error.  So these are now diverted into a bots-log.txt file in the main directory.  We could just ignore them, but it's really interesting to see that we've *already* (in the last 12 hours) been visited by MSN, Google, and a whole load more!  Excellent :-)
+
+--- end of update ---
+
+Time: 	19-08-13, 03:24
+Coder:	David
+Notes:
+* Have created a custom notfound.php which traps "404 Not Found" errors.  This:
+  - makes it look a little more "managed", rather than a random error;
+  - looks like it actually belongs to the Wessex site;
+  - offers one or two alternatives for sorting things out; and
+  - sends (at the moment, me) an email saying someone has looked for a page and not found it.
+
+--- end of update ---
+
+Time: 	18-08-13, 00:50
+Coder:	David
+Notes:
+* Have created Uppingham-new, containing generic index.html and index.php files which point to uppingham-new.  This directory can be copied and renamed; it will point to a lower case version of whatever the given capitalised name is.  That sounds muddley - what I mean is that I've:
+1) created Uppingham-new which contains only a generic index.html and a generic index.php which together make sure that Uppingham-new redirects to uppingham-new.
+I've then:
+2) renamed Spiffin-new to be spiffin-new (which all works fine as lower case);
+3) then I've copied the whole of Uppingham-new and renamed it Spiffin-new.
+At this point, Spiffin-new automatically redirects to spiffin-new, no problems.
+Actually, it also gives a message to the search engines to update their links as well :-)
+Just for good measure, I've checked that this approach also works for SCOSHA-new - try it ;-)
+
+--- end of update ---
+
+Time: 	16-08-13, 07:08
+Coder:	David
+Notes:
+* Forgot to update the version date-time in gallery.inc yesterday, so did that; also added a couple of spaces on the new lines to make sure the HTML stream is correctly indented (OCD strikes again...).
+* Also updated template.inc to insert a newline plus a few spaces again to ensure the HTML is correctly indented...
+
+--- end of update ---
+
+Time: 	15-08-13, 18:13
+Coder:	David
+Notes:
+* The "--- Click on Pictures to Enlarge ---" instruction has been moved from the top of the gallery page to the bottom of the individual sets of pictures.  This makes it clear that the message only applies to pictures, not to other things like movies.
+
+--- end of update ---
+
+Time: 	06-08-13, 22:27
+Coder:	David
+Notes:
+* Minor change to the footer so that the W3C validation badges only appear on index.php, not on other pages.
+* Also, the copyright message has been changed to make it more professional.
+
+--- end of update ---
+
+Time: 	29-07-13, 21:59
+Coder:	David
+Notes:
+* I've modified template.inc, gallery.inc and the copy of viewer.php in pro-forma-files so that the HTML that's streamed to the client contains a tag to say what version of template.inc it's using (and gallery.inc or viewer.php if relevant).  There's no change to the look and feel or content of any of the xxx-new sites, but it shows up if you "view source" in the browser.  There is now a meta tag saying that the generator is Wessex SCD generator version xxx.  There will also be an additional HTML comment saying what version of gallery.inc or viewer.php is being used if appropriate.
+
+I've tested it all, and it all seems to be working OK with no interference or change to previous display and operation.
+
+Hope that's OK as I didn't ask... :-/  But it should make it so much easier to track what's going on if there's any version compatibility issues as we had previously with viewer.php.
+
+--- end of update ---
+
+Time: 	29-07-13, 21:07
+Coder:	David
+Notes:
+* One or two trivial updates to the page files in pro-forma-files mainly to make sure that they don't have silly stuff in if one forgets to change the defaults.  And to correct a silly spelling mistake...
+
+--- end of update ---
+
+Time: 	23-07-13, 21:35
+Coder:	David
+Notes:
+* Fixed a bug in gallery.css where thumbnails had a 1px border added on mouse-over, leading to pictures below appearing to jump around.  Thumbnails now go transparent on mouse-over.
+
+--- end of update ---
+
+Time: 	18-07-13, 11:18
+Coder:	David
+Notes:
+* Have removed the indent for very narrow screen widths (i.e. mobile phone widths) which improves the display significantly.
+* Oops! Forgot to move the "Return to Top" button over to the left when I changed the left margin width - now fixed.
+
+--- end of update ---
+
+Time: 	18-07-13, 10:59
+Coder:	David
+Notes:
+* The menu bar wasn't tall enough for some sites in portrait mode on mobile phones, so have incresed the height of the bar a little when the browser width is less than 390px.
+
+--- end of update ---
+
+Time: 	18-07-13, 10:12
+Coder:	David
+Notes:
+* Checked the new sites in IE10 and noticed that some menu labels are a bit tight inside the menu buttons (IE10 seems to use a very slightly larger font size).  So have moved the main content left margin 0.4em to the right and made the buttons very slightly wider so the text isn't quite so cramped inside the buttons.
+
+--- end of update ---
+
+Time: 	16-07-13, 18:45
+Coder:	David
+Notes:
+* Another minor change to gallery.inc so it suppresses the official warnings and errors if displayGallery() or displayMedia() can't open the specified directory.  Instead it looks for pictures in the current directory.  I *think* this means it will be possible to have a single directory containing just photos, but I haven't tested this out yet.  For now, it just means you don't get horrid system errors printing out on the web page.
+
+--- end of update ---
+
+Time: 	14-07-13, 23:41
+Coder:	David
+Notes:
+* Minor change to gallery.inc so it suppresses the official warnings and errors if displayGallery() or displayMedia() can't find the specified directory.  Instead it prints out a slightly more user-friendly message saying what it's actually looking for and can't find.
+
+--- end of update ---
+
+Time: 	25-06-13, 22:16
+Coder:	David
+Notes:
+* Hmm, this can't be right.  I've just made a major structural change to the way gallery.inc lists directory entries and it's worked first time.  Well, apart from a single boundary condition error which I've just corrected, that is.  So gallery.php should now list directories of photos (or videos or whatever) in alphabetical order.  In theory...
+
+--- end of update ---
+
+Time: 	25-06-13, 21:39
+Coder:	David
+Notes:
+* There's obviously confusion about the correct version of viewer.php.  The latest version lost its headers (so it didn't look like the latest version), so I've added the headers back in and put today's date.  Hopefully this will solve the problem.
+
+--- end of update ---
+
+Time: 	07-06-13, 23:25
+Coder:	David
+Notes:
+* Small modification to map.php in the pro-forma-files directory to include a link to Streetmap.  Like the Google Maps link, this will need updating for each site.  z_quickstart.txt has been modified to reflect the change.
+
+--- end of update ---
+
+Time: 	07-06-13, 17:40
+Coder:	David
+Notes:
+* Noticed that the page template produced links which don't match the original (intended?) style.  Have therefore introduced a new style, "links" for unordered lists, and modified page-template.php to indicate that this is the "preferred style" (assuming it is).
+
+--- end of update ---
+
+Time: 	06-06-13, 06:39
+Coder:	David
+Notes:
+* A couple of small changes to common_scd_links() to add descriptions to a couple of the links.
+
+--- end of update ---
+
+Time: 	30-05-13, 12:22
+Coder:	David
+Notes:
+* Bugs in viewer.php fixed, together with necessary changes to gallery.inc to make it all work properly.  I *think* this is now all working as intended, but I'll be much happier when it's all tested out in a new build of a real club site.
+
+--- end of update ---
+
+Time: 	30-05-13, 01:56
+Coder:	David
+Notes:
+* gallery.inc updated so it's possible to include a mini gallery on other pages.  gallery.inc works fine... but viewer.php shows the wrong pictures, so this needs sorting.
+* displayMedia("<dirname>") has been added and allows display of different directories, displayGallery()still exists and displays the contents of "gallery".
+
+--- end of update ---
+
+Time: 	29-05-13, 23:56
+Coder:	David
+Notes:
+* comments on presenting tables added to z_howto.txt... :-S
+
+--- end of update ---
+
+Time: 	29-05-13, 23:06
+Coder:	David
+Notes:
+* z_howto.txt completed :-) !
+
+--- end of update ---
+
+Time: 	29-05-13, 00:36
+Coder:	David
+Notes:
+* Continued writing z_howto.txt.
+
+--- end of update ---
+
+Time: 	27-05-13, 23:57
+Coder:	David
+Notes:
+* Tweaked the width of the buttons in normal.css at small screen widths, and made the minimum screen width just a little wider.  This has corrected the IE10 problem of the menu buttons not displaying properly at narrow screen widths.  I was *expecting* to record that this was a prime example of why widths should be expressed in ems, not px... but no.  The widths were already expressed in ems.  It's just different browsers interpreting widths differently... :-P
+
+--- end of update ---
+
+Time: 	27-05-13, 23:40
+Coder:	David
+Notes:
+* Made a start on z_howto.txt...
+
+--- end of update ---
+
+Time: 	27-05-13, 22:03
+Coder:	David
+Notes:
+* Changed the name of z_read-me.txt to z_readme.txt - it was annoying me that it was named differently from the other readme files.  Hope that's OK, making a unilateral decision like that... :-S
+* Made some minor editorial changes to z_readme.txt; also mentioned that there is now an index.html to include in the set of files.
+* Made a failry drastic change to the end of this file, which has now been replaced by "z_quickstart.txt".
+
+--- end of update ---
+
+Time: 	27-05-13, 21:35
+Coder:	David
+Notes:
+* Made about three minor changes to z_quickstart.txt - grammatical/spelling corrections, etc.
+
+--- end of update ---
+
+Time: 	27-05-13, 13:09
+Coder:	David
+Notes:
+Minor changes to z_quickstart.txt:
+* Added a comment to remind that the header needs to be updated.
+* Added an extensive note to explain how the map is updated from Google maps.
+* Added a comment about global search and replace to put <p class="indent"> in throughout the file if working that way.
+
+I've written z_quickstart.txt as if writing for a.n.other, i.e. as if some unknown third person joined the team at some time in the future.  Hope that's OK.
+
+--- end of update ---
+
+Time: 	27-05-13, 08:25
+Coder:	David
+Notes:
+* Created z_quickstart.txt
+
+--- end of update ---
+
+Time: 	18-05-13, 16:46
+Coder:	David
+Notes:
+Hmm, I seem unable to leave things alone, not good :-(  But this was just a very little update... :-S
+* Experimented with three-letter day display in the programme of events facility.  The idea was that this might make it look a little more uniform - but to me it just looked worse!  So it's still as it was.
+* Added a blank line after the heading on the Uppingham-new Programme page.
+* Have created an "events" style for <td> so that the date column doesn't fold inappropriately.  Also, the events display now switches to "small" font at narrow widths, otherwise it makes no sense trying to display it all!
+
+--- end of update ---
+
+Time: 	18-05-13, 15:11
+Coder:	David
+Notes:
+* readme files are now up-to-date and correct.  I hope...
+
+--- end of update ---
+
+Time: 	17-05-13, 18:03
+Coder:	David
+Notes:
+* All the pro-forma-files now updated and tidy.  I hope...
+STILL TO DO: go through the various readme files so they are up-to-date and correct. [Done - see above]
+
+--- end of update ---
+
+Time: 	12-05-13, 23:10
+Coder:	David
+Notes:
+* Some "futzing" done to displayCSV so that programme.csv can have dates specified in a variety of ways, but still display in a uniform way on the web page (nice :-) ).  But at the moment, it seems like php insists on dates being in US format (nasty :-( ).  So for now, dates like 16/10/13 are not good - they are illegal (US) dates and will cause an error message on the web page, and worse, 3/4/13 will get read as 4th March, not 3rd April!  So to be safe, it's best to specify dates in the CSV as something like "3 apr 2013", at least for the time being.
+* Another job will be to trap illegal dates so the web page says so nicely instead of giving a php warning message.
+
+--- end of update ---
+
+Time: 	12-05-13, 17:56
+Coder:	David
+Notes:
+* Have added displayCSV("filename") to template.inc.  At the moment, it's pretty basic, but it takes a csv file of name "filename" and assumes the first column is a date.  It will then display all entries which have a date of "today" or later.  In other words, it's designed to automatically maintain a list of dance dates, removing entries when they are no longer in the future.
+
+--- end of update ---
+
+Time: 	09-05-13, 10:17
+Coder:	David
+Notes:
+* Changed the way "Last Updated" works on pages.  If the update message is "file" (case sensitive, I think), then the first line of "updates.txt" is taken from the club's local directory and displayed on index.php only (not on other pages).  So we've got a working example to discuss now :-)
+
+--- end of update ---
+
+Time: 	07-05-13, 10:31
+Coder:	David
+Notes:
+* Experimented with gallery.css.  Put back as it was.
+* Helpful link: http://css-discuss.incutio.com/wiki/Gallery_Float
+* Note: some difficulty arising with browser not refreshing properly when updates applied to the css... :-(
+
+--- end of update ---
+
+Time: 	20-04-13, 23:34
+Coder:	David
+Notes:
+* Had forgotten to sort our the gallery viewer.  This now scales to fit the available screen size.
+
+--- end of update ---
+
+Time: 	20-04-13, 23:17
+Coder:	David
+Notes:
+* A weird change to normal.css allowed the buttons to work properly at narrow widths (i.e. remove the padding declaration in the main part of normal.css...???)
+* Minor changes to gallery.css to maximise the display at various screen widths.
+* Have switched to a small font on the menu buttons at narrow screen widths since this works better (otherwise it's just a mess of buttons)
+
+Have now tested Uppingham-new on various mobile devices, and everything seems to work fine.  There's a bit of an issue with increasing and decreasing browser widths on the desktop; this seems to be down to the fact that the page seems to like to be refreshed after a browser resize.
+
+--- end of update ---
+
+Time: 	11-04-13, 11:59
+Coder:	David
+Notes:
+* Altered gallery.css so that there is no grey background to the individual picture/title entries.  So there is now no problem with text overflow on long titles - the display just handles it.  (Thanks Donald - excellent idea :-) )
+
+--- end of update ---
+
+Time: 	02-04-13, 09:46
+Coder:	David
+Notes:
+* A bit of "futzing" on normal.css to get the responsive layout working properly, plus I've now altered gallery.css so it is repsonsive too.  Still needs a bit of tinkering, but it's nearly there.
+
+--- end of update ---
+
+Time: 	02-04-13, 08:02
+Coder:	David
+Notes:
+* Small change, but important; I've changed the example menu.ins in the pro forma subdirectory to remove the <br /> in the final "Wessex Home" button.  It's important to let the css decide whether there's a line break in there or not - we *don't* want a line break in very narrow layouts.
+
+--- end of update ---
+
+Time: 	28-03-13, 17:22
+Coder:	David
+Notes:
+* Big learning curve...
+   I now know that the "title" given in a link statement in the <head> is hugely important!  It has a specific meaning and needs to be used carefully.  It will define a particular category of style which can be invoked within the html page.  If no title is specified, then it goes into the "common" pot and will always be invoked (which is what one usually wants).  If several css files are specified in common mode (i.e. without titles), then they are invoked in the order in which they appeared in the html document.
+* So... we now have "reset.css", called first.  This resets everything so it normalises things across different browsers.  Next comes "gallery.css" which will be invoked second, but should only define styles required by gallery.php.  Finally comes "normal.css" which should override everything else as it is specified last in template.inc.  Only thing to watch is to make sure that gallery styles are not overridden in normal.css.  This -shouldn't- happen in the normal run of things...
+
+--- end of update ---
+
+Time: 	28-03-13, 16:25
+Coder:	David
+Notes:
+Time for BIG changes!  Well, small in terms of the fact they've been trialled, so it's cut and paste, and small in the sense that some of them are one-liners.  But big in terms of impact!
+* That was hard work!  ALL I did was to add one line to the htmlHeader function to set everything up for a responsive layout.  But two tiny typos, total blindness to the problem, and 40 minutes later, and we've finally got there...
+* Oh... I can't find a note below about the fact that I introduced a new "htmlHeaderVariant" function.  This makes it much easier to test out layout changes; if htmlHeaderVariant is specified rather than htmlHeader, then a different css can be invoked.  Because of this, I have also (in the last 40 minutes) split out the common code from both functions into htmlHeaderCommon; this just makes it easier to maintain.  Otherwise, I was just about to have to remember to put the responsive layout change into two different places... :-(
+* I've created a "zzz" directory in "includes" and removed mauve.css and cyan.css into there.  I've changed the background reference in normal.css to paper-cyan.jpg, so anything using normal.css now uses the cyan background.
+* Phew! That was slightly less painful.  I've split off gallery.css as a separate css and invoke it after normal.css on all pages.  It's only a small file; the advantage is that it's one less thing to worry about if using the gallery in a site.  The css will just be there.  But it is called in two separate places, in htmlHeader and in htmlHeaderVariant :-P ...
+...!ACTION!...  I'm sorely tempted to cure the lurking danger by spearating out the reset part of normal.css (maybe call it "reset.css") from the definitions, then gallery.css can be called in just one place, but before normal.css.  It will also have the advantage that it will be a lot easier to see what primarily affects the layout in normal.css, rather than being distracted by the "get it right by resetting things first" stuff.
+
+Time to pause; it all seems to be working OK so far.  Another big one coming up - setting up the @media definitions...
+
+--- end of update ---
+
+Time: 	23-03-13, 15:53
+Coder:	David
+Notes:
+* I've produced a "temp-gallery.css" as a test bed to fix the gallery layout issues.  When we're happy with the result, I'll copy the changes back into "normal.css" and delete "temp-gallery.css".  At the moment, I like the look and reckon I've got it more or less centred, etc.
+* Bearing in mind Jane's comment about location, I've updated "template.inc" so it now also looks for a "site-location.txt" in the clubs local directory.  If it finds one, it puts it up as a location underneath the main site heading.  If it doesn't find one, it omits a location line.  I've moved the "dancers" graphic a little (in "normal.css") to centre it vertically in the new space available.  It *seems* to work both in sites showing a location, *and* in those not showing a location.  I'm not sure why that is, but if it should prove to be a problem after all, it's an easy fix.
+* Um... time to "fess up".  I've been "futzing" this afternoon, and I'm not sure if I've made any other changes.  I don't *think* I have...
+* One other little change I've just remembered: I discovered a little bug in "gallery.inc" where the <p class="clear"> was coming a line too early.  That meant that with some screen widths, the "(no pictures found)" message wasn't centering properly.  This is now sorted.
+
+--- end of update ---
+
+Time: 	19-03-13, 17:03
+Coder:	David
+Notes:
+* There was a boundary error in dir_list in template.inc.  I've now fixed this, but it's a bit of a kludge.  It would be good to return to this sometime and see if I can come up with a more elegant solution. (Note: print_r($array) is a good way of finding out the structure of $array and fixing problems).
+
+--- end of update ---
+
+Time: 	18-03-13, 15:14
+Coder:	David
+Notes:
+* htmlMenusFloat() now searches for a "site-title.txt" in the calling directory.  If it finds one, it uses it as the page title at the head of the main page content.
+* I'm not sure we really need this, but I've put in a definition for <p class="mini-head"> into "normal.css".  At least it means that, if we decide to change our minds and put the sub-heading in, it will display properly :-/ .
+
+--- end of update ---
+
+Time: 	15-03-13, 20:01
+Coder:	David
+Notes:
+* Added div.galleryIndent to normal.css.  This controls the positioning of the pictures in the gallery; it puts them in the middle so long as the browser is the full 950px wide, and so long as there is a complete row of pictures.
+* Big change (structurally)!  I decided to remove all the php code from gallery.php and put it into a separate include file.  SO there is now a gallery.inc as well as a template.inc.  If you want to include a gallery on a page, first "require" it at the start, just after requiring template.inc.  Then all you have to do is make a php call to "displayGallery()" to display a gallery at that point on the page.
+
+--- end of update ---
+
+Time: 	15-03-13, 10:43
+Coder:	David
+Notes:
+* Quick update to function dir_list in template.inc to prettify the display output and make it more human-readable.
+
+--- end of update ---
+
+Time: 	15-03-13, 00:18
+Coder:	David
+Notes:
+* Following in the vein of gallery.php, I've added a function ("dir_list") to template.inc which lists all the files in the given directory.  It can list in alphabetic order or reverse alphabetic order.  I've then plugged this into "newsletters.php" in "Winchester-new", so it will automatically list all the newsletters in the "newsletters" directory, or all the application forms in that directory.  OK, so basically I'm lazy... ;-)  Oh, incidentally, one issue that immediately comes to light is that it accurately reflects the contents of the directory, so if any files (e.g. newsletters) are missing, they don't appear in the listing, rather than appearing to be there, but giving a broken link.
+
+--- end of update ---
+
+Time: 	11-03-13, 15:26
+Coder:	David
+Notes:
+* gallery.php and viewer.php updated (in "pro-forma-files") so that they will now display a meaningful picture title.  So "picture.txt" will display as the description for "picture.jpg".  It was a bit of a long code change, but worked first time (well, nearly, apart from a couple of stupid "brain switched off" errors).  So now I'm wondering what I've broken elsewhere in the process - there must be something, it can't be that easy...
+
+--- end of update ---
+
+Time: 	09-03-13, 21.36
+Coder:	David
+Notes:
+* Minor change to normal.css - discovered that the "Return to top" button had gone walkabout during the last update.  It's now back in position; also took the opportunity to change it's position from px to em.
+* =Don't forget= I need to go back through all the emails and create a unified list of jobs that still need sorting.
+
+--- end of update ---
+
+Time: 	09-03-13, 19.36
+Coder:	David
+Notes:
+* Minor tidy of template.inc simply to make the source code look right (line breaks in the right place, correct indents, etc.) Done mainly to help me see what's going on in the code.  And maybe there's a little OCD in there as well...
+* FINALLY - fixed the dodgy right margin in Chrome.  It was being messed up by the "overflow: auto;" in normal.css which was -supposed- to fix something in Firefox.  It doesn't seem to break Firefox if it's removed, but it does make Chrome work properly again!
+* Next job is to go back through all the emails and create a unified list of jobs that still need sorting.
+
+--- end of update ---
+
+Time: 	14-02-13, 14.47
+Coder:	David
+Notes:
+* Had left the site in a bit of a mess :oops: sorry.  I've now been through and tidied it up so that it should now work for Chrome, IE *and* Firefox :-)  And a few others as well.  I don't yet know what it looks like in really old browsers as browsershots.org is telling me I've used up my quota of free screenshots :-(
+* I've switched off the "detect IE and deliver a separate css" facility - everything goes through normal.css once again.
+* I've removed the leading html comment that was messing up IE9 and earlier.
+* I've included a "clear: both;" format for paragraphs in normal.css which means I can get the display right in gallery.php.  In all browsers, not just Chrome.
+* I've put one or two more measurements from px into em, but there's more to find and fix.
+
+--- end of update ---
+
+Time: 	13-02-13, 04.47
+Coder:	David
+Notes:
+* Ahhhhhgh!!! Have *FINALLY* tracked down the problem in IE.  Answer?
+    DON'T START A PAGE WITH A COMMENT - IT MESSES UP IE
+Obvious really...
+
+--- end of update ---
+
+Time: 	12-02-13, 18.25
+Coder:	David
+Notes:
+* I couldn't make IE9 behave, so have introduced a line that detects IE browsers and invokes a completely separate css - ie.css.  At the moment it's blank, so there's no formatting at all in IE browsers (apart from IE10 which I hope I detect and deliver normal.css because it should work).  Am working on ie.css.
+
+--- end of update ---
+
+Time: 	09-02-13, 16.04
+Coder:	David
+Notes:
+* Have fixed the 5px "droop" when using the Return to top button.  Instead of using the id="top" tag as an anchor, the button now just reloads the current page using $_SERVER['PHP_SELF'].  Job done :-)  For now, I've left the id="top" label in the <body> tag; that could now go again if we wish.
+
+--- end of update ---
+
+Time: 	08-02-13, 23.35
+Coder:	David
+Notes:
+* Have created a pro-forma-files subdirectory to contain the two versions of the template page file and a sample menu.ins.  So now this should be the place to go to to find the latest versions of the page templates.
+* There is a minor glitch when using the "Return to top" button in the flow layout.  I -think- this would be an easy fix using the php $REFERER variable.  But I really am intending to stop "futzing" for a bit... (famous last words...)
+* Have updated z_read-me.txt to note the differences in use between the two approaches (z_page-template.php and z_page-template-float.php)
+
+--- end of update ---
+
+Time: 	08-02-13, 20.37
+Coder:	David
+Notes:
+* Oops... Realised that the "Return to top" button wasn't - it was returning to the top of index.php.  Have updated template.inc to include a "top" anchor in the <body> tag, and the "Return to top" button now links to that.  Only problem is that it doesn't -quite- link to the top of the page, there's an annoying 5px (0.2em) drop on the page.  The only way to get around that is to pass the page name as a parameter to htmlFooter.  I don't want to do that just at the moment as it will mean another significant change that will affect every page.
+* One problem with the flow layout has been the two fixed graqphics.  I've updated normal.css to introduce two new styles for graphics, both of them floating the graphic to the right of the display.  "img.picWideRight" is designed for the two dancers graphic, and is designed to place it just under the title at the right of the page.  This needs to be placed quite precisely to work well, so has its own style.  "img.picRight" is designed primarily for the Thistle graphic and has a different style principle applied.  It is designed to float towards the right in a biggish space, such as typically comes in the middle of a longer page.  It is designed to float 90% of the way over to the right margin.  In this way, both graphics should realign suitably as the window width decreases.
+* Another change that has been necessary has been to define a narrower table ("table.tblNarrow"), otherwise there's no room for the thistle graphic on the pages with tables.
+
+--- end of update ---
+
+Time: 	07-02-13, 21.04
+Coder:	David
+Notes:
+* Have updated normal.css:
+  - to replace tabs with spaces in the layout of the file
+  - to make a start on replacing px with em
+* Have also produced containerFloat as a style in normal.css, and htmlMenusFloat as a function in template.inc.  Now, if a page calls htmlmenusFloat instead of htmlMenus, a floating layout is obtained.  Winchester-new shows what this looks like; Amesbury-new should be unchanged (unless my px to em changes are faulty...)
+
+--- end of update ---
+
+Time: 	07-02-13, 14:23
+Coder:	David
+Notes:
+* Have been through normal.css primarily to change tabs for spaces, also to generally tidy up the layout.
+
+--- end of update ---
+
+Time: 	07-02-13, 13:47
+Coder:	David
+Notes:
+* This file has now been split.  This version will be maintained in includes and will record updates that relate specifically to shared files in this includes directory.  A forked version of this file has been placed in "../Winchester-new" which will record changes to files in that directory, and which will therefore only be relevant to that site.
+
+--- end of update ---
+
+Time: 	04-02-13, 23:11
+Coder:	David
+Notes:
+Oops - forgot to update this file earlier today...
+* minor updates to normal.css:
+  - added menuButtonDouble and MenuButtonDoubleBottom to the mouseover and highlight definitions so they behave like the other menu buttons.
+  - pulled together a common definition for the menu buttons and only kept the distinctives separate.
+  - activated the max-width style for container, which allows flexible layout, but only up to a maximum of (900px) - we can chage this to whatever we think.
+  - found the 100px padding in menuBar which was stopping the buttons rising to the top of the page.  Now reduced to 0px.
+
+--- end of update ---
+
+Time: 	02-02-13, 19:22
+Coder:	David
+Notes:
+Checking <pagename>.php for comments and general rationalisation:
+* about.php: OK
+* fees.php: Don't like the use of two blank columns to get spacing in the table.  Have now fixed "padding-left" in the css so that it's possible to remove the two blank columns. Now OK.
+* newsletters.php: trailing <br /> at end of every <p> shouldn't be there; now removed. Some style info shouldn't be there; now replaced with a css class, which has brought the paragraph left margins into line throughout the page.
+* programme.php: all OK, but have introduced a padding-left of 0 in normal.css for td.c5, otherwise it gets affected by changes elsewhere.
+* index.php: again, some style info removed and formatting derived instead from normal.css.
+Final check - all pages validate successfully for css and strict xhtml1.0
+
+--- end of update ---
+
+Time: 	01-02-13, 16:47
+Coder:	David
+Notes:
+* Have been through template.inc to sort out the comments.  No functional changes (I hope!)
+* Have also been through z_page-template.php to add comments; again, no structural changes.
+
+--- end of update ---
+
+Time: 	01-02-13, 00:13
+Coder:	David
+Notes:
+* Reminder for later: floating flexible width layout can be a pain to sort out.  There's an excellent example in w3schools:
+	http://www.w3schools.com/css/tryit.asp?filename=trycss_float6
+* Also, there's a "line-height" style which I've put into the standard definition for <p> in normal.css, but have commented it out for now.  It's there to remind me how to change the line spacing simply via css if we need it later.
+* There's also a "max-width" property for <div> width which should provide the "don't make it wider than this" value if and when we change to a flexible width page later on.  I might try this on my argles.org/david site to test it out and check it all works OK.  CHECKED - woohoo, it works perfectly!  I've been wanting to sort this out for ages :-D  Have put it into the definition for "container" and commented it out for now.
+* The "Return to Top" button is now sorted.  
+!!HOWEVER!!
+  To sort this out, I've added the button to the footer function, NOT menu.ins.  This makes sure it comes at the foot of the page in the right place.  It also means that I've needed to change the parameters passed to the function htmlFooter.  It now needs two parameters, where the second one is a boolean:
+  function htmlFooter($updateMessage, $toTop)
+So the first parameter is the update message as before.  The second is a boolean.  If the boolean is TRUE (in capitals), it displays the return to top button, if it's FALSE, it won't.
+
+!!IMPORTANT IMPLICAION!!  This means that I've had to change all the pages calling the function (i.e. every page).  So this version of the website is now distinctly different from what it was before in the sense that previous versions of these web pages give an error message when calling this version of template.inc.
+
+--- end of update ---
+
+Time: 	30-01-13, 20:31
+Coder:	David
+Notes:
+* Have looked at fees.php and removed *nearly* all the style info into normal.css.
+* Realised I was getting a CSS validation error because of the rounded corners on the menu buttons.  I think this was because I was using interim code when rounded corners were first introduced, so have commented out the offending lines - and we still seem to have the rounded corners :-) 
+* The colgroup definitions in fees.php still include style info :-(  I need to read up about colgroup before I can sort this out, so have left it for now.
+* Also right-justified the money entries in the tables and used the table to get the necessary white space between columns rather than hard spaces.
+
+--- end of update ---
+
+Time: 	29-01-13, 18:29
+Coder:	David
+Notes:
+* Have tidied up "menu.ins".  It now consists only of declarations of menu buttons with style info moved into normal.css.  They are relatively positioned, so it's possible to add or remove buttons from the list, and to swap the order, with the resulting buttons still being displayed tidily and in the order given in the file.
+* I've left the menu buttons with fancy rounded corners, but this can be easily changed in normal.css if preferred.
+* I've also moved a whole load of code from the end of each page into template.inc, so the individual <pagename>.php pages are a little simpler.
+* I've introduced a <div> structure to help handle page layout.  At the moment, it's not really doing much, but it's in the background so we can use it at a later stage if we wish.
+
+I need to leave this alone for a while now and get on with other things for a few days.  There is still one more thing that I'd like to do:
+* I'd like to go through the individual page files and clean up the style declarations in particular (move them into normal.css).
+
+--- end of update ---
+
+Time: 	29-01-13, 13:21
+Coder:	David
+Notes:
+* Have produced z_read-me.txt which aims to explain why the site is set up as it is and how it works.
+* Have also produced this file, z_updates-log.txt to record progress.
+  And maybe also act as a "token" to prevent editing clashes?
+* Have created z_page-template.php to make it easier to create new pages.
+
+--- end of update ---
+
+Time: 	29-01-13, 09:02
+Coder:	David
+Notes:
+* First go at getting Winchester-new coded up is completed.
+* I have been through template.inc (in includes) so the code looks tidy and it has some comments to try and make sure it's possible to work out what's going on.  I'm happy with this for now.
+* I've been through the various *.php pages to make sure the top and tail is OK in each case, and to add basic comments to identify the various sections of the code.  In many cases, the actual page html could do with tidying.  For now, it works!
+* The menu.inc file works, but is messy.  
+  TO DO: get the style info out of this file and into normal.css
+* TO DO: I'd like to have a look at the page structure.  I think an identical layout can be achieved with a much tidier bit of html coding.  This will involve no changes to *.php - it should all be handled in template.inc and menu.ins.
+--- end of update ---
+--- end of update notes ---

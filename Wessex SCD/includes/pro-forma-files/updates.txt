@@ -1,0 +1,20 @@
+12th May 2013 (Brief description goes here)
+******************************************************************************************
+* NOT currently updating 
+******************************************************************************************
+* Filename:	updates.txt
+* Author:       [David Argles (daargles@gmail.com)] - or Donald!
+* Time/Date:    As below
+* Purpose:      (1) Primary purpose is to record updates to files in this directory;
+*               (2) also to use this file as a "token" to note when files are being updated; and
+*               (3) the first line of this file is now used as the "Last updated" message on 
+*                   index.php
+******************************************************************************************
+Time: 	12-05-13, 16:56
+Coder:	David
+Notes:
+* [Update notes go here]
+
+--- end of update ---
+
+--- end of file ---
