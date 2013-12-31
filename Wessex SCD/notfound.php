@@ -2,24 +2,34 @@
 /**
  * notfound.php handles any "404 Not Found" errors
  *
- * It gathers all the information it can find relating to the Not Found error.  It operates 
- * as follows:
- * - If the visitor is looking for "robots.txt", it's probably a (good) search engine 
- *    bot.  It's good to know about the visit, so we create/update a file called 
- *    "bots-log.txt" in the root directory with details of the bot's visit.  We then 
- *    set an appropriate message for the 404 page.
- * - If the visitor hasn't followed a known link, they may have typed the URL directly 
- *    into the bar at the top of the browser and made a mistake.  So let's set up a 
- *    helpful 404 message for them.
- * - If it looks like there might be a case problem, we need to flag that and add a 
- *    suitable "try this" option to the final 404 page message.
- * - If the visitor has followed a known link, then we'd better know about the problem. 
- *    So we send an email to wessex.scd@gmail.com (except during testing) and then set 
- *    up a suitable message for the 404 page.
- * Then we display the resulting page.
+ * It operates as follows:
+ * - First, it sets the "who to send to" email address.
+ * - Then it gathers all the information it can find relating to the Not Found error.
+ * - Next, it sets up a few targetted messages so we can be a bit specific in offering 
+ *   advice to the user about what might have gone wrong.
+ * - It now ploughs through the available info checking various possibilities and 
+ *   decides:
+ *   (a) what sort of error has occurred, and 
+ *   (b) whether we need to know about it (i.e. should an email be sent)
+ *   During this process, if the visitor has asked for <robots.txt>, a log is updated 
+ *   (or created if it's not there) called <bots-log.txt>.  It's not necessary, but 
+ *   it's quite interesting to see what bots are visiting the site and how often.
+ * - Having worked through the various possibilities, we now either:
+ *   (i)  send an email to the site administrators; or 
+ *   (ii) record the incident in a file called <notfound-log.csv>
+ *   Again, if <notfound-log.csv> doesn't exist, it will be created.
+ * - Finally we display the resulting page.
+ * 
+ * At the moment (31 dec 2013), <notfound-log.csv> is quite helpful for debugging 
+ * purposes - getting the logic right for deciding what we need to know about is 
+ * a fun challenge.  However, the file is growing fast - we have had around 1000 
+ * entries to the log in just one week.  Of these, there was just one issue we 
+ * needed to know about which generated just a handful of those incidents.  So 
+ * it might prove to be necessary to turn this log off to stop us generating a 
+ * massive file that becomes unweildy. 
  * 
  * @author Donald MacKay and David Argles <wessex.scd@gmail.com>
- * @version 23-12-2013, 15:36h
+ * @version 31-12-2013, 07:41h
  * @copyright 2013 Wessex SCD
  */
 
@@ -86,15 +96,27 @@
   /* Default is the broken link message */
   $htmlMessage = $brokenLinkMessage;
 
-  /* If the referer exists, it's a person or a bot working from an old, cached link */
-  //@$validRequ = fopen($requester, 'r');
+  /* The next section determines what sort of error has occurred, sets an appropriate 
+   * error message, and switches off the "Send email" flag unless we really need to 
+   * know about the problem.
+   * 
+   * Note: In the following, the 'ignore the error' rules are as follows:
+   * - If there is a referer specified but it doesn't actually exist, it's a person or 
+   *   a bot working from an old, cached link
+   * - referer='': that means it's someone (eg a bot) probing, not a broken link
+   * - robots.txt: again, only triggered by bots.  We probably don't want a robots.txt, 
+   *   since the (hostile) hosts we want to read it will probably ignore it
+   * - requester includes 'modernizr': this is a known error on the old site and is 
+   *   driving me bonkers with loads of reported errors!  It's not seen by human 
+   *   visitors and can be safely ignored as an error. 
+   * - favicon.ico: we might want one of these at some stage, but it's only flagged as 
+   *   an error by robots
+   */
+  
+  /* If there is a referer specified but it doesn't actually exist, it's a person or 
+   * a bot working from an old, cached link */
   @$validRef = fopen($referer, 'r');
-  if (($validRef != FALSE) /* && ($validRequ == FALSE) */)
-  {
-    //$htmlMessage = $oldLinkMessage;
-	//$sendemail = TRUE;
-    fclose($validRef);
-  }
+  if (($validRef != FALSE)) fclose($validRef);
   else if ($referer != "")
   {
     $htmlMessage = $oldLinkMessage;
@@ -111,50 +133,41 @@
   /* Is the visitor asking for "robots.txt"? */
   if($requester=="/robots.txt")
   {
-    /* If so, create/update the bots-log.txt file in the root directory */
+    /* If so, create/update the bots-log.txt file */
     $line = date("d/m/Y")." ".strftime("%T")." : ".$hostname."\n";
     file_put_contents($botslog, $line, FILE_APPEND);
-	/* We'll also create/update  file that records the last bot to visit the site.  Why? See below */
-    file_put_contents($lastbotlog, $hostname);
+	/* We'll also create/update  file that records the last bot to visit the site.  Why? See below 
+    file_put_contents($lastbotlog, $hostname); */
     /* Set up the relevant 404 message */
     $htmlMessage = $botMessage;
 	$sendemail = FALSE;
   }
-  else
+  /*else
   {
-    /* If $hostname is the same as the entry in bots-last.txt, it's a search engine */
-	/*@$file_handle = fopen($lastbotlog, "r");
+    * If $hostname is the same as the entry in bots-last.txt, it's a search engine *
+	@$file_handle = fopen($lastbotlog, "r");
     if(!$file_handle) echo("<p>Last bot log not found.</p>");
     else
-    {*/
-    /* $visitor = file_get_contents($lastbotlog);
+    {
+     $visitor = file_get_contents($lastbotlog);
 	if($hostname == $visitor)
     {
       $sendemail = FALSE;	  
-	} */
-  }
+	}
+  }*/
   
-  /* Is the visitor asking for "js/libs/modernizr"? That's a temporary problem that we'll just ignore
-     for now*/
-  if (strpos($requester, "js/libs/modernizr"))
-  {
-    $sendemail = FALSE;
-  }
+  /* Is the visitor asking for "js/libs/modernizr"? That's a temporary problem that 
+   * we'll just ignore for now
+   * I -think- this can disappear now we've switched to the new sites */
+  if (strpos($requester, "js/libs/modernizr")) $sendemail = FALSE;
 
-  /* Is the visitor asking for "favicon.ico"? For now, we're not intending to provide one*/
-  if ($requester == "/favicon.ico")
-  {
-    $sendemail = FALSE;
-  }
+  /* Is the visitor asking for "favicon.ico"? For now, we're not intending to provide 
+   * one.  We can safely just ignore it */
+  if ($requester == "/favicon.ico") $sendemail = FALSE;
 
   
-  /* The following section sends an email =if= there really looks to be a broken link that 
-      we need to know about.
-     Note: In the following, the 'ignore the error' rules are as follows:
-     - favicon.ico: we might want one of these at some stage, but it's only flagged as an error by robots
-     - robots.txt: again, only triggered by bots.  We probably don't want a robots.txt, since the (hostile) hosts we want to read it will probably ignore it
-     - referer='': that means it's someone (eg a bot) probing, not a broken link
-     - requester includes 'modernizr': this is a known error on the old site and is driving me bonkers with loads of reported errors!  It's not seen by human visitors and can be safely ignored as an error. 
+  /* The following section sends an email =if= there really looks to be a broken link 
+   * that we need to know about.
   */
   if($sendemail) /* was $requester!="/favicon.ico" && $requester!="/robots.txt" && $referer!="" && !strpos($requester, "js/libs/modernizr") */
   {
