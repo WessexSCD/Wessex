@@ -7,6 +7,26 @@
 * Purpose:      (1) to record updates to files in the include directory; and
 *               (2) to use this file as a "token" to note when one of us is updating stuff
 ******************************************************************************************
+Time: 	31-12-13, 08:12
+Coder:	David
+Notes:
+* I've done a tidy-up of notfound.php so that the comments are (a) true, and (b) helpful.  
+* I've also... created a GitHub repository for wessex-scd and linked my "Aptana" app with 
+   it.  Don't panic, Donald, it doesn't make any difference to the way we are currently 
+   working.  But it does make life a little easier for me.  In due course, if you want to 
+   go down that route, I've got my head around the process, and it is very easy to use in 
+   practice.  It also means that there is an automatic back-up going on all the time :-)  
+   OK, a *nearly* automatic process...
+
+Time: 	31-12-13, 08:24
+Coder:	David
+Notes:
+* Oh yes - I've also been through the various sites looking for customised notfound.php 
+   files.  I'd already turned off SCOshA, but I discovered that Winchester and Spiffin 
+   both had customised notfounds, so I turned them off as well.  
+
+--- end of update ---
+
 Time: 	23-12-13, 08:01
 Coder:	David
 Notes:
