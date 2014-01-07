@@ -113,7 +113,7 @@ img.picWideRight
  td.c1        {width: 110px;}
 /* The following definition affects the display of the events calendar */
  table.events {font-size:medium;}
- td.events    {width: 200px; padding-bottom:0.5em;}
+ td.events    {width: 220px; padding-bottom:0.5em;}
 
 /* The next bit defines the layout of the website */
 body.float

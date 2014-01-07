@@ -1,0 +1,259 @@
+11th November 2013 (Switch-over to new site)
+******************************************************************************************
+* NOT currently updating 
+******************************************************************************************
+* Filename:	updates.txt
+* Author:       David Argles (daargles@gmail.com)
+* Time/Date:    As below
+* Purpose:      (1) to record updates to files in the Winchester-new directory; and
+*               (2) to use this file as a "token" to note when one of us is updating stuff
+******************************************************************************************
+
+Time:     2013-11-11, 09:44
+Coder:    David
+Notes:
+* New site taken live.  Process was:
+  - Rename <winchester-new> to <winchester>
+  - Move <Winchester> to <archive>
+  - Rename <Winchester-new> to <Winchester>
+  - Test
+  "Test" included panicking when following the link on the main wessex-scd site gave a 
+  display of the Winchester site which didn't render properly.  After a bit of testing, 
+  it transpired that it was my browser which needed a full refresh - it was mangling the 
+  new site with a cached version of the old site.
+
+  So if we get any complaints about the new sites not rendering properly, it would be 
+  good to suggest doing a full refresh in the person's browser (I believe clicking 
+  refresh is not the same as typing return in the URL bar).
+
+--- end of update ---
+
+Time:     2013-09-17, 08:26
+Coder:    David
+Notes:
+* Renamed directory to be all lower case.
+* Created new capitalised directory with index.php and index.html to trap and redirect capitalised acceses, and accesses specifying index.html.
+
+--- end of update ---
+
+Time: 	14-09-13, 21:46
+Coder:	David
+Notes:
+Updates made to maintain consistency with live site:
+* Error on home page - secretary is Marian Speakman (not Williams)
+* Venue now added for the November Ceildh; and wording change to note that it,s an evening event not a tea dance
+* Fees page updated with new fees
+
+--- end of update ---
+
+Time: 	15-07-13, 09:44
+Coder:	David
+Notes:
+Checking Winchester-new through for inconsistencies - again ;-)  No major inconsistencies, just content.
+* Front page content updated (changes in committee personnel, additional teacher)
+* Newsletter page updated (1 application form now out of date)
+* Switched to using update.txt (i.e. this file renamed) so it is now used to display chages on the website
+* Programme updated from live site
+
+--- end of update ---
+
+Time: 	01-06-13, 21:19
+Coder:	David
+Notes:
+Checking Winchester-new through for inconsistencies (some updates made to live site which have not been reflected back into Winchester-new).  Also, some updates made to the infrastructure via Uppingham-new which have not been reflected back here.
+* index.php: content updated from live site
+* map.php: was still showing Streetmap, now updated to show Google map
+* programme.php: wasn't using the displayCSV facility.  This has now been updated and is working even better than I thought it would!  At least, it's "better" if allowing manky long entries for a single event is "better"...
+* newsletter.php, fees.php, about.php: no updates required.
+
+--- end of update ---
+
+Time: 	19-03-13, 19:02
+Coder:	David
+Notes:
+Have got a reply from Wendy.  Her site is not currently live, so have removed the link.  If the site should go live again, I've asked Wendy to tell me so I can restore the link.
+TO_DO:
+Don't forget to check with Donald, then update the footer as required.
+
+--- end of update ---
+
+Time: 	19-03-13, 16:04
+Coder:	David
+Notes:
+This is intended to be the start of a "check everything page by page" session.
+* "index.php":
+  - Wendy Mumford's website is returning an error ("You don't have permission...").  Have emailed Wendy to see if we can sort it out.
+  - Apart from this, everything seems to be fine:
+     Layout: OK
+     Graphics: OK
+     HTML source code: OK
+     CSS check: OK
+     XHTML1.0 check: OK
+* Map: awaiting Donald's thoughts on approach.
+* "programme.php":
+  - A couple of docs coming from the wrong place; sorted.
+  - An incorrect link; sorted.
+  - Fixed a programming error that led to a layout fault towards the end of the table.
+  - Everything now seems to be fine.
+     Layout: OK
+     Graphics: OK
+     HTML source code: OK
+     CSS check: OK
+     XHTML1.0 check: OK
+* "newsletters.php":
+  - There was a boundary error in dir_list which meant that listing in reverse alphabetical order worked fine, but listing in alphabetical order failed.  This is now fixed, but it's a bit of a kludge.  It would be worth revisiting this at a later stage.
+     Layout: OK
+     Graphics: OK
+     HTML source code: OK
+     CSS check: OK
+     XHTML1.0 check: OK
+* "fees.php":
+  - Graphics hadn't been updated; now sorted
+  - Everything now seems to be OK.
+     Layout: OK
+     Graphics: OK
+     HTML source code: OK
+     CSS check: OK
+     XHTML1.0 check: OK
+* "about.php":
+  - Everything seems to be OK.
+     Layout: OK
+     Graphics: OK
+     HTML source code: OK
+     CSS check: OK
+     XHTML1.0 check: OK
+OK... Everything looks fine apart from the link to Wendy's website which appears to be broken (Wendy's site, not our link).  Awaiting a reply from Wendy.
+
+--- end of update ---
+
+Time: 	18-03-13, 16:17
+Coder:	David
+Notes:
+* I've changed "template.inc" so that it will detect a "site-title.txt" file in the calling directory and use this as a page title on every page.  I have (a) created a "site-title.txt" for the Winchester-new site, and have then gone through each page to remove what became a redundant additional page title on each page!
+* I've also updated "template.inc" to provide an "insertGraphic()" function so that the "dancers" and the "thistle" graphics give a copyright disclaimer message.  I have also therefore had to go through each page to change from directly displaying the graphics to using the new template.inc function.
+* I've also introduced two more options in the menu, so there are "Maps 1", "Maps 2", and "Maps 3" options.  This is to give three different approaches to giving map information for evaluation.
+
+--- end of update ---
+
+Time: 	15-03-13, 00:26
+Coder:	David
+Notes:
+* Following in the vein of gallery.php, I've added a function ("dir_list") to template.inc which lists all the files in the given directory.  It can list in alphabetic order or reverse alphabetic order.  I've then plugged this into "newsletters.php" here in "Winchester-new", so it will automatically list all the newsletters in the "newsletters" directory, or all the application forms in that directory.  One issue that immediately comes to light is that it accurately reflects the contents of the directory, so if any files (e.g. newsletters) are missing, they don't appear in the listing, rather than appearing to be there, but giving a broken link (there is a broken link in the live "Winchester" directory).
+
+--- end of update ---
+
+Time: 	08-02-13, 17:13
+Coder:	David
+Notes:
+* The two graphics (two dancers and the thistle) have been a bit of a problem, sticking out to the right as the window width decreases.  This has been sorted by making the graphics float to the right as noted in the update file in the includes directory.  All pages have been updated in this directory to reflect this change.
+* The pages that use tables (especially fees.php) have been changed to make the tables narrower so there's room for the thistle graphic.
+
+--- end of update ---
+
+Time: 	07-02-13, 12:22
+Coder:	David
+Notes:
+
+=============
+*!IMPORTANT!*
+=============
+
+This file has now been split.  This version will be maintained in Winschester-new and will record updates that relate specifically to the Winchester-new site.
+A forked version of this file has been placed in "../includes" which will record changes to files in that directory, and which will therefore be important to all sites that use the includes files.
+
+--- end of update ---
+
+Time: 	04-02-13, 23:11
+Coder:	David
+Notes:
+Oops - forgot to update this file earlier today...
+* minor updates to normal.css:
+  - added menuButtonDouble and MenuButtonDoubleBottom to the mouseover and highlight definitions so they behave like the other menu buttons.
+  - pulled together a common definition for the menu buttons and only kept the distinctives separate.
+  - activated the max-width style for container, which allows flexible layout, but only up to a maximum of (900px) - we can chage this to whatever we think.
+  - found the 100px padding in menuBar which was stopping the buttons rising to the top of the page.  Now reduced to 0px.
+
+--- end of update ---
+
+Time: 	02-02-13, 19:22
+Coder:	David
+Notes:
+Checking <pagename>.php for comments and general rationalisation:
+* about.php: OK
+* fees.php: Don't like the use of two blank columns to get spacing in the table.  Have now fixed "padding-left" in the css so that it's possible to remove the two blank columns. Now OK.
+* newsletters.php: trailing <br /> at end of every <p> shouldn't be there; now removed. Some style info shouldn't be there; now replaced with a css class, which has brought the paragraph left margins into line throughout the page.
+* programme.php: all OK, but have introduced a padding-left of 0 in normal.css for td.c5, otherwise it gets affected by changes elsewhere.
+* index.php: again, some style info removed and formatting derived instead from normal.css.
+Final check - all pages validate successfully for css and strict xhtml1.0
+
+--- end of update ---
+
+Time: 	01-02-13, 16:47
+Coder:	David
+Notes:
+* Have been through template.inc to sort out the comments.  No functional changes (I hope!)
+* Have also been through z_page-template.php to add comments; again, no structural changes.
+
+--- end of update ---
+
+Time: 	01-02-13, 00:13
+Coder:	David
+Notes:
+* Reminder for later: floating flexible width layout can be a pain to sort out.  There's an excellent example in w3schools:
+	http://www.w3schools.com/css/tryit.asp?filename=trycss_float6
+* Also, there's a "line-height" style which I've put into the standard definition for <p> in normal.css, but have commented it out for now.  It's there to remind me how to change the line spacing simply via css if we need it later.
+* There's also a "max-width" property for <div> width which should provide the "don't make it wider than this" value if and when we change to a flexible width page later on.  I might try this on my argles.org/david site to test it out and check it all works OK.  CHECKED - woohoo, it works perfectly!  I've been wanting to sort this out for ages :-D  Have put it into the definition for "container" and commented it out for now.
+* The "Return to Top" button is now sorted.  
+!!HOWEVER!!
+  To sort this out, I've added the button to the footer function, NOT menu.ins.  This makes sure it comes at the foot of the page in the right place.  It also means that I've needed to change the parameters passed to the function htmlFooter.  It now needs two parameters, where the second one is a boolean:
+  function htmlFooter($updateMessage, $toTop)
+So the first parameter is the update message as before.  The second is a boolean.  If the boolean is TRUE (in capitals), it displays the return to top button, if it's FALSE, it won't.
+
+!!IMPORTANT IMPLICAION!!  This means that I've had to change all the pages calling the function (i.e. every page).  So this version of the website is now distinctly different from what it was before in the sense that previous versions of these web pages give an error message when calling this version of template.inc.
+
+--- end of update ---
+
+Time: 	30-01-13, 20:31
+Coder:	David
+Notes:
+* Have looked at fees.php and removed *nearly* all the style info into normal.css.
+* Realised I was getting a CSS validation error because of the rounded corners on the menu buttons.  I think this was because I was using interim code when rounded corners were first introduced, so have commented out the offending lines - and we still seem to have the rounded corners :-) 
+* The colgroup definitions in fees.php still include style info :-(  I need to read up about colgroup before I can sort this out, so have left it for now.
+* Also right-justified the money entries in the tables and used the table to get the necessary white space between columns rather than hard spaces.
+
+--- end of update ---
+
+Time: 	29-01-13, 18:29
+Coder:	David
+Notes:
+* Have tidied up "menu.ins".  It now consists only of declarations of menu buttons with style info moved into normal.css.  They are relatively positioned, so it's possible to add or remove buttons from the list, and to swap the order, with the resulting buttons still being displayed tidily and in the order given in the file.
+* I've left the menu buttons with fancy rounded corners, but this can be easily changed in normal.css if preferred.
+* I've also moved a whole load of code from the end of each page into template.inc, so the individual <pagename>.php pages are a little simpler.
+* I've introduced a <div> structure to help handle page layout.  At the moment, it's not really doing much, but it's in the background so we can use it at a later stage if we wish.
+
+I need to leave this alone for a while now and get on with other things for a few days.  There is still one more thing that I'd like to do:
+* I'd like to go through the individual page files and clean up the style declarations in particular (move them into normal.css).
+
+--- end of update ---
+
+Time: 	29-01-13, 13:21
+Coder:	David
+Notes:
+* Have produced z_read-me.txt which aims to explain why the site is set up as it is and how it works.
+* Have also produced this file, z_updates-log.txt to record progress.
+  And maybe also act as a "token" to prevent editing clashes?
+* Have created z_page-template.php to make it easier to create new pages.
+
+--- end of update ---
+
+Time: 	29-01-13, 09:02
+Coder:	David
+Notes:
+* First go at getting Winchester-new coded up is completed.
+* I have been through template.inc (in includes) so the code looks tidy and it has some comments to try and make sure it's possible to work out what's going on.  I'm happy with this for now.
+* I've been through the various *.php pages to make sure the top and tail is OK in each case, and to add basic comments to identify the various sections of the code.  In many cases, the actual page html could do with tidying.  For now, it works!
+* The menu.inc file works, but is messy.  
+  TO DO: get the style info out of this file and into normal.css
+* TO DO: I'd like to have a look at the page structure.  I think an identical layout can be achieved with a much tidier bit of html coding.  This will involve no changes to *.php - it should all be handled in template.inc and menu.ins.
+--- end of update ---
+--- end of update notes ---

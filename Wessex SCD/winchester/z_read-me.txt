@@ -1,0 +1,46 @@
+Filename:	z_read-me.txt
+Version:	29.01.2013, 13:02hr
+Author:		David Argles, daargles@gmail.com
+Description:	Read Me file for the Winchester-new website.  It explains how the site is
+		set up and how it works.
+
+Philosophy
+==========
+The idea behind the way this website is set up is that there should be a clear division of content.  It's currently a bit of a work in progress (and might always be!) but the idea is that:
+1) Page content should be contained in <pagename>.php files in the root of the Winchester-new directory, one <pagename>.php file for each physical page displayed on the website.  These should contain *only* sufficient text and html to display the main content that varies from page to page, and there should be no style definitions in these pages.  There has to be some "pro forma" code at the beginning and end of each <pagename>.php to bring in the boilerplate code that needs to surround it.
+2) It seems the individual site menus can change from club to club, so the menu information is extracted into a "menu.ins" file, again in the root of the Winchester-new directory.  Again, this should contain only menu information; formatting should be handled elsewhere.  This means that there is only one file that handles the menu for all pages for an individual club's website, but that there is a separate one for each club, so it can change from club to club.  [Incidentally, the filename "menu.ins" is my choice, possibly a bad one, but that's what I've gone with for now.  It's only called from one place, that's in the template file, so it would be easy to change the name.]
+3) Any common code required for each page is handled in a single template file called "template.inc" and which is located outside of the Winchester-new directory in a folder named "includes" which is in public_html itself.  This means that the boilerplate code can be called from any other club website's sub-directory.  Typically, the boilerplate code includes all the page header stuff and footer stuff.  It also defines the layout of the whole page, but this has to be considered in conjunction with the .css file.
+4) *All* style definitions should be contained in the css file, in this case "normal.css" which is again located in the "includes" directory in public_html.  As far as possible, all the look and feel of the website should be handled by "normal.css".  Incidentally, "normal.css" is only called once from "template.inc", so changing the name of the css file is easy if required.  In practice, the final layout is likely to be a bit of an interchange between "normal.css" and "template.inc", but there shouldn't be anything anywhere else that affects it.
+
+Layout Rationale
+================
+5) I've aimed to make the Winchester-new directory consist mainly of <pagename>.php files.  Other files, like the extensive set of newsletters, are removed into sub-directories.  So for Winchester-new, there is a "newsletters" subdirectory, since there are so many of them.  The "resources" sub-directory is for anything else, like application forms or whatever.
+6) I've left "menu.ins" lying amongst the <pagename>.php files, but considered renaming it something like "a-menu.ins" to get it to the top of the directory listing when listed alphabetically and doesn't get mixed up with the <pagename>.php files.
+7) Similarly, I *have* named the management files "z_whatever.txt" to get them to the end of the listing, so they're not mixed up with the page files.
+8) Anything that needs to be available for all sites is moved up into the main public_html directory (the includes and the graphics).
+
+Management Files
+================
+ 9) The idea of the "z_read-me.txt" file (this one!) is to explain the rationale behind the site design and how the site works.
+10) I originally saw the "z_updates-log.txt" as being a place where I would make notes as I updated the Winchester-new site to remind what I've done so far and what I still need to do.  It then occurred to me that it might make a very handy "token" if we make a note that we've started editing when we log on, and then note what we've done as we log off.  What do you reckon, Donald?
+
+Practicalities
+==============
+The basic idea is that it should be really easy to create a completely new club site if required, and not too hard to update an old one to the current standard.  To start from scratch:
+a) Create a new <clubname> directory in public_html.
+b) Copy the following files into the new directory:
+	- menu.ins
+	- z_page-template.php
+c) Create a clean "z_updates-log.txt" file in the new directory (not essential, but if we want to use this approach, it would be good).
+d) Make as many copies of "z_page-template.php as you require for the number of pages on the website.  Rename them to index.php, <pagename1>.php, <pagename2>.php etc.
+e) Update menu.ins so the menu calls match the names you've given the pages.
+At this point, I think you should have a working new website.  It's then a case of going through, creating the page content, and tinkering to get the tartan you want for a background, etc, etc.
+
+Updating an old website will I guess work the same way, assuming we go for "create new and switch" approach.
+
+Hopefully this should cover most things for now.  Let me know what I've forgotten to say!
+Enjoy!
+David
+--- End of file ---
+
+

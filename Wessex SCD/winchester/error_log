@@ -1,0 +1,79 @@
+[28-Jan-2013 14:04:56 UTC] PHP Warning:  require(../includes/template.inc) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/index.php on line 2
+[28-Jan-2013 14:04:56 UTC] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '../includes/template.inc' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/wessex/public_html/Winchester-new/index.php on line 2
+[29-Jan-2013 08:19:27 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/wessex/public_html/includes/template.inc on line 48
+[29-Jan-2013 08:20:22 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/wessex/public_html/includes/template.inc on line 48
+[29-Jan-2013 08:20:29 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/wessex/public_html/includes/template.inc on line 48
+[29-Jan-2013 08:22:07 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/wessex/public_html/includes/template.inc on line 48
+[29-Jan-2013 08:22:24 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/wessex/public_html/includes/template.inc on line 48
+[31-Jan-2013 23:59:54 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/index.php on line 110 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:00:12 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/index.php on line 110 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:00:19 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/about.php on line 22 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:00:33 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/fees.php on line 115 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:00:37 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/newsletters.php on line 52 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:00:40 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/programme.php on line 186 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:00:46 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/newsletters.php on line 52 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:00:55 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/about.php on line 22 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:02:43 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/newsletters.php on line 52 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:03:18 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/index.php on line 110 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[01-Feb-2013 00:04:23 UTC] PHP Warning:  Missing argument 2 for htmlFooter(), called in /home/wessex/public_html/Winchester-new/index.php on line 110 and defined in /home/wessex/public_html/includes/template.inc on line 84
+[04-Feb-2013 12:20:58 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/wessex/public_html/includes/template.inc on line 59
+[04-Feb-2013 12:27:35 UTC] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wessex/public_html/includes/template.inc on line 61
+[04-Feb-2013 12:27:54 UTC] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wessex/public_html/includes/template.inc on line 61
+[07-Feb-2013 15:25:24 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 60
+[07-Feb-2013 15:27:39 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 61
+[07-Feb-2013 15:28:03 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 61
+[07-Feb-2013 15:28:07 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 61
+[07-Feb-2013 15:30:20 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 67
+[07-Feb-2013 15:30:54 UTC] PHP Parse error:  syntax error, unexpected '>' in /home/wessex/public_html/includes/template.inc on line 67
+[07-Feb-2013 20:58:10 UTC] PHP Parse error:  syntax error, unexpected T_NS_SEPARATOR in /home/wessex/public_html/includes/template.inc on line 88
+[08-Feb-2013 20:21:29 UTC] PHP Parse error:  syntax error, unexpected T_STRING in /home/wessex/public_html/includes/template.inc on line 59
+[09-Feb-2013 18:29:31 UTC] PHP Warning:  fopen(ChristmasParty/title.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/gallery.php on line 33
+[09-Feb-2013 18:29:31 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/wessex/public_html/Winchester-new/gallery.php on line 36
+[09-Feb-2013 18:29:31 UTC] PHP Warning:  fopen(December2009/title.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/gallery.php on line 33
+[09-Feb-2013 18:29:31 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/wessex/public_html/Winchester-new/gallery.php on line 36
+[09-Feb-2013 18:32:30 UTC] PHP Warning:  fopen(ChristmasParty/title.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/gallery.php on line 33
+[09-Feb-2013 18:32:30 UTC] PHP Warning:  fopen(December2009/title.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/gallery.php on line 33
+[09-Feb-2013 18:33:52 UTC] PHP Warning:  fopen(ChristmasParty/title.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/gallery.php on line 34
+[09-Feb-2013 18:33:52 UTC] PHP Warning:  fopen(December2009/title.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/gallery.php on line 34
+[09-Feb-2013 18:34:59 UTC] PHP Warning:  fopen(gallery/December2009/title.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/wessex/public_html/Winchester-new/gallery.php on line 34
+[10-Feb-2013 00:46:01 UTC] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/wessex/public_html/Winchester-new/viewer.php on line 34
+[10-Feb-2013 00:48:38 UTC] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/wessex/public_html/Winchester-new/viewer.php on line 34
+[10-Feb-2013 00:54:56 UTC] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/wessex/public_html/Winchester-new/gallery.php on line 67
+[10-Feb-2013 01:01:04 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/wessex/public_html/includes/template.inc on line 20
+[10-Feb-2013 01:01:32 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/wessex/public_html/includes/template.inc on line 20
+[10-Feb-2013 01:01:33 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/wessex/public_html/includes/template.inc on line 20
+[10-Feb-2013 01:21:28 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cookie - headers already sent by (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 14
+[10-Feb-2013 01:21:28 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 14
+[10-Feb-2013 01:23:04 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cookie - headers already sent by (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 13
+[10-Feb-2013 01:23:04 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 13
+[10-Feb-2013 01:23:09 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cookie - headers already sent by (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 13
+[10-Feb-2013 01:23:09 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 13
+[10-Feb-2013 01:24:29 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cookie - headers already sent by (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 14
+[10-Feb-2013 01:24:29 UTC] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/wessex/public_html/Winchester-new/gallery.php:2) in /home/wessex/public_html/includes/template.inc on line 14
+[14-Mar-2013 23:10:36 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 134
+[14-Mar-2013 23:11:28 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 136
+[14-Mar-2013 23:11:31 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 136
+[14-Mar-2013 23:12:27 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 137
+[14-Mar-2013 23:12:44 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 137
+[14-Mar-2013 23:13:11 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/wessex/public_html/includes/template.inc on line 136
+[15-Mar-2013 00:30:43 UTC] PHP Warning:  scandir() expects parameter 2 to be long, string given in /home/wessex/public_html/includes/template.inc on line 131
+[15-Mar-2013 00:30:43 UTC] PHP Warning:  scandir() expects parameter 2 to be long, string given in /home/wessex/public_html/includes/template.inc on line 131
+[15-Mar-2013 10:10:48 UTC] PHP Warning:  Missing argument 3 for dir_list(), called in /home/wessex/public_html/Winchester-new/newsletters.php on line 53 and defined in /home/wessex/public_html/includes/template.inc on line 129
+[15-Mar-2013 10:11:47 UTC] PHP Warning:  Missing argument 3 for dir_list(), called in /home/wessex/public_html/Winchester-new/newsletters.php on line 53 and defined in /home/wessex/public_html/includes/template.inc on line 129
+[15-Mar-2013 10:12:27 UTC] PHP Warning:  Missing argument 3 for dir_list(), called in /home/wessex/public_html/Winchester-new/newsletters.php on line 53 and defined in /home/wessex/public_html/includes/template.inc on line 129
+[15-Mar-2013 10:13:19 UTC] PHP Warning:  Missing argument 3 for dir_list(), called in /home/wessex/public_html/Winchester-new/newsletters.php on line 53 and defined in /home/wessex/public_html/includes/template.inc on line 129
+[15-Mar-2013 21:48:21 UTC] PHP Warning:  scandir(application-forms) [<a href='function.scandir'>function.scandir</a>]: failed to open dir: No such file or directory in /home/wessex/public_html/includes/template.inc on line 140
+[15-Mar-2013 21:48:21 UTC] PHP Warning:  scandir() [<a href='function.scandir'>function.scandir</a>]: (errno 2): No such file or directory in /home/wessex/public_html/includes/template.inc on line 140
+[19-Mar-2013 16:56:12 UTC] PHP Warning:  print_r() expects at least 1 parameter, 0 given in /home/wessex/public_html/includes/template.inc on line 184
+[19-Mar-2013 16:56:12 UTC] PHP Warning:  print_r() expects at least 1 parameter, 0 given in /home/wessex/public_html/includes/template.inc on line 184
+[28-Mar-2013 15:17:44 UTC] PHP Fatal error:  Call to undefined function htmlHeader() in /home/wessex/public_html/Winchester-new/index.php on line 3
+[28-Mar-2013 15:18:41 UTC] PHP Fatal error:  Call to undefined function htmlHeaderVariant() in /home/wessex/public_html/Winchester-new/programme.php on line 3
+[28-Mar-2013 15:22:49 UTC] PHP Fatal error:  Call to undefined function htmlHeaderVariant() in /home/wessex/public_html/Winchester-new/programme.php on line 3
+[28-Mar-2013 15:22:56 UTC] PHP Fatal error:  Call to undefined function htmlHeaderVariant() in /home/wessex/public_html/Winchester-new/programme.php on line 3
+[28-Mar-2013 15:23:26 UTC] PHP Fatal error:  Call to undefined function htmlHeader() in /home/wessex/public_html/Winchester-new/fees.php on line 3
+[28-Mar-2013 15:23:59 UTC] PHP Fatal error:  Call to undefined function htmlHeader() in /home/wessex/public_html/Winchester-new/fees.php on line 3
+[28-Mar-2013 15:25:15 UTC] PHP Fatal error:  Call to undefined function htmlHeader() in /home/wessex/public_html/Winchester-new/fees.php on line 3
+[28-Mar-2013 15:25:54 UTC] PHP Fatal error:  Call to undefined function htmlHeader() in /home/wessex/public_html/Winchester-new/fees.php on line 3
+[28-Mar-2013 15:28:28 UTC] PHP Fatal error:  Call to undefined function htmlHeader() in /home/wessex/public_html/Winchester-new/fees.php on line 3
+[29-Jul-2013 20:24:09 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 42
+[29-Jul-2013 20:24:16 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/wessex/public_html/includes/template.inc on line 42
