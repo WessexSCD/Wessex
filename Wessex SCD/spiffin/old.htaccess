@@ -1,0 +1,3 @@
+ErrorDocument 404 /spiffin/notfound.php
+DirectoryIndex index.php index.html
+

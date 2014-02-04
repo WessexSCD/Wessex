@@ -1,0 +1,28 @@
+29th Nov 2013 Events updated
+******************************************************************************************
+* NOT currently updating 
+******************************************************************************************
+* Filename:	updates.txt
+* Author:       David Argles (daargles@gmail.com)
+* Time/Date:    As below
+* Purpose:      (1) Primary purpose is to record updates to files in this directory;
+*               (2) also to use this file as a "token" to note when files are being updated; and
+*               (3) the first line of this file is now used as the "Last updated" message on 
+*                   index.php
+******************************************************************************************
+Time: 	29-11-13, 13:57
+Coder:	David
+Notes:
+* Reference to an annual dance removed from the front page (not likely to happen next year).
+* Also updated the Google map, which was pointing to the church rather than the church hall.
+
+--- end of update ---
+
+Time: 	27-05-13, 08:19
+Coder:	David
+Notes:
+* New Spiffin site created.
+
+--- end of update ---
+
+--- end of file ---
