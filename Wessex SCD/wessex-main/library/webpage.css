@@ -7,7 +7,7 @@
  * simple fix though.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 11-02-2014, 19:59h
+ * @version 11-02-2014, 21:12h
  * @copyright 2014 Wessex SCD
  */
 
@@ -30,13 +30,13 @@ body
 main
 {
   margin: 0 auto; /* "0 auto" allows us to get centred stuff in enclosed divs */
+  width:98%;  
+  max-width:950px; /* Limits the maximum width of the page content */
+  min-width:290px; /* Limits the minimum width of the page content */
   /* Note: the background tartan is set in the HTML since it varies from page to page.
    * OK, that's yucky, but it works and it validates.  Unfortunately.  Oh for a CSS
    * that allows variables! */
   background-repeat:repeat;
-  width:98%;  
-  max-width:950px; /* Limits the maximum width of the page content */
-  min-width:290px; /* Limits the minimum width of the page content */
   margin-top:0.3em; 
   margin-bottom:0em; 
 }
@@ -59,15 +59,10 @@ h3
 nav
 {
   /* This is the container for the menu bar.  It's designed to float to the left of the main "container" div */
-  /*margin:           0  auto;  "0 auto" allows us to get centred stuff in enclosed divs */
   width:7em; /*width of menu*/
   float:left;
-  /* background-color: transparent; */
   padding:0.5em 0em 0em 0.3em; /*1st parameter defines the padding at the top*/
   text-align:center; /*centre text on button*/
-  /*padding:10px;
-  float:left;
-  width:100px;*/
 }
 nav a
 {
@@ -103,7 +98,6 @@ article{padding:1em 1em 1em 1em;}
 article p{margin:0 2em 1em 2em;}
 footer
 {
-  /*margin:0 0 1em 1em;*/
   padding:1em;
   font-style:italic;
   color:gray;
@@ -117,11 +111,9 @@ footer
   body{font-size:small;}
   main
   {
-    /*display:block;*/
     max-width:950px;
     min-width:290px;
     margin:0 auto;
-    /*background-color:white;*/
     border-radius:10px 10px 10px 10px;
     box-shadow:0px 10px 20px rgba(0,0,0,0.6);
   }
@@ -132,7 +124,6 @@ nav
   margin:0 0px 0 0px;
   overflow:hidden;
   padding:0.6em 0.4em 0em 5px;
-  /*font-size:small;*/
   border-radius:10px 10px 0px 0px;
 }
 nav a
@@ -147,7 +138,7 @@ nav a
   float:left;
 }
 nav a:hover{color:#ccc;}
-nav a.current{/*background-color:white;*/ background-image:url('../graphics/paper-cyan.jpg');}
+nav a.current{background-image:url('../graphics/paper-cyan.jpg');}
 nav a:active /*when clicked*/
   {border:none;}
 
@@ -187,40 +178,15 @@ section
     border-radius:10px 10px 10px 10px;
     box-shadow:0em 0.6em 1.2em rgba(0,0,0,0.6);
   }
-  nav
-  {
-	/*margin:0 auto;*/
-    /*text-align:center;
-    height:2em;*/
-    /*padding:10px;
-    float:left;
-    width:100px;*/
-  }
-  nav a
-  {
-    display:block;
-      /*float:left;*/
-	  /*background-color:black;*/
-	/*background:linear-gradient(#222, black, #111);
-    color:white;
-	padding:0.5em 1em 0.5em 0em;*/
-	/*width:90px;*/
-	/*text-align:center;*/
-  }
-  /*nav a:hover{color:#ccc;background:linear-gradient(#111, black, #000);}
-  nav a.current{color:gray;}*/
+  nav a{display:block;}
 
   section
   {
-  	/*margin-left:120px;*/
   	border-radius:0px 10px 10px 0px;
 	padding:0 10px 0 10px;
   }
 
-  header
-  {
-  	border-radius:0px 10px 0px 0px;
-  }
+  header{border-radius:0px 10px 0px 0px;}
 
   footer
   {
