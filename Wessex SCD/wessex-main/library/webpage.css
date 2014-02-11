@@ -1,16 +1,19 @@
 /**
  * webpage.css controls our website layout
  *
- * It uses the CSS3 idea of defined sections, and additionally defines 
- * its own section, "container"
+ * It uses the CSS3 idea of defined sections.  It gets around the lack of a 
+ * "container" element by using "main" as a container.  This means it validates 
+ * on the W3 checker, but interestingly, IE10 doesn't support it.  There's a 
+ * simple fix though.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 11-02-2014, 11:22h
+ * @version 11-02-2014, 19:59h
  * @copyright 2014 Wessex SCD
  */
 
 /**
- * 	First we need a fix for legacy versions of Opera, Chrome, Firefox, and Safari.
+ * First we need a fix for legacy versions of Opera, Chrome, Firefox, and Safari.
+ * It also works for "main" in IE9 & 10 which otherwise don't support it.
  */
 main, header, section, footer, aside, nav, article, figure {display: block;}
 
@@ -53,30 +56,30 @@ nav
 {
   /* This is the container for the menu bar.  It's designed to float to the left of the main "container" div */
   /*margin:           0  auto;  "0 auto" allows us to get centred stuff in enclosed divs */
-  width:            7em;             /*width of menu*/
-  float:            left;
+  width:7em; /*width of menu*/
+  float:left;
   /* background-color: transparent; */
-  padding:          0.5em 0em 0em 0.3em; /*1st parameter defines the padding at the top*/
-  text-align:       center;            /*centre text on button*/
+  padding:0.5em 0em 0em 0.3em; /*1st parameter defines the padding at the top*/
+  text-align:center; /*centre text on button*/
   /*padding:10px;
   float:left;
   width:100px;*/
 }
 nav a
 {
-  width:                6em; /* 80px; */
-  height: 1.2em; /* 17px; */
-  text-decoration:      none;
-  background-color:     white;
-  color:                blue;
-  float:                left;
-  margin-left:          0em;
-  padding:              0.2em;
-  margin-bottom:        1.2em;
-  border-width:         0.2em;
-  border-style:         solid;
-  border-color:         blue;
-  border-radius:        5px 5px 5px 5px; /*Produces fancy rounded edges to the buttons in modern browsers*/
+  width:6em; /* 80px; */
+  height:1.2em; /* 17px; */
+  text-decoration:none;
+  background-color:white;
+  color:blue;
+  float:left;
+  margin-left:0em;
+  padding:0.2em;
+  margin-bottom:1.2em;
+  border-width:0.2em;
+  border-style:solid;
+  border-color:blue;
+  border-radius:5px 5px 5px 5px; /*Produces fancy rounded edges to the buttons in modern browsers*/
 }
 nav a.doubleBottom
   {margin-left: -7.7em; text-align: center;}
@@ -107,38 +110,46 @@ footer
  */
 @media screen and (max-width:400px)
 {
-main
-{
-  /*display:block;*/
-  max-width:950px;
-  min-width:290px;
-  margin:0 auto;
-  /*background-color:white;*/
-  border-radius:10px 10px 10px 10px;
-  box-shadow:0px 10px 20px rgba(0,0,0,0.6);
-}
+  body{font-size:small;}
+  main
+  {
+    /*display:block;*/
+    max-width:950px;
+    min-width:290px;
+    margin:0 auto;
+    /*background-color:white;*/
+    border-radius:10px 10px 10px 10px;
+    box-shadow:0px 10px 20px rgba(0,0,0,0.6);
+  }
 nav
 {
+  float:none;
+  width:100%;
   margin:0 0px 0 0px;
   overflow:hidden;
   padding:0.6em 0.4em 0em 5px;
-  font-size:small;
+  /*font-size:small;*/
   border-radius:10px 10px 0px 0px;
 }
 nav a
 {
   background-color:#aaa;
+  width:4em;
   padding:4px 4px 4px 4px;
   margin-right:0.2em;
+  margin-bottom:0;
   border-width:0em;
   border-radius:5px 5px 0px 0px;
   float:left;
 }
 nav a:hover{color:#ccc;}
-nav a.current{background-color:white;}
+nav a.current{/*background-color:white;*/ background-image:url('../graphics/paper-cyan.jpg');}
+nav a:active /*when clicked*/
+  {border:none;}
 
 section
 {
+  margin:0;
   border-radius:0 0 5px 5px;
 }
   header h1, h2, h3, h4, h5 {font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
