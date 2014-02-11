@@ -35,6 +35,11 @@
 	  	activities, plus maps and photos, to be displayed on the Wessex Scottish Country Dancing 
 	  	webpages, please email: wessex.scd@gmail.com for information on setting up etc.</p>
 	  	
+	  <h3>Random Extra Heading</h3>
+	  
+	  <p>This is added in in order to get some extra text at the end and so that I can test out the 
+	  	&lt;h3&gt; heading.</p>
+	  	
 <?php
   /* The final line streams the final html.  Don't change this. */
   $page->HTMLstreamBottom();

@@ -6,10 +6,10 @@
  * re-use on every page.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 11-02-2014, 06:35h
+ * @version 11-02-2014, 14:45hh
  * @copyright 2014 Wessex SCD
  */
-$version = "11-02-2014, 06:35h";
+$version = "11-02-2014, 14:45h";
   /**
    * webpage provides a basic web page class for our website
    *
@@ -169,7 +169,10 @@ echo("</pre>");*/
 
   <!-- Now we start our displayable page -->
   <body>
-    <!-- container doesn't exist (yet?) in CSS3.  It should!  But we can make it work anyway. -->
+    <!-- container doesn't exist (yet?) in CSS3.  It should!  But we can use main instead. -->
+    <!-- We have to break all the rules, and put a bit of style into our HTML at this point.
+    	That's because the tartan can change from page to page, and this is the only way to
+    	do it -->
 <?php echo("    <main style=\"background-image: url(graphics/".$this->tartan.")\">\n"); ?>
       <!-- First on the page is the navigation.  Layout is handled by the CSS. -->
       <nav>
@@ -187,7 +190,6 @@ echo("</pre>");*/
         <header>
           <h1><?php echo($this->heading); ?></h1>
           <img src="graphics/2Couples.png" alt="[Dancers Graphic]">
-          <!-- p><?php echo($this->tagline); ?></p -->
         </header>
 
         <!-- Now we start the main page article... -->
