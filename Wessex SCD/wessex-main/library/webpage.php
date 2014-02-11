@@ -6,10 +6,10 @@
  * re-use on every page.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 07-02-2014, 20:40h
+ * @version 11-02-2014, 06:35h
  * @copyright 2014 Wessex SCD
  */
-$version = "07-02-2014, 20:40h";
+$version = "11-02-2014, 06:35h";
   /**
    * webpage provides a basic web page class for our website
    *
@@ -60,51 +60,51 @@ $version = "07-02-2014, 20:40h";
      */
     protected $tartan = "tarblank.gif";
 
-/**
- * setCSS() allows us to change the css file used for a particular page
- * 
- * @param the filename of the css file (expected to be held in the <library> sub-directory)
- * @return void
- */
+    /**
+     * setCSS() allows us to change the css file used for a particular page
+     * 
+     * @param the filename of the css file (expected to be held in the <library> sub-directory)
+     * @return void
+     */
     public function setCSS($filename)
     {
       $this->cssfile = $filename;
       return;
     }
 
-/**
- * setTartan() allows us to change the tartan background used for a particular page
- * 
- * @param the filename of the tartan (expected to be held in the <graphics> sub-directory)
- * @return void
- */
+    /**
+     * setTartan() allows us to change the tartan background used for a particular page
+     * 
+     * @param the filename of the tartan (expected to be held in the <graphics> sub-directory)
+     * @return void
+     */
     public function setTartan($filename)
     {
       $this->tartan = $filename;
       return;
     }
 
- /**
- * setTitle() allows us to change the text that goes into the tab above the page display in the browser 
- * 
- * @param the new title
- * @var string
- * @return void
- */
+    /**
+     * setTitle() allows us to change the text that goes into the tab above the page display in the browser 
+     * 
+     * @param the new title
+     * @var string
+     * @return void
+     */
     public function setTitle($newTitle)
     {
       $this->title = $newTitle;
       return;
     }
 
-/**
- * __construct() sets up all the class properties from the webpage ini file
- * 
- * It runs automatically when we first instantiate the class.
- * 
- * @param void
- * @return void
- */
+    /**
+     * __construct() sets up all the class properties from the webpage ini file
+     * 
+     * It runs automatically when we first instantiate the class.
+     *  
+     * @param void
+     * @return void
+     */
     public function __construct()
     {
       /* First, we'd better check that the ini file is there */
@@ -140,16 +140,17 @@ echo("</pre>");*/
       return;
     }
 
-/**
- * HTMLstreamTop() streams all the code necessary for the top of our boilerplate HTML page
- * 
- * @param void
- * @return void
- */
+    /**
+     * HTMLstreamTop() streams all the code necessary for the top of our boilerplate HTML page
+     * 
+     * @param void
+     * @return void
+     */
     public function HTMLstreamTop()
     {
       global $version;
-?>
+    ?>
+<!DOCTYPE HTML>
 <html>
   <!-- We're working in HTML5, so this is all very straightforward -->
   <!-- First, the head section -->
@@ -169,7 +170,7 @@ echo("</pre>");*/
   <!-- Now we start our displayable page -->
   <body>
     <!-- container doesn't exist (yet?) in CSS3.  It should!  But we can make it work anyway. -->
-<?php echo("    <container style=\"background-image: url(graphics/".$this->tartan.")\">\n"); ?>
+<?php echo("    <main style=\"background-image: url(graphics/".$this->tartan.")\">\n"); ?>
       <!-- First on the page is the navigation.  Layout is handled by the CSS. -->
       <nav>
 <?php
@@ -179,37 +180,39 @@ echo("</pre>");*/
             if($this->page==$link) echo('        <a class="current" href="'.$link.'">'.$label."</a>\n");
              else echo('        <a href="'.$link.'">'.$label."</a>\n");
           }
-        ?>
+?>
       </nav>
-      <!-- Next up comes the header.  For now, this is just a heading. -->
-      <header>
-        <h1><?php echo($this->heading); ?></h1>
-        <img src="graphics/2Couples.png" alt="[Dancers Graphic]">
-        <!-- p><?php echo($this->tagline); ?></p -->
-      </header>
-
-      <!-- Now we start the main page section... -->
       <section>
-      <!-- ...and stream the main page content. -->
-<?php 
+        <!-- Next up comes the header.  For now, this is just a heading. -->
+        <header>
+          <h1><?php echo($this->heading); ?></h1>
+          <img src="graphics/2Couples.png" alt="[Dancers Graphic]">
+          <!-- p><?php echo($this->tagline); ?></p -->
+        </header>
+
+        <!-- Now we start the main page article... -->
+        <article>
+          <!-- ...and stream the main page content. -->
+    <?php 
     }
 
-/**
- * HTMLstreamBottom() streams all the code necessary for the bottom of our boilerplate HTML page
- * 
- * @param void
- * @return void
- */
+    /**
+     * HTMLstreamBottom() streams all the code necessary for the bottom of our boilerplate HTML page
+     * 
+     * @param void
+     * @return void
+     */
     public function HTMLstreamBottom()
     {
-?>
-      <!-- Now we just tidy everything up at the foot of the page. -->
-      </section>
+    ?>
+        <!-- Now we just tidy everything up at the foot of the page. -->
+        </article>
 
-      <footer>
-        <?php echo("<p>&copy;".$this->copy."</p>\n"); ?>
-      </footer>
-    </container>
+        <footer>
+          <?php echo("<p>&copy;".$this->copy."</p>\n"); ?>
+        </footer>
+      </section>
+    </main>
   </body>
 </html>
 <?php 

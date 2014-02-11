@@ -5,14 +5,14 @@
  * its own section, "container"
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 07-02-2014, 21:42h
+ * @version 11-02-2014, 07:13h
  * @copyright 2014 Wessex SCD
  */
 
 /**
  * 	First we need a fix for legacy versions of Opera, Chrome, Firefox, and Safari.
  */
-header, section, footer, aside, nav, article, figure {display: block;}
+main, header, section, footer, aside, nav, article, figure {display: block;}
 /**
  * The following section defines the default layout.  It will display in things like 
  * old versions of Internet Explorer.
@@ -22,9 +22,9 @@ body
   font-family:"Verdana", "ComicSans", "Arial", sans-serif;
   background-color:#cc9;
 }
-container
+main
 {
-  display:block;
+  /*display:block;*/
   max-width:950px;
   min-width:290px;
   margin:0 auto;
@@ -51,36 +51,33 @@ nav a
 }
 nav a:hover{color:#ccc;}
 nav a.current{background-color:white;}
-header
-{
-  background-image:url('../graphics/paper-cyan.jpg');
-  padding:2em 2em 2em 2em;
-}
-header h1, h2, h3, h4, h5 {font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
-header h1
-{
-  color:black;
-  font-size:2em;
-  margin-top:0.65em;
-  margin-bottom:0em;
-}
-header img{float:right;padding:0 2em 0 2em;}
 
 section
 {
   background-image:url('../graphics/paper-cyan.jpg');
-  padding:10px;
+  border-radius:0 0 5px 5px;
 }
-section p {margin-left:2em;}
+  header{padding:2em 2em 2em 2em;}
+  header h1, h2, h3, h4, h5 {font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
+  header h1
+  {
+    color:black;
+    font-size:2em;
+    margin-top:0.65em;
+    margin-bottom:0em;
+  }
+  header img{float:right;padding:0 2em 0 2em;}
 
-footer
-{
-  background-image:url('../graphics/paper-cyan.jpg');
-  padding:10px;
-  font-style:italic;
-  color:gray;
-  border-radius:0px 0px 10px 10px;
-}
+  article{padding:10px;}
+  article p {margin-left:2em;}
+
+  footer
+  {
+    padding:10px;
+    font-style:italic;
+    color:gray;
+    border-radius:0px 0px 10px 10px;
+  }
 /**
  * The following section defines attributes specific to narrow screen widths
  */
@@ -115,19 +112,21 @@ footer
   nav a:hover{color:#ccc;background:linear-gradient(#111, black, #000);}
   nav a.current{color:gray;}
 
-  header
+  section
   {
   	margin-left:120px;
+  	border-radius:0px 10px 10px 0px;
+	padding:0 10px 0 10px;
+  }
+
+  header
+  {
   	border-radius:0px 10px 0px 0px;
   }
 
-  section
-  {
-	margin:0 0px 0 120px;
-  }
   footer
   {
-	margin:0 0px 0 120px;
+	padding-bottom:10px;
 	border-radius:0px 0px 10px 0px;
   }
 
