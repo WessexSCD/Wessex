@@ -18,11 +18,37 @@
      Don't change these lines! */
   require("library/webpage.php");
   $page = new webpage();
+  /* Now we need to bring in the database class and create a new instance.
+   * It must be done -before- we start streaming the HTML.
+   * Don't change these lines! */
+  require("library/database.php");
+  $database = new database();
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
 ?>
 
       <p>This is the dance page...</p>
+     	<?php 
+      	  $database->query("SELECT * FROM  dances, bands WHERE dances.bands_idband = bands.idband");
+		  
+		  /*echo("<pre>");
+		  print_r($database->result);
+          echo("</pre>");*/		  
+      	?>
+	  	
+	  <table>
+	  	<tr><th>Date</th><th>Dance</th><th>Venue</th></tr>
+	  	<?php
+	  	  $today = date('l jS M Y');
+	  	  while ($row = $database->result->fetch_object()) 
+		  {
+		  	if(strtotime($row->date) >= strtotime($today)) 
+		  	{
+		  	  printf("<tr><td>$row->date<br />$row->dstartTime - $row->dendTime</td><td>$row->title<br /><a href=$row->url>$row->name</a></td><td>$row->bname</td></tr>");
+			}
+		  }
+	  	?>
+	  </table>
 	  	
 <?php
   /* The final line streams the final html.  Don't change this. */
