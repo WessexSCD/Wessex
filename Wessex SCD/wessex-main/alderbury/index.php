@@ -32,9 +32,37 @@
   /* The HTML section that follows is the space for you to put all your main page content.
    * Aim to use just <p> for paragrpahs, and just <h3> for sub-headings.  Let the CSS do 
    * all the work! */
+  $page->insertGraphic("dancers");
 ?>
       <!-- The main page content starts here -->
-      <p>This is Alderbury's home page...</p>
+  <h3>Who are we?</h3>
+  <p>We are a Scottish Country 
+    Dancing group that meets in Alderbury. It&apos;s fun, with great music and 
+    friendly dancers. The sessions are especially suitable for newcomers to 
+    dancing and for everyone wanting to refresh their skills. All you need to 
+    start is a pair of soft shoes. Alison is a qualified teacher with the Royal 
+    Scottish Country Dance Society. This is a Winchester RSCDS Branch 
+    activity.
+  </p>
+
+  <h3>Where do we meet?</h3>
+  <p>We meet at Willow Bank, Oak Drive, Alderbury SP5 3AJ.</p> 
+
+  <p><a href="map.php">Click for map.</a></p>
+
+  <p>We meet on Monday evenings from 8.00pm to 9.30 pm. We finish with a chat.</p>
+
+  <p>There is no charge for the teaching, but contributions of &pound;1 to &pound;2 
+  	are made to cover tea, coffee and biscuits.</p>
+
+  <p>Contact: Mrs Alison Malcolm by phone on 01722 710356</p>
+
+  <h3>Scottish country dancing links</h3>
+  
+  <ul class="links">        
+<?php $page->common_scd_links(); ?>  
+  </ul>
+
 
 <?php
   /* The final line streams the final html.  Don't change this. */

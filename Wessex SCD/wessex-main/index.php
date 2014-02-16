@@ -20,6 +20,7 @@
   $page = new webpage();
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
+  $page->insertGraphic("dancers");
 ?>
 
       <p>Welcome. All the groups on the Wessex Scottish Country Dancing website are listed below. 

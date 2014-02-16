@@ -9,7 +9,7 @@
  * @version 15-02-2014, 23:09h
  * @copyright 2014 Wessex SCD
  */
-$version = "16-02-2014, 10:05h";
+$version = "16-02-2014, 23:02h";
   /**
    * webpage provides a basic web page class for our website
    *
@@ -186,8 +186,10 @@ echo("</pre>");*/
           /* The next bit unpacks our menu object and displays it as a list of links. */
           foreach($this->menu as $label=>$link)
           {
-            if($this->page==$link) echo('        <a class="current" href="'.$link.'">'.$label."</a>\n");
-             else echo('        <a href="'.$link.'">'.$label."</a>\n");
+            if(!strpos($label, " ")) $style = "";
+			 else $style = "double";
+            if($this->page==$link) echo('        <a class="'.$style.'current" href="'.$link.'">'.$label."</a>\n");
+             else echo('        <a class="'.$style.'" href="'.$link.'">'.$label."</a>\n");
           }
 ?>
       </nav>
@@ -200,10 +202,54 @@ echo("</pre>");*/
 
         <!-- Now we start the main article... -->
         <article>
-          <?php echo("<img class=\"right\" src=\"".$this->rootpath."graphics/2Couples.png\" alt=\"[Dancers Graphic]\">"); ?>
+          <?php /*echo("<img class=\"right\" src=\"".$this->rootpath."graphics/2Couples.png\" alt=\"[Dancers Graphic]\">");*/ ?>
           <!-- ...and stream the main content. -->
     <?php 
     }
+    /**
+     * insertGraphic() inserts either the "two dancers" graphic or the "thistle" 
+	 * graphic into the main page.  
+	 * 
+	 * A separate method is provided for this so that the person updating the page 
+	 * doesn't have to worry about things like the copyright get-out clauses! 
+	 * $graphic MUST be either "dancers" or "thistle".  Anything else will display 
+	 * nothing at all.
+	 * 
+     * @param must be either "dancers" or "thistle"
+     * @return void
+     */
+    public function insertGraphic($graphic) 
+    {
+      if ($graphic == "dancers") 
+      {
+      	echo("<img class=\"picWideRight\" src=\"".$this->rootpath."graphics/2Couples.png\" 
+      	 alt=\"[Two Couples Dancing]\" title=\"We believe this graphic to be in 
+      	 the public domain.  If you know anything about its origin, do please 
+      	 contact us and let us know.\" />\n");
+      }
+      else if ($graphic == "thistle") 
+      {
+      	echo("<img class=\"picRight\" src=\"".$this->rootpath."graphics/thistle.png\" 
+      	alt=\"[Thistle graphic]\" title=\"We believe this graphic to be in the 
+      	public domain.  If you know anything about its origin, do please contact 
+      	us and let us know.\" />\n");
+      }
+    }
+	
+    /**
+     * common_scd_links() streams a few common links as list items
+     * 
+     * @param void
+     * @return void
+     */
+    public function common_scd_links() 
+    {?>  
+      <li><a href="http://www.scottish-country-dancing-dictionary.com/">Scottish Country Dancing Dictionary</a> - Instructions and Diagrams for Steps, Sets and Figures</li>
+      <li><a href="http://www.scottishdance.net">Grand Chain</a> - a set of resources for Scottish Dancers the world over</li>
+      <li><a href="http://www.minicrib.org.uk/">"MINICRIB"</a> - a crib with more than 2000 Scottish Country Dances</li>
+      <li><a href="http://www.strathspey.org/">Strathspey Server</a> - resource for Scottish country dance and music</li>
+<?php
+	}
 
     /**
      * HTMLstreamBottom() streams all the code necessary for the bottom of our boilerplate HTML page

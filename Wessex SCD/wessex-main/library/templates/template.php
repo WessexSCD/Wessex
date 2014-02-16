@@ -11,8 +11,8 @@
  */
 
   /* The following line makes the server display error messages.
-   * Uncomment it during development, but don't forget to comment it out again when 
-   * the page goes live! */
+   * You may uncomment it during development, but don't forget to comment it 
+   * out again when the page goes live! */
   //ini_set("display_errors", 1);
 
   /* The next two lines bring in the webpage class and create a new instance.
@@ -29,6 +29,11 @@
   
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
+  
+  /* The next line inserts the Two Dancers graphic on the page.  Comment it out if 
+   * you don't want it displayed */
+  $page->insertGraphic("dancers");
+      
   /* The HTML section that follows is the space for you to put all your main page content.
    * Aim to use just <p> for paragrpahs, and just <h3> for sub-headings.  Let the CSS do 
    * all the work! */
