@@ -34,7 +34,7 @@
    * all the work! */
 ?>
       <!-- The main page content starts here -->
-      <p>This is the template page...</p>
+      <p>This is Alderbury's map page...</p>
 
 <?php
   /* The final line streams the final html.  Don't change this. */

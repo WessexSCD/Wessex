@@ -40,7 +40,7 @@ main
   margin-top:0.3em; 
   margin-bottom:0em; 
 }
-h1, h3{font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
+h1, h2, h3{font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
 h1
 {
   color:black;
@@ -48,6 +48,7 @@ h1
   margin-top:0.65em;
   margin-bottom:0.65em;
 }
+h2{font-weight: bold; font-size: 1.25em; font-family: sans-serif; margin-left: 1.5em;}
 h3
 {
   color:green;
@@ -55,6 +56,7 @@ h3
   margin-top:1.1em;
   margin-bottom:0.65em;
 }
+img.right{float:right;padding:0 2em 0 2em;}
   
 nav
 {
@@ -93,7 +95,6 @@ section
   background-image:url('../graphics/paper-cyan.jpg');
 }
 header{padding:1em 2em 1em 1em;}
-header img{float:right;padding:0 2em 0 2em;}
 article{padding:1em 1em 1em 1em;}
 article p{margin:0 2em 1em 2em;}
 footer

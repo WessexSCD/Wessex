@@ -9,7 +9,7 @@
  * @version 15-02-2014, 23:09h
  * @copyright 2014 Wessex SCD
  */
-$version = "15-02-2014, 23:09h";
+$version = "16-02-2014, 10:05h";
   /**
    * webpage provides a basic web page class for our website
    *
@@ -32,6 +32,10 @@ $version = "15-02-2014, 23:09h";
 	 * @access protected
      * @var string
      */
+    /**
+     * Defines how to navigate to the root directory
+     */
+    protected $rootpath = "../";
     /**
      * Defines the CSS file to be used 
      */
@@ -117,6 +121,7 @@ $version = "15-02-2014, 23:09h";
 print_r($iniFile);
 echo("</pre>");*/
 		/* Now read in the various settings */
+        $this->rootpath = $iniFile->rootpath;
         $this->cssfile = $iniFile->cssfile;
         $this->title = $iniFile->headtitle;
         $this->tartan = $iniFile->tartan;
@@ -162,7 +167,7 @@ echo("</pre>");*/
     <meta name="author" content="Donald Mackay and David Argles" />
     <meta name="generator" content=<?php echo("\"Wessex SCD page generator 2, ".$version."\""); ?> />
     <!-- The next line specifies our css file (in CSS3) -->
-    <link rel="stylesheet" type="text/css" <?php echo("href=\"library/".$this->cssfile."\""); ?>>
+    <link rel="stylesheet" type="text/css" <?php echo("href=\"".$this->rootpath."library/".$this->cssfile."\""); ?>>
     <!-- We need a fix for legacy IE browsers.  The next line does this for us. -->
     <!--[if lt IE 9]><script src="library/html5shiv.js"></script><![endif]-->
     <title><?php echo($this->title); ?></title>
@@ -174,7 +179,7 @@ echo("</pre>");*/
     <!-- We have to break all the rules, and put a bit of style into our HTML at this point.
     	That's because the tartan can change from page to page, and this is the only way to
     	do it -->
-<?php echo("    <main style=\"background-image: url(graphics/".$this->tartan.")\">\n"); ?>
+<?php echo("    <main style=\"background-image: url(".$this->rootpath."graphics/".$this->tartan.")\">\n"); ?>
       <!-- First on the page is the navigation.  Layout is handled by the CSS. -->
       <nav>
 <?php
@@ -190,11 +195,12 @@ echo("</pre>");*/
         <!-- Next up comes the header.  For now, this is just a heading and a graphic. -->
         <header>
           <h1><?php echo($this->heading); ?></h1>
-          <img src="graphics/2Couples.png" alt="[Dancers Graphic]">
+          <h2><?php echo($this->tagline); ?></h2>
         </header>
 
         <!-- Now we start the main article... -->
         <article>
+          <?php echo("<img class=\"right\" src=\"".$this->rootpath."graphics/2Couples.png\" alt=\"[Dancers Graphic]\">"); ?>
           <!-- ...and stream the main content. -->
     <?php 
     }

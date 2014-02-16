@@ -13,7 +13,7 @@
   /* The following line makes the server display error messages.
    * Uncomment it during development, but don't forget to comment it out again when 
    * the page goes live! */
-  //ini_set("display_errors", 1);
+  ini_set("display_errors", 1);
 
   /* The next two lines bring in the webpage class and create a new instance.
    * Don't change these lines! */
@@ -34,7 +34,7 @@
    * all the work! */
 ?>
       <!-- The main page content starts here -->
-      <p>This is the template page...</p>
+      <p>This is Alderbury's home page...</p>
 
 <?php
   /* The final line streams the final html.  Don't change this. */
