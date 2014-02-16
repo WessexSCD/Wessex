@@ -6,14 +6,15 @@
  * re-use on every page.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 11-02-2014, 14:45hh
+ * @version 15-02-2014, 23:09h
  * @copyright 2014 Wessex SCD
  */
-$version = "11-02-2014, 14:45h";
+$version = "15-02-2014, 23:09h";
   /**
    * webpage provides a basic web page class for our website
    *
-   * It defines several page attributes which are loaded from a webpage.ini file. 
+   * It defines several page attributes which are loaded from a webpage.ini file
+   * which should be held in the same directory as the calling page. 
    * It also defines two HTMLstream methods, HTMLstreamTop and HTMLstreamBottom, 
    * which output the necessary HTML code to make up our boilerplate page.
    * 
@@ -42,11 +43,11 @@ $version = "11-02-2014, 14:45h";
     /**
      * Defines the image to be used as the page logo 
      */
-    protected $heading = "Default Website Heading";
+    protected $heading = "Default Page Heading";
     /**
      * Defines the text to be used as the page tagline
      */
-    protected $tagline = "Default website description";
+    protected $tagline = "Default page description";
     /**
      * Provides an array for the menu labels and links
      */
@@ -118,10 +119,10 @@ echo("</pre>");*/
 		/* Now read in the various settings */
         $this->cssfile = $iniFile->cssfile;
         $this->title = $iniFile->headtitle;
-        $this->heading = $iniFile->heading;
         $this->tartan = $iniFile->tartan;
-        /*$this->tagline = $iniFile->tagline;*/
-        $this->copy = $iniFile->copyright;
+        $this->heading = $iniFile->heading;
+        $this->tagline = $iniFile->tagline;
+        /*$this->copy = $iniFile->copyright;*/
         
 		/* The entire menu comes in as an object */
 		$this->menu = (object) $iniFile->menu;
@@ -186,15 +187,15 @@ echo("</pre>");*/
 ?>
       </nav>
       <section>
-        <!-- Next up comes the header.  For now, this is just a heading. -->
+        <!-- Next up comes the header.  For now, this is just a heading and a graphic. -->
         <header>
           <h1><?php echo($this->heading); ?></h1>
           <img src="graphics/2Couples.png" alt="[Dancers Graphic]">
         </header>
 
-        <!-- Now we start the main page article... -->
+        <!-- Now we start the main article... -->
         <article>
-          <!-- ...and stream the main page content. -->
+          <!-- ...and stream the main content. -->
     <?php 
     }
 

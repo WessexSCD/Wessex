@@ -1,0 +1,113 @@
+*********************************************************************************
+* Filename:     quickstart.txt                                                  *
+* Version:      16.02.2014, 00:38hr                                             *
+* Author:       David Argles, daargles@gmail.com                                *
+* Description:  This file gives instructions for how to create a basic club     *
+*               website using the files in <library/templates>.  The fancy      *
+*               stuff can be found in "z_howto.txt"                             *
+*********************************************************************************
+
+ 1) Create a new directory for the club using the name "<clubname>-new".  It is 
+    important to keep everything in lower case - this is a linux system!
+
+ 2) Open "library/templates" and *copy!* both files into your new club 
+    folder.  Make sure you copy these files rather than moving them!  (The 
+    default on my operating system is for drag-and-drop to move files)
+    
+ 3) Decide how many pages you want your club's new site to contain and make that 
+    many copies of template.php.  Now rename the pages appropriately, for example 
+    you could call them, "index.php", "map.php", "about.php" and "links.php" if 
+    that's what you want.  Don't forget that these are php pages, so they *must* 
+    end with the .php extension.
+
+ 4) Now edit the files in your new club folder.  Make sure you are editing these 
+    files and not the files in "templates"!
+
+ 5) In your club folder, open "webpage.ini" in a text editor.  Decide what your 
+    clubsite should look like, then go through the lines of webpage.ini and edit 
+    them appropriately.  The file is actually quite short, but there's plenty of 
+    comment lines to help you understand what each active line does.
+    
+    You could decide to leave the .ini file exactly as it is, bring up a browser 
+    which is displaying your new site, then change webpage.ini step by step, 
+    checking each time that the change you've made has the desired effect.
+
+ 6) At this point, you should have a working site, but with no content.  Point 
+    your browser at "wessex-scd.org.uk/<clubname>-new" to view it.
+
+ 7) Now go through your pages in order and insert the required content in your 
+    pages.  If you are creating a new site, you could use other club's sites for 
+    ideas; or the club themselves may want to suggest content.  If you are 
+    updating an older site, you can copy the content across by viewing the page 
+    in a web browser, dragging your mouse across the text and pressing <Ctrl-C> 
+    to copy it, and then pasting into the relevant place in the <page>.php.
+
+ 8) Starting with index.php, insert the necessary content into the file.  The 
+    basic page template looks terrifyingly complicated, but most of it is 
+    comments.
+
+    The first couple of paragraphs of your main text should go immediately 
+    before the <?php insertGraphic("thistle"); ?> line, while the rest should 
+    go immediately after it.
+
+    NOTE 1: Paragraphs should normally be given as <p></p>.  A quick way to 
+            do that is to global search for <newline><newline> and replace 
+            with </p><newline><newline><p class="indent">.  Do this 
+            before...
+    NOTE 2: ...Headers should normally be given as <h3></h3>.  This will need 
+            to be done manually (unless you can come up with some really clever 
+            way of automatically identifying which lines are headers!)
+
+ 9) When you get to map.php, the template page is pretty much as it should be - 
+    except the 'where we are' line, the Google map data, and the Streetmap data
+    need updating.
+
+    Underneath the "How to find us" heading, about halfway down the page, there 
+    is a snippet of text that explains how to find the venue when the map has 
+    more or less got you there.  Look at some examples on other sites if you're 
+    not sure what's required; then update the text for your club's venue.
+
+    -Now go to Google Maps (https://maps.google.co.uk/).
+    -Search for and find your venue on the map.
+    -Google will offer you several possibilities - click on the one you want.
+    -You should have a panel on the left of your screen; at the top of this will 
+      be four graphic buttons, "Get directions", "My place", something that looks 
+      like a printer, and a fourth one that looks like glasses - it's actually 
+      three links of a chain, and is meant to stand for "link".  Click on this 
+      button; you will get a little window up with two main sections in it.  The 
+      lower of these is titled: "Paste HTML to embed in website".  Highlight all 
+      of this text (there's lots of it, make sure you get it all!  A triple click 
+      will highlight the whole thing), then copy it (<Ctrl-C> will do the job). 
+    -Go back to map.php and paste the code (<Ctrl-V> if you like) into the page.  
+      I like to paste it in immediately after the Google code that's already 
+      there, then I've got a pattern to follow.
+    -Using the comments in the file and the pattern of the code already there, 
+      update your Google snippet.
+    -When you're happy that you've done it correctly, delete the Google code that 
+      was already in map.php.
+    -Now go to Streetmap (http://www.streetmap.co.uk/) and search for your club's 
+      location on that website.  Streetmap is usually happier working with a 
+      postcode than with a full address.
+    -When you're happy with the location, highlight and copy the URL from your 
+      browser's URL bar, and paste it into the code into the page, deleting the 
+      link that was there before.
+    -Now view your club's site and check it's displaying OK.  If you should find 
+      any faults and aren't sure what the problem is, you can always go back to 
+      map.php in the pro-forma-files directory and check what you've done against 
+      that.
+
+10) Now check that the whole site displays as it should.
+
+11) When you're happy that everything is as it should be, update "updates.txt". 
+    The body of the file should mention the changes in this session (in this case, 
+    you created the site).  The author line should be changed to your name and 
+    contact details.  The very first line of the file will display on the website 
+    as a summary of the latest changes, so this should have today's date followed 
+    by a very brief summary of the latest update (e.g. "Site created").
+
+12) A final check that everything is displaying as it should, and you're done! 
+    Enjoy!
+
+-------------------
+--- End of file ---
+-------------------

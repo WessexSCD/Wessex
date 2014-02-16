@@ -1,0 +1,262 @@
+*********************************************************************************
+* Filename:     z_howto.txt                                                     *
+* Version:      29.05.2013, 23:55hr                                             *
+* Author:       David Argles, daargles@gmail.com                                *
+* Description:  This file gives explains some of the more fancy facilities      *
+*               available.  The basic stuff can be found in "z_quickstart.txt"  *
+*********************************************************************************
+
+In this file, the assumption is that either you already know what you're doing, 
+or have already worked through the quickstart file.  In this document, the 
+various aspects of the page template will be explained, together with the 
+various features available .  It should be read in conjunction with the content 
+and comments of page-template.php.
+
+ 1) Template Files:
+    ---------------
+    The first two lines of code in page-template.php are
+      require("../includes/template.inc"); and
+      require("../includes/gallery.inc");
+    By default, the require for template.inc is active - this file must always 
+    be included.  
+
+    Also, by default, the require for gallery.inc is commented out in 
+    page-template.inc (but left active in gallery.php).  It is expected that 
+    the club's gallery will be on a separate page, hence the separate 
+    gallery.php in the pro forma files.  However, it is possible to include a 
+    gallery in any page.  If you do this, then you must uncomment this line to 
+    bring in the template code.
+
+ 2) php Global Variables:
+    ---------------------
+    The next line of code is
+      setvars();
+    This is commented out, and there is currently never a need to uncomment it. 
+    It's there as a reminder to me that, should we need variables that need to 
+    be passed from page to page, this is the place to put it - *before* any html 
+    code streaming begins.
+
+ 3) HTML Headers:
+    -------------
+    Next up is
+      htmlHeader("Winchester RSCDS: this page name");
+    This is a call to template.inc which sets up all the html header lines - html 
+    streaming begins at this point!  The parameter is taken and used as the text 
+    for the <title></title> entry, so it will display in the tab at the top of 
+    the user's browser.  It needs to be changed for *every* page in the site!
+
+    NOTE: There is an alternative call, htmlHeaderVariant.  This takes two 
+    parameters instead of one - $title and $stylesheet.  $title is the (header) 
+    title of the page, exactly as before, but $stylesheet allows one to specify 
+    a different stylesheet from normal.css.  This is not intended for normal 
+    use, but is very handy for development if one wants to find out what's gone 
+    wrong with a layout.  Typically, I might switch to test.css, for example. 
+    This is a massively cut-down css which allows me to experiment and fault-find.
+
+ 4) The menu:
+    ---------
+    is called by
+      htmlMenusFloat("tarblank.gif");
+    This sets up the basic page layout, so it does quite a lot, although the code 
+    is comparatively short.  This is about the only place where the basic rule is 
+    broken, and there is style defined in the html, rather than in the css.  This 
+    is so that different tartans can be specified via the "tarblank.gif" 
+    parameter.  The only other way I can think of doing it would be to specify 
+    different css files for each tartan, and that seems inordinately messy to me.
+
+    The next thing that htmlMenusFloat does is to call up menu.ins.  This file is 
+    set up so that it simply gives a list of anchors (class "menuButton" - this 
+    is important if they are to display properly).  The  order in which this list 
+    is given will determine the order in which the buttons are displayed.  The 
+    Wessex Home button will need to be a double button (class "menuButtonDouble") 
+    and is expected to be the last in the list.
+
+ 5) The Page Heading and Sub-Heading:
+    ---------------------------------
+    After displaying the menu, htmlMenusFloat fires up the code to start the html 
+    for the main page content.  Once this is in place, it does two more things 
+    before returning control to page-template.php;
+    - it looks for a file called "site-title.txt".  If it finds one, it reads the 
+      first line only of this file and displays it as the heading of the main html 
+      page.  If you start the file with a new line character, it will display 
+      nothing (I think); if you create a file with multiple lines, all lines after 
+      the first will be ignored.  If you want a different heading on different 
+      pages of your site, then you must delete site-title.txt from the club's 
+      directory and uncomment the line
+        <!-- h1>Replace this with the name of the club</h1 -->
+      in page-template.php.
+
+    - it also looks for a file called "site-location.txt".  If it finds one, it 
+      reads the first line only of this file and displays it as the subheading of 
+      the html page.  The same rules apply - don't start the file with a newline 
+      character, etc.  If you should choose to delete site-location.txt and to 
+      put the club's location in manually for every page, you should use the <h4> 
+      style to make sure it displays properly.
+
+ 6) The Two Dancers Graphic:
+    ------------------------
+    Next up in page-template.php is the line
+      insertGraphic("dancers");
+    This inserts the two dancers graphic towards the top of the page - but it makes 
+    sure that the graphic is in the right place as the page width changes, and it 
+    also makes sure that the "don't blame me" copyright notice is also included, so 
+    it's a really good idea not to bypass this and insert the graphic directly!
+
+ 7) Main page content:
+    ------------------
+    For a simple page, this is explained in z_quickstart.txt.  Following the two 
+    dancers graphic, you now want to put all your content in between here and the 
+    footer (see 9).  For straight-forward text, you only want two styles.  Sub 
+    headings should appear left justified in green text; this is achived by using 
+    the <h3> style.  Main paragraphs should be indented; this is achieved by using 
+    the <p class="indent"> style.  The practicalities of doing this are covered in 
+    z_quickstart.txt.
+
+ 8) The Thistle Graphic:
+    --------------------
+    The thistle graphic is also covered in z_quickstart.txt.  Basically, this is a 
+    large graphic which can be included part-way down a page of text to liven it up.  
+    It's called using the code
+      insertGraphic("thistle");
+    and, like the two dancers call, this ensures it displays in the right place and 
+    includes the copyright notice.  To get it the right distance down the page, 
+    you'll need to call this line after a couple of paragraphs; if you haven't got 
+    four or more paragraphs, just comment the line out.
+
+ 9) HTML footer:
+    ------------
+    The final line in page-template.php is
+      htmlFooter("file", FALSE);
+    Its main function is to tidy up the HTML page, to close some open <div>s and to 
+    close the <body> and <html> tags, for example.  However, it is clear it also 
+    does a couple of other things as well!
+    - The first parameter can be any text you like.  It is intended to allow you to 
+      display an update message, so "12 May 2013 (dances updated)" would display as
+        LAST UPDATED 12 May 2013 (dances updated)
+      The original intention was to display a LAST UPDATED message only on the home 
+      page of the club's site.  With this in mind, it is possible to use the keyword 
+      "file" (it *must* all be in lower case).  If you do this, then a check will be 
+      run.  If the page is index.php, and if there is a file called updates.txt in 
+      the club's directory, then the first line of that file will be displayed as 
+      the update message.  In all other cases, nothing will be displayed.
+
+      The idea of the updates.txt file is that it should be used to record all 
+      updates made to the club's site.  However, the very first line is used as a 
+      summary of the latest changes to the site which is displayed on the home page.
+
+    - The second parameter must be either TRUE or FALSE.  It is a boolean used to 
+      determine whether the "Return to top" button is displayed at the bottom of the 
+      page.  So if you have a long page, make this value TRUE, otherwise make it 
+      FALSE.
+
+    The other thing I misunderstood when setting the page template up was the W3C 
+    validation icons.  Again, the idea was that these should only display on the 
+    club's home page, not on every single page.  At the moment, they display on 
+    every page; this may change at some point in the future.
+
+In covering the basic page structure, we've skipped over four lines which provide 
+special facilities, some of them being quite powerful.
+
+10) The Gallery:
+    ------------
+    Immediately after the insertGraphic("dancers") line comes the gallery line - 
+      <?php /* displayGallery(); */ ?>
+    The assumption has been that if you want a photo gallery, you will want to 
+    give a whole page to it and will therefore use gallery.php.  If you uncomment 
+    this line and move it to wherever you want it in your main page dsiplay code, 
+    it will display your gallery.  Mind you, as at 29May2013:
+    - it will display the full gallery (maybe it would be more helpful if one 
+      could display a part gallery in this instance); and
+    - there is a bug which means the site will crash when returning from the 
+      individual photo viewer.  The intention is to fix this second problem 
+      very soon.
+    The gallery facility is quite powerful and has its own readme - 
+    "zreadme-gallery.txt", so look at that for a description of the various 
+    options available.
+
+11) The Self-updating Events Calendar:
+    ----------------------------------
+    The next line in the template is
+      <?php /* displayCSV("programme.csv"); */ ?>
+    This *does* work anywhere in any page and has been tested in this mode!  It 
+    has been designed to reduce the maintenance of club pages where a list of 
+    events is required.  displayCSV("filename.csv") looks for a CSV file with 
+    the given filename and will display it.  It assumes the first column is a 
+    date, it standardises the format of the date display, and it ignores any 
+    events where the date has already passed.  There is a short readme - 
+    "zreadme-events.txt" - although at the moment, there's not a lot more to 
+    say about it.  Since different filenames can be specified, it is possible 
+    to include more than one events list, or a split events list (e.g. across 
+    different years).
+
+12) The Directory Listing:
+    ----------------------
+    This facility has been developed to deal with situations where a club may 
+    want a list of newsletters, for example.  To include a list, uncomment 
+    the next line in the template
+      dir_list("newsletters", ".doc", 1)
+    The three parameters work as follows.
+    - The first parameter (in the default line, it's "newsletters") specifies 
+      the directory which will be listed.  So if you want to display a series 
+      of newsletters, create a directory <newsletters> in the club's directory 
+      and refer to it here.  Remember as always, this is case sensitive.
+    - The second parameter in the default line is ".doc".  If your newsletters 
+      have .doc extensions, then only the main part of the filename will be 
+      displayed with the filetype suppressed, making it more human-readable. 
+      If you include a few other filetypes, they will be displayed similarly, 
+      except they will have a note saying what filetype they are.  So a pdf 
+      will display as <filename> (.pdf format) for example.  If most of your 
+      files are pdfs, change the parameter to ".pdf".
+    - The third parameter affects the display order.  Suppose you are 
+      displaying newsletters of the form "Newsletter-34.doc", then you probably 
+      want the latest newsletter displaying first in the list - but this means 
+      in *reverse* alphabetical order.  To do this, the parameter must be 1. 
+      If you want ascending alphabetical order instead, make this parameter 0. 
+    There are now a couple of other useful things to know about dir_list.
+    - any minus symbols ("-") are replaced with spaces, again making for a 
+      nicer, human readable display in the web page.
+    - any underline symbols ("_") are also replaced by spaces.  *But* _ comes 
+      in a different place in the alphabet from -, so they can be used to tweak 
+      the listing order if required.
+    Since you can specify different directories with different calls to 
+    dir_list, it's possible to have multiple directory listings in a page, or 
+    in different pages within a site, and they can display to different rules, 
+    e.g. one could be in reverse alphabetic order and another in ascending 
+    alphabetic order.  One could expect .docs, and another .docxs - or whatever.
+
+13) Common SCD Links:
+    -----------------
+    There is one final facility available which can be found much further down 
+    page-template towards the bottom -
+      common_scd_links()
+    Again, this facility is there because I'm lazy, and don't want to keep 
+    typing in the same old links again and again.  So common_scd_links 
+    assumes you are within a list, and it simply provides four links as list 
+    items.  It can be used as it is, or can have other links added in if a club 
+    has particular links it wishes to include.
+    Don't forget to include the <ul></ul> (or whatever) around this call, or it 
+    will give a W3C validation error when the code is checked.
+
+14) Tables:
+    -------
+    The wessex-scd website has opted for a responsive layout.  Tables are 
+    particularly problematic in responsive layouts as they often don't resize 
+    very well at different window widths.  However, at the moment, 
+    <table class="indent"> seems to work well for a typical 2 column table.  
+    There is also a class defined as <table class="events"> which works well 
+    for the events function (see 11 above), but you don't need to worry about 
+    that as all of that is handled automatically.  However, if you have a table 
+    that doesn't display well via the indent class, you could try the events 
+    class instead.
+
+That's it, for the moment at least.  Enjoy!
+
+Don't forget, the primary motivation for most of these special features is to 
+make life easy, and to make maintenance of the various sites as minimal as 
+possible whilst also ensuring the site as a whole is professional, accessible 
+and useful.  If something becomes tedious or long-winded, we're probably missing 
+a trick somewhere.  Let's see if we can fix it...
+
+-------------------
+--- End of file ---
+-------------------
