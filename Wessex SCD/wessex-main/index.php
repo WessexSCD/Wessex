@@ -20,12 +20,12 @@
   $page = new webpage();
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
-  $page->insertGraphic("dancers");
 ?>
+      <?php  $page->insertGraphic("dancers"); ?>
 
       <p>Welcome. All the groups on the Wessex Scottish Country Dancing website are listed below. 
       	Please click on the links for the pages of the groups in which you are interested.</p>
-
+      
 	  <p>On these pages you will find the details of what each group offers, whether it's basic 
 	  	tuition for newcomers, classes for adults and/or children, ceilidh dancing or social 
 	  	evenings. If you'd like to dance with a group, please get in touch with the person listed 

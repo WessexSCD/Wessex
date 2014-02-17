@@ -20,6 +20,9 @@
   $page = new webpage();
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
+  /* The next line inserts the Two Dancers graphic on the page.  Comment it out if 
+   * you don't want it displayed */
+  $page->insertGraphic("dancers");
 ?>
 
       <p>This is the about page...</p>

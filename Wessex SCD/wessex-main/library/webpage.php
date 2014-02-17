@@ -186,7 +186,7 @@ echo("</pre>");*/
           /* The next bit unpacks our menu object and displays it as a list of links. */
           foreach($this->menu as $label=>$link)
           {
-            if(!strpos($label, " ")) $style = "";
+            if(!(strpos($label, " ")&&(strlen($label)>10))) $style = "";
 			 else $style = "double";
             if($this->page==$link) echo('        <a class="'.$style.'current" href="'.$link.'">'.$label."</a>\n");
              else echo('        <a class="'.$style.'" href="'.$link.'">'.$label."</a>\n");
