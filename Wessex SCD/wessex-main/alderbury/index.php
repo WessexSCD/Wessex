@@ -63,9 +63,10 @@
 <?php $page->common_scd_links(); ?>  
   </ul>
 
-
 <?php
-  /* The final line streams the final html.  Don't change this. */
+  /* The next line displays a "Return to Top" button at the foot of the page
+   * Uncomment it if you want it to display */
+  echo("        <a class=\"doubleBottom\" href=\"".$_SERVER['PHP_SELF']."\">Return to top</a>\n");  /* The final line streams the final html.  Don't change this. */
   $page->HTMLstreamBottom();
 /**---------------------------------------------
  *             End of Code

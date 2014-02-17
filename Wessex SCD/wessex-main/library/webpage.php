@@ -9,7 +9,7 @@
  * @version 15-02-2014, 23:09h
  * @copyright 2014 Wessex SCD
  */
-$version = "16-02-2014, 23:02h";
+$version = "17-02-2014, 16:27h";
   /**
    * webpage provides a basic web page class for our website
    *
@@ -244,10 +244,14 @@ echo("</pre>");*/
      */
     public function common_scd_links() 
     {?>  
-      <li><a href="http://www.scottish-country-dancing-dictionary.com/">Scottish Country Dancing Dictionary</a> - Instructions and Diagrams for Steps, Sets and Figures</li>
-      <li><a href="http://www.scottishdance.net">Grand Chain</a> - a set of resources for Scottish Dancers the world over</li>
-      <li><a href="http://www.minicrib.org.uk/">"MINICRIB"</a> - a crib with more than 2000 Scottish Country Dances</li>
-      <li><a href="http://www.strathspey.org/">Strathspey Server</a> - resource for Scottish country dance and music</li>
+      <li><a href="http://www.scottish-country-dancing-dictionary.com/">Scottish Country Dancing Dictionary</a><br />
+      	Instructions and Diagrams for Steps, Sets and Figures</li>
+      <li><a href="http://www.scottishdance.net">Grand Chain</a><br />
+      	A set of resources for Scottish Dancers the world over</li>
+      <li><a href="http://www.minicrib.org.uk/">"MINICRIB"</a><br />
+      	A crib with more than 2000 Scottish Country Dances</li>
+      <li><a href="http://www.strathspey.org/">Strathspey Server</a><br />
+      	Resource for Scottish country dance and music</li>
 <?php
 	}
 
@@ -260,12 +264,30 @@ echo("</pre>");*/
     public function HTMLstreamBottom()
     {
     ?>
-        <!-- Now we just tidy everything up at the foot of the page. -->
         </article>
 
         <footer>
+          <?php 
+          if(strstr($_SERVER['PHP_SELF'], "index.php", TRUE))
+          {
+            echo("<!-- If we're on index.php, display the W3 consortium validation icons -->\n          ");
+            echo("<p>\n        ");
+            echo("    <a href=\"http://validator.w3.org/check?uri=referer\">\n          ");
+            echo("    <img src=\"".$this->rootpath."graphics/HTML5.png\"\n              ");
+            echo("alt=\"Valid HTML5!\" height=\"31\" width=\"88\" />\n          ");
+            echo("  </a>\n        ");
+            echo("    <a href=\"http://jigsaw.w3.org/css-validator/check/referer\">\n          ");
+            echo("    <img style=\"border:0;width:88px;height:31px\"\n              ");
+            echo("src=\"".$this->rootpath."graphics/CSS3.png\" ");
+            echo("alt=\"Valid CSS3!\" />\n          ");
+            echo("  </a>\n          ");
+            echo("</p>\n");
+          }
+                else echo("<p>&nbsp;</p>");
+        ?>
           <?php echo("<p>&copy;".$this->copy."</p>\n"); ?>
         </footer>
+        <!-- Now we just tidy everything up at the foot of the page. -->
       </section>
     </main>
   </body>

@@ -1,12 +1,12 @@
 <?php
 /**
- * template.php is the template page for our new (version 2) wessex web pages.
+ * map.php shows us how to display a Google map indicating the location of the club.
  *
- * It calls our class, webpage, sets the title for our page, sets the page content,
- * & streams the completed boilerplate code.
+ * First we do the standard stuff and call our class, webpage, set the title for our 
+ * page, set the page content, & stream the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 17-02-2014, 22:27h
+ * @version 17-02-2014, 23:29h
  * @copyright 2014 Wessex SCD
  */
 
@@ -20,13 +20,6 @@
   require("../library/webpage.php");
   $page = new webpage();
   
-  /* If you need access to the database, you'll need to uncomment the next two lines 
-   * to bring in the database class and create a new instance.  It must be done 
-   * -before- we start streaming the HTML.
-   * Don't change these lines! */
-  //require("library/database.php");
-  //$database = new database();
-  
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
   
@@ -35,9 +28,6 @@
    * all the work! */
 ?>
       <!-- The main page content starts here -->
-      <!-- The next line inserts the Two Dancers graphic on the page.  Comment it out if 
-            you don't want it displayed -->
-      <?php //$page->insertGraphic("dancers"); ?>
       
       <!-- A Google map follows.  We wrap it in a <figure> so we can get everything centred easily -->
       <figure>
@@ -50,8 +40,6 @@
 	            instead - otherwise it won't display properly! -->
 	      <iframe class="map" src="https://maps.google.co.uk/maps?q=51.0407N,+1.7335W&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=51.0407,-1.7335&amp;output=embed">
 	      </iframe>
-	
-	      <!-- <iframe class="map" src="https://maps.google.co.uk/maps?f=d&amp;source=s_d&amp;saddr=51.0407N,+1.7335W&amp;daddr=&amp;hl=en&amp;geocode=FbzRCgMdhIzl_w&amp;aq=&amp;sll=51.0407,-1.7335&amp;sspn=0.011549,0.027874&amp;mra=mr&amp;ie=UTF8&amp;t=m&amp;ll=51.0407,-1.7335&amp;spn=0.011549,0.027874&amp;output=embed"></iframe> -->
 	
 	      <br />
 	      <small><a href="https://maps.google.co.uk/maps?q=51.0407N,+1.7335W&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=51.0407,-1.7335&amp;source=embed" style="color:#0000FF;text-align:left" target="_blank">View on Google Maps</a></small>
