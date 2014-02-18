@@ -169,7 +169,7 @@ echo("</pre>");*/
     <!-- The next line specifies our css file (in CSS3) -->
     <link rel="stylesheet" type="text/css" <?php echo("href=\"".$this->rootpath."library/".$this->cssfile."\""); ?>>
     <!-- We need a fix for legacy IE browsers.  The next line does this for us. -->
-    <!--[if lt IE 9]><script src="library/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><?php echo("<script src=\"".$this->rootpath."library/html5shiv.js\">"); ?></script><![endif]-->
     <title><?php echo($this->title); ?></title>
   </head>
 
