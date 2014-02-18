@@ -26,7 +26,7 @@
   /* First, we ought to set the recipient for any emails.
    * Change this for testing, but don't forget to set it back again afterwards!
    * Default is: wessex.scd@gmail.com */
-  $to = "d.argles@gmx.com"; //"wessex.scd@gmail.com" "d.argles@gmx.com";
+  $to = "wessex.scd@gmail.com"; //"wessex.scd@gmail.com" "d.argles@gmx.com";
 
   /* Now let's get the relevant information */
   $requester = $_SERVER['REQUEST_URI'];
