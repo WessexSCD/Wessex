@@ -10,7 +10,7 @@
  1) Create a new directory for the club using the name "<clubname>-new".  It is 
     important to keep everything in lower case - this is a linux system!
 
- 2) Open "library/templates" and *copy!* both files into your new club 
+ 2) Open "library/templates" and *copy!* all the files into your new club 
     folder.  Make sure you copy these files rather than moving them!  (The 
     default on my operating system is for drag-and-drop to move files)
     

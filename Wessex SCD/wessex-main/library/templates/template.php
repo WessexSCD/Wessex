@@ -30,21 +30,28 @@
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
   
-  /* The next line inserts the Two Dancers graphic on the page.  Comment it out if 
-   * you don't want it displayed */
-  $page->insertGraphic("dancers");
-      
   /* The HTML section that follows is the space for you to put all your main page content.
    * Aim to use just <p> for paragrpahs, and just <h3> for sub-headings.  Let the CSS do 
    * all the work! */
 ?>
-      <!-- The main page content starts here -->
-      <p>This is the template page...</p>
+       <!-- The main page content starts here -->
+       
+       <!-- The next line inserts the Two Dancers graphic on the page.  Comment it out if 
+             you don't want it displayed -->
+       <?php //$page->insertGraphic("dancers"); ?>
+       
+       <p>This is the template page...</p>
 
 <?php
+  /* The next three lines display a list of useful links. Uncomment them if you want them to display */
+  /* echo("      <h2>Links</h2>\n      <p></p>\n      <ul class=\"links\">");
+  $page->common_scd_links();
+  echo("      </ul>\n"); */
+  
   /* The next line displays a "Return to Top" button at the foot of the page
    * Uncomment it if you want it to display */
-  // echo("        <a class=\"doubleBottom\" href=\"".$_SERVER['PHP_SELF']."\">Return to top</a>\n");  /* The final line streams the final html.  Don't change this. */
+  // echo("        <a class=\"doubleBottom\" href=\"".$_SERVER['PHP_SELF']."\">Return to top</a>\n");  
+
   /* The final line streams the final html.  Don't change this. */
   $page->HTMLstreamBottom();
 /**---------------------------------------------
