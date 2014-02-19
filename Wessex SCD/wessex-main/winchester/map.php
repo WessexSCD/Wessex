@@ -6,7 +6,7 @@
  * page, set the page content, & stream the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 17-02-2014, 23:29h
+ * @version 18-02-2014, 19:16h
  * @copyright 2014 Wessex SCD
  */
 
@@ -33,20 +33,19 @@
       <figure>
 	      <!-- The next bit is introductory text.  Edit as appropriate for your club -->
 	      <h4>How to Find Us</h4>
-	      <p>We meet at Willow Bank, Oak Drive, Alderbury SP5 3AJ.<br />The green arrow gives the destination.</p>
+	      <p>Oliver's Battery Road North is at the top of Romsey Road. Enter by the wooden gate to the left of the church.</p>
 	
 	      <!-- Google map follows -->
 	      <!-- Note: remove the formatting info from Google's code paste and insert 'class="map"'
 	            instead - otherwise it won't display properly! -->
-	      <iframe class="map" src="https://maps.google.co.uk/maps?q=51.0407N,+1.7335W&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=51.0407,-1.7335&amp;output=embed">
+	      <iframe class="map" src="https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=St+Peter's+School,+Oliver's+Battery+Road+North,+Winchester,+Hampshire,+SO22+4JB&amp;aq=&amp;sll=51.03302,-1.470238&amp;sspn=0.702997,1.783905&amp;ie=UTF8&amp;hq=&amp;hnear=St+Peters+School,+Oliver's+Battery+Rd+N,+Winchester+SO22+4JB,+United+Kingdom&amp;ll=51.051132,-1.346643&amp;spn=0.00549,0.013937&amp;t=m&amp;z=14&amp;output=embed">
 	      </iframe>
 	
 	      <br />
-	      <small><a href="https://maps.google.co.uk/maps?q=51.0407N,+1.7335W&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=51.0407,-1.7335&amp;source=embed" style="color:#0000FF;text-align:left" target="_blank">View on Google Maps</a></small>
-	      <!-- End of Google map -->
-	      <br />
-	      <small><a href="http://www.streetmap.co.uk/map.srf?X=418785&Y=126859&A=Y&Z=115" target="_blank">View on Streetmap</a></small>
-      <!-- Now we've finished the map and related stuff, close the <figure> -->
+		  <small><a href="https://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=St+Peter's+School,+Oliver's+Battery+Road+North,+Winchester,+Hampshire,+SO22+4JB&amp;aq=&amp;sll=51.03302,-1.470238&amp;sspn=0.702997,1.783905&amp;ie=UTF8&amp;hq=&amp;hnear=St+Peters+School,+Oliver's+Battery+Rd+N,+Winchester+SO22+4JB,+United+Kingdom&amp;ll=51.051132,-1.346643&amp;spn=0.00549,0.013937&amp;t=m&amp;z=14" style="color:#0000FF;text-align:left" target="_blank">View on Google Maps</a></small>
+		  <br />
+		  <!-- End of Google map -->
+		  <small><a href="http://www.streetmap.co.uk/map.srf?x=445893&y=128179&z=0&sv=SO22+4JB&st=2&pc=SO22+4JB&mapp=map.srf&searchp=ids.srf" target="_blank">View on Streetmap</a></small>      <!-- Now we've finished the map and related stuff, close the <figure> -->
       </figure>
       
 <?php

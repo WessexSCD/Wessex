@@ -256,6 +256,66 @@ echo("</pre>");*/
 	}
 
     /**
+     * This function prints a list of the files in the given directory.
+	 *  $path is the path to the required directory;
+	 *  $suppress suppresses the given string. It's intended for suppressing
+	 *   the expected file format from the display (e.g. ".doc")
+	 *  $order determines
+	 *  - alphabetic (0, or SCANDIR_SORT_ASCENDING)
+	 *  - reverse alphabetic (1, or SCANDIR_SORT_DESCENDING)
+	 *  - none (SCANDIR_SORT_NONE)
+	 * Prints all the directory contents minus the . and .. entries
+	 * Notes:
+	 *  "-" in the filename is exchanged for a space
+	 *  "_" in the filename is exchanged for a space (but it comes in a
+	 *      different place in the alphabet, so it can be used to change
+	 *      file order)
+	 * The expectation is that ".doc" is removed.  any remaining dots
+	 *  and ensuing file formats are then re-expressed as "(xxx format)"
+	 * 
+     * @param $path is the path to the required directory;
+     * @param $suppress suppresses the given string;
+	 * @param $order determines listing order (0 alphabetic, 1 reverse alphabetic)
+     * @return void
+     */
+    public function dir_list($path, $suppress, $order) {
+  /* Get the sorted directory listing into an array, $result; flag error if path is wrong */
+  if (!$result=scandir($path, $order)) echo("<p class=\"indent\">Error: wrong directory path!\n</p>");
+  /* If that worked OK... */
+
+  else{
+    /* remove the . and .. entries */
+    $sorted_dirlist = array_diff($result, array('.','..'));
+    /* $dirsize gets the size of the directory listing */
+    $dirsize = count($sorted_dirlist);
+    /* If there's no other entries, give a suitable message */
+    if ($dirsize<1) echo("    <p>None found</p>\n");
+    /* Otherwise... */
+    else {
+        /* This is a kludge to sort out the removed entries. It ought to be sorted properly */
+        $start = 2 - ($order * 2);
+        /* Select the next directory item */
+        for ($i=$start; $i<=(count($sorted_dirlist) + $start); $i++) {
+        /* Change "-" to space */
+        $next = str_replace("-", " ", $sorted_dirlist[$i]);
+
+        /* Change "_" to space */
+        $next = str_replace("_", " ", $next);
+        /* Remove $suppress */
+        $next = str_replace($suppress, "", $next);
+        /* change ".xxx" to " (xxx format)" */
+        if (strpos($next, ".")){
+          $next = strstr($next, ".", TRUE)." ( ".strstr($next, ".", FALSE)." format)";
+        }
+        /* Now print it out */
+        echo("    <p><a href=\"".$path."/".$sorted_dirlist[$i]."\">".$next."</a></p>\n");
+      }
+    }
+  }
+}
+
+
+    /**
      * HTMLstreamBottom() streams all the code necessary for the bottom of our boilerplate HTML page
      * 
      * @param void

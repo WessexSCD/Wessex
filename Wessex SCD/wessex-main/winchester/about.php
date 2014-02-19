@@ -1,12 +1,12 @@
 <?php
 /**
- * template.php is the template page for our new (version 2) wessex web pages.
+ * about.php is the about page for our new (version 2) Winchester web pages.
  *
  * It calls our class, webpage, sets the title for our page, sets the page content,
  * & streams the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 15-02-2014, 23:34h
+ * @version 18-02-2014, 19:27h
  * @copyright 2014 Wessex SCD
  */
 
@@ -36,16 +36,27 @@
 ?>
        <!-- The main page content starts here -->
        
-        <!-- The next line inserts the Two Dancers graphic on the page.  Comment it out if 
-            you don't want it displayed -->
+       <!-- The next line inserts the Two Dancers graphic on the page.  Comment it out if 
+             you don't want it displayed -->
        <?php $page->insertGraphic("dancers"); ?>
        
-       <p>This is the template page...</p>
+       <h2>About Scottish Country Dancing</h2>
+       <p>We are members of the Winchester Branch of the RSCDS, which stands for the Royal 
+       Scottish Country Dance Society. There are many Branches and affiliated groups worldwide. 
+       The Scottish Country Dance Society was formed in 1923 but the Royal title was bestowed 
+       by King George VI in 1951. The Queen is a keen dancer herself as was her late mother, 
+       the Queen Mother.</p>
 
-        <!-- The next line inserts the Thistle graphic on the page.  Uncomment it if 
-            you want it displayed -->
-       <?php //$page->insertGraphic("thistle"); ?>
-       
+  <!-- ?php insertGraphic("thistle"); ? -->
+
+       <p>Our particular Branch was formed over fifty years ago. We run many events throughout 
+       the year, some strictly for dancers and others for anyone who wants to try Scottish 
+       Country Dancing as a hobby. You do not have to be Scottish to join.</p>
+
+       <p>There are clubs in almost every country in the world so we take our dancing shoes 
+       with us when we are travelling. It is a great way to make friends and also keeps you 
+       fit. You are also guaranteed to have a good laugh too - it is such good fun.</p>
+
 <?php
   /* The next three lines display a list of useful links. Uncomment them if you want them to display */
   /* echo("      <h2>Links</h2>\n      <p></p>\n      <ul class=\"links\">");

@@ -99,7 +99,8 @@ article{padding:0em 1em 1em 1em;}
 article h2{color: green; font-size:1.5em;margin-left:0;}
 article p{margin:0 2em 1em 2em;}
 article table{margin:0 2em 1em 2em;}
-article table td{padding:0.2em 0em 0.2em 1em;}
+article table td{padding:0.2em 0em 0.2em 1em;vertical-align:top;}
+article table td.right{text-align:right;}
 figure{text-align:center;}
 iframe.map{width:80%; height:500px;/*frameborder:0; scrolling:no; marginheight:0; marginwidth:0;*/}
 
@@ -160,6 +161,7 @@ section
   header h1 {color:black; font-size:2em; margin-top:0.65em; margin-bottom:0em;}
   img.picWideRight {margin-top:3em;}
   iframe.map{width:95%; height:300px;}
+  article table{margin-left:0;}
   
   footer
   {
@@ -185,6 +187,7 @@ section
   }
 
   header{border-radius:0px 10px 0px 0px;}
+  article table{margin-left:0;}
   
   iframe.map{width:95%; height:350px;}
 

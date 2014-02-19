@@ -19,8 +19,8 @@
  * Then we display the resulting page.
  * 
  * @author Donald MacKay and David Argles <wessex.scd@gmail.com>
- * @version 23-12-2013, 15:36h
- * @copyright 2013 Wessex SCD
+ * @version 19-02-2014, 13:56h
+ * @copyright 2014 Wessex SCD
  */
 
   /* First, we ought to set the recipient for any emails.
@@ -142,11 +142,10 @@
   }
 
   /* Is the visitor asking for "favicon.ico"? For now, we're not intending to provide one*/
-  if ($requester == "/favicon.ico")
-  {
-    $sendemail = FALSE;
-  }
+  if ($requester == "/favicon.ico") $sendemail = FALSE;
 
+  /* Don't respond to blacklisted sites */
+  if (strpos($remoteHost, "wise-guys.nl")) $sendemail = FALSE;
   
   /* The following section sends an email =if= there really looks to be a broken link that 
       we need to know about.
