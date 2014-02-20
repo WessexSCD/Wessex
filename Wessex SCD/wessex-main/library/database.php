@@ -8,7 +8,7 @@
  * @version 14-02-2014, 21:03h
  * @copyright 2014 Wessex SCD
  */
-$version = "14-02-2014, 21:03h";
+$version = "20-02-2014, 09:16h";
   /**
    * database provides a basic database class for our website
    *
@@ -40,13 +40,15 @@ $version = "14-02-2014, 21:03h";
      */
     public $result;
 
-    public function __construct()
+    public function __construct($path)
     {
       /* First, we'd better check that the ini file is there */
-      if(parse_ini_file("library/database.ini",true))
+      $inifile = $path."library/database.ini";
+	  //echo($path.$inifile);
+      if(parse_ini_file($inifile,true))
       {
       	/* If it is, read the file in as an object */
-        $iniFile = (object) parse_ini_file("library/database.ini",true);
+        $iniFile = (object) parse_ini_file($inifile,true);
 /*echo("<pre>");
 print_r($iniFile);
 echo("</pre>");*/
@@ -59,6 +61,16 @@ echo("</pre>");*/
       return;
     }
     
+    /**
+	 * query($query) provides a method for us to make an SQL query to the database
+	 * 
+	 * It makes a connection to our database, submits the query, and records the 
+	 * result, or the error message if it fails, in $database->result.  It then 
+	 * closes the connection and returns.
+	 * 
+	 * @param $query is the query in MySQL syntax
+	 * @return There is no return value; the result can be found in $database->result
+	 */
 	public function query($query)
     {
       $mysqli = new mysqli($this->server, $this->user, $this->pwd, $this->db);
@@ -71,6 +83,37 @@ echo("</pre>");*/
 	  else($this->result = $mysqli->error/*"Database query failed!\n"*/);
 	  $mysqli->close();
 	  return;
+	}
+
+    /**
+	 * displayDances($club) provides a method for us to display dances listed in 
+	 * the database for a specific club
+	 * 
+	 * It makes a connection to our database, submits the relevant query, and then 
+	 * streams the necessary HTML to list the dances in a table.  It then closes 
+	 * the connection and returns.
+	 * 
+	 * @param $club is the name of the club (lower case)
+	 * @return void
+	 */
+	public function displayDances($club)
+    {
+      $this->query("SELECT * FROM  dances, bands WHERE dances.bands_idband = bands.idband");
+?>
+  	  <table>
+	  	<tr><th>Date</th><th>Dance</th><th>Venue</th></tr>
+	  	<?php
+	  	  $today = date('l jS M Y');
+	  	  while ($row = $this->result->fetch_object()) 
+		  {
+		  	if(strtotime($row->date) >= strtotime($today)) 
+		  	{
+		  	  printf("<tr><td>$row->date<br />$row->dstartTime - $row->dendTime</td><td>$row->title<br /><a href=$row->url>$row->name</a></td><td>$row->bname</td></tr>");
+			}
+		  }
+	  	?>
+	  </table>
+<?php
 	}
   }
 /**---------------------------------------------

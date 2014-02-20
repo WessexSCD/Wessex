@@ -1,19 +1,19 @@
 <?php
 /**
- * template.php is the template page for our new (version 2) wessex web pages.
+ * programme.php is the programmes page for our new (version 2) Winchester web pages.
  *
  * It calls our class, webpage, sets the title for our page, sets the page content,
  * & streams the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 15-02-2014, 23:34h
+ * @version 20-02-2014, 09:06h
  * @copyright 2014 Wessex SCD
  */
 
   /* The following line makes the server display error messages.
    * You may uncomment it during development, but don't forget to comment it 
    * out again when the page goes live! */
-  //ini_set("display_errors", 1);
+  ini_set("display_errors", 1);
 
   /* The next two lines bring in the webpage class and create a new instance.
    * Don't change these lines! */
@@ -24,8 +24,8 @@
    * to bring in the database class and create a new instance.  It must be done 
    * -before- we start streaming the HTML.
    * Don't change these lines! */
-  //require("../library/database.php");
-  //$database = new database($page->rootpath);
+  require("../library/database.php");
+  $database = new database($page->rootpath);
   
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
@@ -40,7 +40,10 @@
             you don't want it displayed -->
        <?php $page->insertGraphic("dancers"); ?>
        
-       <p>This is the template page...</p>
+       <h2>2014 Programme</h2>
+       <p>Our dances for the rest of 2014 are listed below:</p>
+       
+       <?php $database->displayDances("winchester"); ?>
 
         <!-- The next line inserts the Thistle graphic on the page.  Uncomment it if 
             you want it displayed -->

@@ -22,7 +22,7 @@
    * It must be done -before- we start streaming the HTML.
    * Don't change these lines! */
   require("library/database.php");
-  $database = new database();
+  $database = new database($page->rootpath);
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
   /* The next line inserts the Two Dancers graphic on the page.  Comment it out if 

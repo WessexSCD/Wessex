@@ -35,7 +35,7 @@ $version = "17-02-2014, 16:27h";
     /**
      * Defines how to navigate to the root directory
      */
-    protected $rootpath = "../";
+    public $rootpath = "../";
     /**
      * Defines the CSS file to be used 
      */
