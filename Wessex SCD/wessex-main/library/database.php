@@ -98,17 +98,29 @@ echo("</pre>");*/
 	 */
 	public function displayDances($club)
     {
-      $this->query("SELECT * FROM  dances, bands WHERE dances.bands_idband = bands.idband");
+      $this->query("SELECT * FROM dances 
+      	    INNER JOIN venues ON dances.venues_idvenues = venues.idvenues
+      	    INNER JOIN clubs ON dances.clubs_idclubs = clubs.idclubs
+      	    INNER JOIN bands ON dances.bands_idband = bands.idband");
 ?>
   	  <table>
-	  	<tr><th>Date</th><th>Dance</th><th>Venue</th></tr>
+	  	<tr><th>Date</th><th>Dance</th></tr>
 	  	<?php
+		  /*echo("<pre>");
+		  print_r($this->result);
+          echo("</pre>");*/	  
+	  	
 	  	  $today = date('l jS M Y');
 	  	  while ($row = $this->result->fetch_object()) 
 		  {
 		  	if(strtotime($row->date) >= strtotime($today)) 
 		  	{
-		  	  printf("<tr><td>$row->date<br />$row->dstartTime - $row->dendTime</td><td>$row->title<br /><a href=$row->url>$row->name</a></td><td>$row->bname</td></tr>");
+		  	  $tidyDate = date_format(date_create($row->date), 'l jS M Y');
+
+		  	  printf("<tr>
+		  	    <td class=\"clubDances\">$tidyDate<br />$row->dstartTime - $row->dendTime</td>
+		  	    <td class=\"clubDances\">$row->title<br />At $row->vname</td>
+		  	    </tr>");
 			}
 		  }
 	  	?>

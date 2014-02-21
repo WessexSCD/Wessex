@@ -32,7 +32,12 @@
 
       <p>This is the dance page...</p>
      	<?php 
-      	  $database->query("SELECT * FROM  dances, bands WHERE dances.bands_idband = bands.idband");
+      	  $database->query("SELECT * FROM dances 
+      	    INNER JOIN venues ON dances.venues_idvenues = venues.idvenues
+      	    INNER JOIN clubs ON dances.clubs_idclubs = clubs.idclubs");
+		  
+		  /* SELECT * FROM  dances, bands WHERE dances.bands_idband = bands.idband */
+		  /*  JOIN clubs_idclubs ON clubs.idclubs */
 		  
 		  /*echo("<pre>");
 		  print_r($database->result);
@@ -47,7 +52,11 @@
 		  {
 		  	if(strtotime($row->date) >= strtotime($today)) 
 		  	{
-		  	  printf("<tr><td>$row->date<br />$row->dstartTime - $row->dendTime</td><td>$row->title<br /><a href=$row->url>$row->name</a></td><td>$row->bname</td></tr>");
+		  	  printf("<tr>
+		  	    <td>$row->date<br />$row->dstartTime - $row->dendTime</td>
+		  	    <td><a href=$row->url>$row->name</a><br />$row->title</td>
+		  	    <td>$row->vname</td>
+		  	    </tr>");
 			}
 		  }
 	  	?>
