@@ -100,7 +100,7 @@ article h2{color: green; font-size:1.5em;margin-left:0;}
 article p{margin:0 2em 1em 2em;}
 article table{margin:0 2em 1em 2em;}
 article table td{padding:0.2em 0em 0.2em 1em;vertical-align:top;}
-article table td.clubDances{width:13em;}
+article table td.clubDances{padding:0.2em 1em 0.2em 0em;}
 article table td.right{text-align:right;}
 figure{text-align:center;}
 iframe.map{width:80%; height:500px;/*frameborder:0; scrolling:no; marginheight:0; marginwidth:0;*/}
@@ -115,7 +115,7 @@ footer
 /**
  * The following section defines attributes specific to narrow screen widths
  */
-@media screen and (max-width:480px)
+@media screen and (max-width:549px)
 {
   body{font-size:small;}
   main
@@ -172,7 +172,7 @@ section
 /**
  * The following section defines attributes specific to intermediate screen widths
  */ 
-@media screen and (min-width:481px) and (max-width:649px)
+@media screen and (min-width:550px) and (max-width:729px)
 {
   main
   {
@@ -206,7 +206,7 @@ section
 /**
  * The following section defines attributes specific to wider screen widths
  */
-@media screen and (min-width:650px)
+@media screen and (min-width:730px)
 {
   main
   {

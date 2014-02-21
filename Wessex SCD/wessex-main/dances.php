@@ -27,14 +27,15 @@
   $page->HTMLstreamTop();
   /* The next line inserts the Two Dancers graphic on the page.  Comment it out if 
    * you don't want it displayed */
-  $page->insertGraphic("dancers");
+  //$page->insertGraphic("dancers");
 ?>
 
       <p>This is the dance page...</p>
      	<?php 
       	  $database->query("SELECT * FROM dances 
       	    INNER JOIN venues ON dances.venues_idvenues = venues.idvenues
-      	    INNER JOIN clubs ON dances.clubs_idclubs = clubs.idclubs");
+      	    INNER JOIN clubs ON dances.clubs_idclubs = clubs.idclubs
+      	    ORDER BY dances.date");
 		  
 		  /* SELECT * FROM  dances, bands WHERE dances.bands_idband = bands.idband */
 		  /*  JOIN clubs_idclubs ON clubs.idclubs */
@@ -52,8 +53,12 @@
 		  {
 		  	if(strtotime($row->date) >= strtotime($today)) 
 		  	{
+		  	  $tidyDate = date_format(date_create($row->date), 'l jS M Y');
+			  $tidyStartTime = strftime('%l.%M%P',strtotime($row->dstartTime));
+			  $tidyEndTime = strftime('%l.%M%P',strtotime($row->dendTime));
+
 		  	  printf("<tr>
-		  	    <td>$row->date<br />$row->dstartTime - $row->dendTime</td>
+		  	    <td class=\"clubDances\">$tidyDate<br />&nbsp;&nbsp;$tidyStartTime - $tidyEndTime</td>
 		  	    <td><a href=$row->url>$row->name</a><br />$row->title</td>
 		  	    <td>$row->vname</td>
 		  	    </tr>");

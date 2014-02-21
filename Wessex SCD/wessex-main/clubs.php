@@ -33,7 +33,8 @@
       <p>This is the clubs page...</p>
 
       	<?php 
-      	  $database->query("SELECT * FROM  clubs, contacts WHERE clubs.contacts_idcontacts = contacts.idcontacts");
+      	  $database->query("SELECT * FROM  clubs, contacts WHERE clubs.contacts_idcontacts = contacts.idcontacts
+      	    ORDER BY clubs.day");
 		  
 		  /*echo("<pre>");
 		  print_r($database->result);

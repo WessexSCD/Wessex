@@ -101,10 +101,12 @@ echo("</pre>");*/
       $this->query("SELECT * FROM dances 
       	    INNER JOIN venues ON dances.venues_idvenues = venues.idvenues
       	    INNER JOIN clubs ON dances.clubs_idclubs = clubs.idclubs
-      	    INNER JOIN bands ON dances.bands_idband = bands.idband");
+      	    INNER JOIN bands ON dances.bands_idband = bands.idband
+      	    WHERE clubs.url = \"".$club."\"
+      	    ORDER BY dances.date");
 ?>
   	  <table>
-	  	<tr><th>Date</th><th>Dance</th></tr>
+	  	<tr><th>Date</th><th>Event</th></tr>
 	  	<?php
 		  /*echo("<pre>");
 		  print_r($this->result);
@@ -116,10 +118,12 @@ echo("</pre>");*/
 		  	if(strtotime($row->date) >= strtotime($today)) 
 		  	{
 		  	  $tidyDate = date_format(date_create($row->date), 'l jS M Y');
+			  $tidyStartTime = strftime('%l.%M%P',strtotime($row->dstartTime));
+			  $tidyEndTime = strftime('%l.%M%P',strtotime($row->dendTime));
 
 		  	  printf("<tr>
-		  	    <td class=\"clubDances\">$tidyDate<br />$row->dstartTime - $row->dendTime</td>
-		  	    <td class=\"clubDances\">$row->title<br />At $row->vname</td>
+		  	    <td class=\"clubDances\">$tidyDate<br />&nbsp;&nbsp;$tidyStartTime - $tidyEndTime</td>
+		  	    <td class=\"clubDances\">$row->title<br />at $row->vname</td>
 		  	    </tr>");
 			}
 		  }

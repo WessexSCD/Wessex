@@ -38,10 +38,10 @@
        
         <!-- The next line inserts the Two Dancers graphic on the page.  Comment it out if 
             you don't want it displayed -->
-       <?php $page->insertGraphic("dancers"); ?>
+       <?php //$page->insertGraphic("dancers"); ?>
        
        <h2>2014 Programme</h2>
-       <p>Our dances for the rest of 2014 are listed below:</p>
+       <p>Our programme for the rest of 2014 is given below:</p>
        
        <?php $database->displayDances("winchester"); ?>
 
