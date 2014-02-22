@@ -6,7 +6,7 @@
  * & streams the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 07-02-2014, 20:33h
+ * @version 22-02-2014, 17:01h
  * @copyright 2014 Wessex SCD
  */
 
@@ -23,23 +23,21 @@
 ?>
       <?php  $page->insertGraphic("dancers"); ?>
 
-      <p>Welcome. All the groups on the Wessex Scottish Country Dancing website are listed below. 
-      	Please click on the links for the pages of the groups in which you are interested.</p>
+      <p>Welcome. All the groups on the Wessex Scottish Country Dancing website are listed on
+      	the <a href="clubs.php">clubs page</a>.   Please click on the links for the pages of 
+      	the groups in which you are interested.</p>
       
 	  <p>On these pages you will find the details of what each group offers, whether it's basic 
 	  	tuition for newcomers, classes for adults and/or children, ceilidh dancing or social 
 	  	evenings. If you'd like to dance with a group, please get in touch with the person listed 
 	  	as the group contact to check that the information on classes and events is right up to 
-	  	date. You may like to look at the list of Local Dances as well.</p>
+	  	date. You may like to look at the <a href="dances.php">list of Local Dances</a> as well.</p>
 
 	  <p>If you dance in the Wessex region and would like information about your group's 
 	  	activities, plus maps and photos, to be displayed on the Wessex Scottish Country Dancing 
-	  	webpages, please email: wessex.scd@gmail.com for information on setting up etc.</p>
+	  	webpages, please email <a href="wessex.scd@gmail.com">wessex.scd@gmail.com</a> for 
+	  	information on setting up etc.</p>
 	  	
-	  <h3>Random Extra Heading</h3>
-	  
-	  <p>This is added in in order to get some extra text at the end and so that I can test out the 
-	  	&lt;h3&gt; heading.</p>
 	  	
 <?php
   /* The next line displays a "Return to Top" button at the foot of the page

@@ -30,15 +30,31 @@
   $page->insertGraphic("dancers");
 ?>
 
-      <p>This is the clubs page...</p>
+        <h3>Table of Wessex Clubs</h3>
+        <p>All the groups on the Wessex Scottish Country Dancing website are listed in the 
+        	table below, or if you prefer, you can see the <a href="#map">club locations marked on a 
+        	map</a>.  In either case, please click on the links for the pages of the groups in which 
+        	you are interested.</p>
+        	
+        <p>On these pages you will find the details of what each group offers, whether it's basic 
+        	tuition for newcomers, classes for adults and/or children, ceilidh dancing or social 
+        	evenings. If you'd like to dance with a group, please get in touch with the person 
+        	listed as the group contact to check that the information on classes and events is 
+        	right up to date. You may like to look at the list of Local Dances as well.</p>
+        
+        <p>If you dance in the Wessex region and would like information about your group's 
+        	activities, plus maps and photos, to be displayed on the Wessex Scottish Country 
+        	Dancing webpages, please email <a href="mailto:wessex.scd@gmail.com">wessex.scd@gmail.com</a> 
+        	for information on setting up etc.</p>
 
       	<?php 
-      	  $database->query("SELECT * FROM  clubs, contacts WHERE clubs.contacts_idcontacts = contacts.idcontacts
+      	  $database->query("SELECT * FROM clubs 
+      	    INNER JOIN contacts ON clubs.contacts_idcontacts = contacts.idcontacts
       	    ORDER BY clubs.day");
-		  
+		  /* SELECT * FROM  clubs, contacts WHERE clubs.contacts_idcontacts = contacts.idcontacts */
 		  /*echo("<pre>");
 		  print_r($database->result);
-          echo("</pre>");*/		  
+          echo("</pre>");*/	  
       	?>
 	  	
 	  <table>
@@ -48,15 +64,28 @@
 		  {
 		  	if($row->name != "To be confirmed") 
 		  	{
-		  	  printf("<tr><td><a href=$row->url>$row->name</a></td><td>$row->day<br />$row->startTime - $row->endTime</td><td>$row->cname</td></tr>");
+		  /*echo("<pre>");
+		  print_r($row);
+          echo("</pre>");*/	  
+			  $tidyStartTime = strftime('%l.%M%P',strtotime($row->startTime));
+			  $tidyEndTime = strftime('%l.%M%P',strtotime($row->endTime));
+		  	  printf("<tr><td><a href=$row->url>$row->name</a></td><td>$row->day<br />
+		  	  <i>$tidyStartTime - $tidyEndTime</i></td><td>$row->cname<br /><i>$row->telephone</i></td></tr>");
 			}
 		  }
 	  	?>
 	  </table>
+	  
+        <h3><a name="map">Map of Club Locations</a></h3>
+        <p>Click on the red pins in the map below to see the name and location of the group.</p>
+	  
+	  <figure>
+	    <iframe class="map" src="https://mapsengine.google.com/map/u/2/embed?mid=z79UgzAnPKII.k1GQYf_R-Zo0"></iframe>
+	  </figure>
 <?php
   /* The next line displays a "Return to Top" button at the foot of the page
    * Uncomment it if you want it to display */
-  // echo("        <a class=\"doubleBottom\" href=\"".$_SERVER['PHP_SELF']."\">Return to top</a>\n");  /* The final line streams the final html.  Don't change this. */
+  echo("        <a class=\"doubleBottom\" href=\"".$_SERVER['PHP_SELF']."\">Return to top</a>\n");  /* The final line streams the final html.  Don't change this. */
   /* The final line streams the final html.  Don't change this. */
   $page->HTMLstreamBottom();
 /**---------------------------------------------
