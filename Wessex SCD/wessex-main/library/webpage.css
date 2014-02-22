@@ -111,6 +111,7 @@ footer
   font-style:italic;
   color:gray;
 }
+footer p.small{font-size:small;}
 
 /**
  * The following section defines attributes specific to narrow screen widths

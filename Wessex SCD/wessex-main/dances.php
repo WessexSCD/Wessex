@@ -6,13 +6,13 @@
  * & streams the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 08-02-2014, 00:31h
+ * @version 22-02-2014, 23:27h
  * @copyright 2014 Wessex SCD
  */
 
   /* The following line makes the server display error messages.
      Uncomment it during development. */
-  ini_set("display_errors", 1);
+  //ini_set("display_errors", 1);
 
   /* The next two lines bring in the webpage class and create a new instance.
      Don't change these lines! */
@@ -30,7 +30,7 @@
   //$page->insertGraphic("dancers");
 ?>
 
-      <p>This is the dance page...</p>
+      <p>The following is a list of dances coming up in the Wessex Area:</p>
      	<?php 
       	  $database->query("SELECT * FROM dances 
       	    INNER JOIN venues ON dances.venues_idvenues = venues.idvenues

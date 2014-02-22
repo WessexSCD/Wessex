@@ -331,7 +331,7 @@ echo("</pre>");*/
           if(strstr($_SERVER['PHP_SELF'], "index.php", TRUE))
           {
             echo("<!-- If we're on index.php, display the W3 consortium validation icons -->\n          ");
-            echo("<p>\n        ");
+            echo("<p class='small'>\n        ");
             echo("    <a href=\"http://validator.w3.org/check?uri=referer\">\n          ");
             echo("    <img src=\"".$this->rootpath."graphics/HTML5.png\"\n              ");
             echo("alt=\"Valid HTML5!\" height=\"31\" width=\"88\" />\n          ");
@@ -340,12 +340,37 @@ echo("</pre>");*/
             echo("    <img style=\"border:0;width:88px;height:31px\"\n              ");
             echo("src=\"".$this->rootpath."graphics/CSS3.png\" ");
             echo("alt=\"Valid CSS3!\" />\n          ");
-            echo("  </a>\n          ");
+            echo("  </a>&nbsp; &nbsp;This site is HTML5 &amp; CSS3 compliant and mobile-friendly.\n          ");
             echo("</p>\n");
+			if(!$this->rootpath=="../")
+			{
+			  echo("<p class='small'>You are visitor<!-- Gostats.com web hit code. Please do not change this-->
+               <script type='text/javascript'>var go_mem=\"scdwessex\";</script>
+               <script src=\"http://c2.gostats.com/go.js\" type=\"text/javascript\"></script>
+               <noscript><a href=\"http://c2.gostats.com/gogi/viewstats.pl?mn=scdwessex\" target=\"_top\">
+               <img alt=\"hit counter\" src=\"http://c2.gostats.com/gogi/count.pl?mn=scdwessex\" 
+               border=\"0\"></a></noscript>to this site.&nbsp;
+               <a href=\"http://gostats.com\">
+               <font size=\"-0\"><font size=\"1\">Get a GoStats hit counter</font></font></a>
+               <!-- End of Gostats.com web hit code --></p>	  
+	           <p class='small'>Please send any comments on this site to: <a href=\"mailto:wessex.scd@gmail.com\">
+	           wessex.scd@gmail.com</a></p>");
+			}
           }
-                else echo("<p>&nbsp;</p>");
+          //else echo("<p>&nbsp;</p>");
         ?>
-          <?php echo("<p>&copy;".$this->copy."</p>\n"); ?>
+          <?php 
+            echo("<p>&copy;".$this->copy."</p>\n"); 
+          	/*if(strstr($_SERVER['PHP_SELF'], "index.php", TRUE))
+            {
+          	  echo("<hr />\n<p class='small'>This site validates as HTML5 and CSS3 compliant.  It should adapt to display 
+			  satisfactorily on mobile devices (no, you don't need to 'download the app' or switch 
+			  to a mobile site).  It should even work up to a point in older versions of Internet 
+			  Explorer!  But if you do have any problems, please let us know by emailing 
+			  <a href=\"mailto:wessex.scd@gmail.com\">mailto:wessex.scd@gmail.com</a> so we can see 
+			  if we can fix it.</p>");
+			}*/
+		  ?>
         </footer>
         <!-- Now we just tidy everything up at the foot of the page. -->
       </section>
