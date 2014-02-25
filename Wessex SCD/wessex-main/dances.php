@@ -62,12 +62,15 @@
 		  print_r($row);
           echo("</pre>");*/
 		  	  
-		  	  printf("<tr>
+		  	  if($row->dance) 
+		  	  {
+		  	  	printf("<tr>
 		  	    <td class=\"clubDances\">$tidyDate<br />&nbsp;&nbsp;$tidyStartTime - $tidyEndTime</td>
 		  	    <td><a href=$row->url>$row->name</a><br />$row->title<br />");
-		  	  if($row->flier != "") printf("<a href='$row->url/$row->flier'>Dance flier</a>");
-			  printf("</td><td>$row->vname<br />Cost: &pound;$row->cost<br />Contact: $row->telephone</td>
+		  	    if($row->flier != "") printf("<a href='$row->url/$row->flier'>Dance flier</a>");
+			    printf("</td><td>$row->vname<br />Cost: &pound;$row->cost<br />Contact: $row->telephone</td>
 		  	    </tr>");
+			  }
 			}
 		  }
 	  	?>

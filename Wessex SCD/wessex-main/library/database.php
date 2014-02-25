@@ -5,10 +5,10 @@
  * It defines a class, database, which allows us to access a MySQL database.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 25-02-2014, 12:57h
+ * @version 25-02-2014, 15:23h
  * @copyright 2014 Wessex SCD
  */
-$version = "25-02-2014, 12:57h";
+$version = "25-02-2014, 15:23h";
   /**
    * database provides a basic database class for our website
    *
@@ -123,12 +123,16 @@ echo("</pre>");*/
 
 		  /*echo("<pre>");
 		  print_r($row);
-          echo("</pre>");  */
+          echo("</pre>");*/
 
-              printf("<tr>
+              if($row->dance) printf("<tr>
 		  	    <td class=\"clubDances\">$tidyDate<br />&nbsp;&nbsp;$tidyStartTime - $tidyEndTime</td>
 		  	    <td class=\"clubDances\">$row->title<br />at $row->vname<br />
 		  	      <a href='$row->flier'>Dance flier</a></td>
+		  	  </tr>");
+			  else printf("<tr>
+		  	    <td class=\"clubDances\">$tidyDate</td>
+		  	    <td class=\"clubDances\">$row->title</td>
 		  	  </tr>");
 			}
 		  }

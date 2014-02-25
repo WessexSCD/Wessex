@@ -66,7 +66,7 @@
 		  	{
 		  /*echo("<pre>");
 		  print_r($row);
-          echo("</pre>");*/	  
+          echo("</pre>");*/  
 			  $tidyStartTime = strftime('%l.%M%P',strtotime($row->startTime));
 			  $tidyEndTime = strftime('%l.%M%P',strtotime($row->endTime));
 		  	  printf("<tr><td><a href=$row->url>$row->name</a></td><td>$row->day<br />
