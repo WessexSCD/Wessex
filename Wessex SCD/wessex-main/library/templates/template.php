@@ -42,7 +42,13 @@
        
        <p>This is the template page...</p>
 
-        <!-- The next line inserts the Thistle graphic on the page.  Uncomment it if 
+       <?php 
+         /* The next line displays a gallery of pictures.  Uncomment it if you want
+             BUT make sure you read the howto first!  See the documentation folder */
+         // $page->displayMedia("gallery");
+       ?>
+
+       <!-- The next line inserts the Thistle graphic on the page.  Uncomment it if 
             you want it displayed -->
        <?php //$page->insertGraphic("thistle"); ?>
        
