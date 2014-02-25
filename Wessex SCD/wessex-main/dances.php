@@ -6,7 +6,7 @@
  * & streams the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 22-02-2014, 23:27h
+ * @version 25-02-2014, 13:16h
  * @copyright 2014 Wessex SCD
  */
 
@@ -35,6 +35,7 @@
       	  $database->query("SELECT * FROM dances 
       	    INNER JOIN venues ON dances.venues_idvenues = venues.idvenues
       	    INNER JOIN clubs ON dances.clubs_idclubs = clubs.idclubs
+      	    INNER JOIN contacts ON dances.contacts_idcontacts = contacts.idcontacts
       	    ORDER BY dances.date");
 		  
 		  /* SELECT * FROM  dances, bands WHERE dances.bands_idband = bands.idband */
@@ -57,10 +58,15 @@
 			  $tidyStartTime = strftime('%l.%M%P',strtotime($row->dstartTime));
 			  $tidyEndTime = strftime('%l.%M%P',strtotime($row->dendTime));
 
+		  /*echo("<pre>");
+		  print_r($row);
+          echo("</pre>");*/
+		  	  
 		  	  printf("<tr>
 		  	    <td class=\"clubDances\">$tidyDate<br />&nbsp;&nbsp;$tidyStartTime - $tidyEndTime</td>
-		  	    <td><a href=$row->url>$row->name</a><br />$row->title</td>
-		  	    <td>$row->vname</td>
+		  	    <td><a href=$row->url>$row->name</a><br />$row->title<br />");
+		  	  if($row->flier != "") printf("<a href='$row->url/$row->flier'>Dance flier</a>");
+			  printf("</td><td>$row->vname<br />Cost: &pound;$row->cost<br />Contact: $row->telephone</td>
 		  	    </tr>");
 			}
 		  }

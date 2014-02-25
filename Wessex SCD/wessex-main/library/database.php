@@ -5,10 +5,10 @@
  * It defines a class, database, which allows us to access a MySQL database.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 14-02-2014, 21:03h
+ * @version 25-02-2014, 12:57h
  * @copyright 2014 Wessex SCD
  */
-$version = "20-02-2014, 09:16h";
+$version = "25-02-2014, 12:57h";
   /**
    * database provides a basic database class for our website
    *
@@ -104,13 +104,13 @@ echo("</pre>");*/
       	    INNER JOIN bands ON dances.bands_idband = bands.idband
       	    WHERE clubs.url = \"".$club."\"
       	    ORDER BY dances.date");
+		  /*echo("<pre>");
+		  print_r($this->result);
+          echo("</pre>");*/  
 ?>
   	  <table>
 	  	<tr><th>Date</th><th>Event</th></tr>
 	  	<?php
-		  /*echo("<pre>");
-		  print_r($this->result);
-          echo("</pre>");*/	  
 	  	
 	  	  $today = date('l jS M Y');
 	  	  while ($row = $this->result->fetch_object()) 
@@ -121,10 +121,15 @@ echo("</pre>");*/
 			  $tidyStartTime = strftime('%l.%M%P',strtotime($row->dstartTime));
 			  $tidyEndTime = strftime('%l.%M%P',strtotime($row->dendTime));
 
-		  	  printf("<tr>
+		  /*echo("<pre>");
+		  print_r($row);
+          echo("</pre>");  */
+
+              printf("<tr>
 		  	    <td class=\"clubDances\">$tidyDate<br />&nbsp;&nbsp;$tidyStartTime - $tidyEndTime</td>
-		  	    <td class=\"clubDances\">$row->title<br />at $row->vname</td>
-		  	    </tr>");
+		  	    <td class=\"clubDances\">$row->title<br />at $row->vname<br />
+		  	      <a href='$row->flier'>Dance flier</a></td>
+		  	  </tr>");
 			}
 		  }
 	  	?>
