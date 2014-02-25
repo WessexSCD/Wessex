@@ -41,11 +41,12 @@ main
   margin-bottom:0em; 
 }
 
-h1, h2, h3, h4{font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
+h1, h2, h3, h4, h5{font-family:"Arial", "ComicSans", "Verdana", sans-serif;}
 h1{color:black; font-size:2em; margin-top:0.65em; margin-bottom:0.65em;}
 h2{font-weight: bold; font-size: 1.25em; font-family: sans-serif; margin-left: 1.5em;}
 h3{color:green; font-size:1.25em; margin-top:1.1em; margin-bottom:0.65em;}
 h4{color:green; font-size:1em; padding-left:0em; margin-top:1.5em;text-align:center;}
+h5{font-size: 1.2em;}
 
 p{line-height:1.2em;}
 p.centre{text-align:center;}
@@ -112,6 +113,50 @@ footer
   color:gray;
 }
 footer p.small{font-size:small;}
+/**
+ * 	The next bit refers only to the gallery
+ */
+div.img
+  {
+  margin:0.5em;
+  border:none; /*1px solid #0000ff */
+  background-color:  #ccc; /* Same as div.galleryIndent */
+  height:auto;
+  width:auto;
+  float:left;
+  text-align:center;
+  }
+div.img img
+  {
+  display:inline;
+  margin:3px;
+  border:none; /* 1px solid #ffffff; */
+  border-radius:     0.2em 0.2em 0.2em 0.2em;
+  }
+div.img a:hover img{opacity:0.4;}
+div.desc
+  {
+  text-align:center;
+  font-weight:normal;
+  width:120px;
+  height:auto; /* 1.6em */ /*4em*/;
+  margin:2px;
+  }
+div.galleryIndent
+  {
+  float:             left;
+  margin-top:        1em;
+  margin-bottom:     3em;
+  width:             100%; /*700px;*/
+  /*margin-left:       6%;*/
+  background-color:  #ccc;
+  box-shadow:        0em 0.6em 1.2em rgba(0,0,0,0.6);
+  border-radius:     0.6em 0.6em 0.6em 0.6em;
+  }
+div.galleryPadLeft{width:0em; float:left;}
+img.gallery{width:100%;height:auto;}
+p.icentre {font-style: italic;}
+p.clear {clear: both;}
 
 /**
  * The following section defines attributes specific to narrow screen widths
