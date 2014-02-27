@@ -5,10 +5,10 @@
  * It defines a class, database, which allows us to access a MySQL database.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 25-02-2014, 15:23h
+ * @version 26-02-2014, 19:45h
  * @copyright 2014 Wessex SCD
  */
-$version = "25-02-2014, 15:23h";
+$version = "26-02-2014, 19:45h";
   /**
    * database provides a basic database class for our website
    *
@@ -40,6 +40,11 @@ $version = "25-02-2014, 15:23h";
      */
     public $result;
 
+    /**
+     * Holds any error message from the latest query
+     */
+    public $error;
+
     public function __construct($path)
     {
       /* First, we'd better check that the ini file is there */
@@ -69,7 +74,8 @@ echo("</pre>");*/
 	 * closes the connection and returns.
 	 * 
 	 * @param $query is the query in MySQL syntax
-	 * @return There is no return value; the result can be found in $database->result
+	 * @return database->result contains the result of the query
+	 * @return database->error contains any error message 
 	 */
 	public function query($query)
     {
@@ -79,9 +85,65 @@ echo("</pre>");*/
 	  	printf("Failed to connect to database: %s\n", mysqli_connect_error());
 		exit();
 	  }
-	  if($this->result = $mysqli->query($query));
-	  else($this->result = $mysqli->error/*"Database query failed!\n"*/);
+	  $this->result = $mysqli->query($query);
+	  $this->error = $mysqli->error; /*"Database query failed!\n"*/
 	  $mysqli->close();
+	  return;
+	}
+
+    /**
+	 * dumpCSV() provides a method for us to dump the contents of our database as a CSV
+	 * 
+	 * It gets the content of our database and saves it as a set of CSVs, one for each table.
+	 * 
+	 * @param void
+	 * @return void
+	 */
+	public function dumpCSV()
+    {
+	  /* First, let's list the tables */
+      $tables = array ("bands", "venues", "contacts", "clubs", "dances");
+      /* Now, for each table, let's write the csv file */
+	  foreach($tables as $tableName)
+	  {
+        /* We need to get the contents of the table */
+        $this->query("SELECT * FROM $tableName");
+	    if($this->error) echo($this->error);
+		/* Now we need to try and open the relevant csv file */
+        @$file_handle = fopen("db_files/$tableName.csv", "w");
+        if(!$file_handle) echo("<p>Failed to write $tableName.csv</p>");
+        else
+        {
+          /* If it worked, write each row of the table to disc */
+          while ($row = $this->result->fetch_object())
+	      {
+	  	  /*echo("<pre>");
+		  print_r($row);
+          echo("</pre>");*/
+	      if(!fputcsv($file_handle, (array) $row)) echo "Failed to write line ($row)";
+		  }
+	    }
+  	    /* Don't forget to close the file again afterwards */
+  	    fclose($file_handle);
+		echo("<p>File: $tableName.csv written to disc</p>");
+      }
+	  /* Now venues.csv 
+	  $this->query("SELECT * FROM venues");
+	  if($this->error) echo($this->error);
+      @$file_handle = fopen("db_files/venues.csv", "w");
+      if(!$file_handle) echo("<p>Failed to write venues.csv</p>");
+      else
+      {
+        while ($row = mysqli_fetch_array($this->result))
+	    {
+	  	  /*echo("<pre>");
+		  print_r($row);
+          echo("</pre>");
+	      if(!fputcsv($file_handle, $row)) echo "Failed to write line ($row)";
+	    }
+  	    fclose($file_handle);
+		echo("<p>File: venues.csv written to disc</p>");
+      }*/
 	  return;
 	}
 
