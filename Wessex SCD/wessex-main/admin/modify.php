@@ -42,6 +42,29 @@
        
        <h3>Modify Database</h3>
        <p>This page allows us to modify table entries in the Wessex SCD database.</p>
+       
+       <form action="modify.php" method="get">
+       	Select table to modify: <input  type="text" name="tableChoice" list="tables">
+          <?php 
+          	  $database->query("SHOW TABLES");
+	    	  /* We'd better know if there was a problem */
+	    	  if($database->error) echo($database->error);
+              echo("<datalist id=\"tables\">\n");
+			  while ($row = $database->result->fetch_object())
+				foreach($row as $pointer=>$table) echo("            <option value='$table'>\n");
+			  echo("          </datalist>\n");
+          	?>
+        <input name="Confirm choice" type="submit">
+        
+        <?php
+          if(isset($_GET[tableChoice]))$table = $_GET[tableChoice];
+          else $table = "bands";
+		  /*echo"<pre>";
+		  print_r($_GET);
+		  echo"</pre>";*/
+		  echo $table;
+        ?>
+       </form>
 
        <?php 
          //$database->rebuild();

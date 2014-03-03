@@ -276,6 +276,22 @@ echo("</pre>");*/
 	}
 	
     /**
+	 * show($item) does a print_r on the given item
+	 * 
+	 * 
+	 * 
+	 * @param $club is the name of the club (lower case)
+	 * @return void
+	 */
+	public function show($item)
+    {
+    	echo"<pre>";
+    	print_r($item);
+		echo"</pre>";
+		return;
+    }
+	
+    /**
 	 * displayDances($club) provides a method for us to display dances listed in 
 	 * the database for a specific club
 	 * 
