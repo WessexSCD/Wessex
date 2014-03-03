@@ -1,19 +1,19 @@
 <?php
 /**
- * template.php is the template page for our new (version 2) wessex web pages.
+ * modify.php allows us to modify entries in our Wessex SCD database.
  *
  * It calls our class, webpage, sets the title for our page, sets the page content,
  * & streams the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 15-02-2014, 23:34h
+ * @version 03-03-2014, 13:30h
  * @copyright 2014 Wessex SCD
  */
 
   /* The following line makes the server display error messages.
    * You may uncomment it during development, but don't forget to comment it 
    * out again when the page goes live! */
-  //ini_set("display_errors", 1);
+  ini_set("display_errors", 1);
 
   /* The next two lines bring in the webpage class and create a new instance.
    * Don't change these lines! */
@@ -24,8 +24,8 @@
    * to bring in the database class and create a new instance.  It must be done 
    * -before- we start streaming the HTML.
    * Don't change these lines! */
-  //require("../library/database.php");
-  //$database = new database($page->rootpath);
+  require("../library/database.php");
+  $database = new database($page->rootpath);
   
   /* The next line streams the initial html.  Don't change this. */
   $page->HTMLstreamTop();
@@ -38,14 +38,13 @@
        
         <!-- The next line inserts the Two Dancers graphic on the page.  Comment it out if 
             you don't want it displayed -->
-       <?php $page->insertGraphic("dancers"); ?>
+       <?php //$page->insertGraphic("dancers"); ?>
        
-       <p>This is the template page...</p>
+       <h3>Modify Database</h3>
+       <p>This page allows us to modify table entries in the Wessex SCD database.</p>
 
        <?php 
-         /* The next line displays a gallery of pictures.  Uncomment it if you want
-             BUT make sure you read the howto first!  See the documentation folder */
-         // $page->displayMedia("gallery");
+         //$database->rebuild();
        ?>
 
        <!-- The next line inserts the Thistle graphic on the page.  Uncomment it if 
@@ -53,11 +52,6 @@
        <?php //$page->insertGraphic("thistle"); ?>
        
 <?php
-  /* The next three lines display a list of useful links. Uncomment them if you want them to display */
-  /* echo("      <h2>Links</h2>\n      <p></p>\n      <ul class=\"links\">");
-  $page->common_scd_links();
-  echo("      </ul>\n"); */
-  
   /* The next line displays a "Return to Top" button at the foot of the page
    * Uncomment it if you want it to display */
   // echo("        <a class=\"doubleBottom\" href=\"".$_SERVER['PHP_SELF']."\">Return to top</a>\n");  
