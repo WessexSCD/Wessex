@@ -6,7 +6,7 @@
  * & streams the completed boilerplate code.
  * 
  * @author Donald Mackay and David Argles <wessex.scd@gmail.com>
- * @version 03-03-2014, 13:30h
+ * @version 13-03-2014, 00:05h
  * @copyright 2014 Wessex SCD
  */
 
@@ -43,6 +43,7 @@
        <h3>Modify Database</h3>
        <p>This page allows us to modify table entries in the Wessex SCD database.</p>
        
+       <!-- First, we need to ask which table should be modified -->
        <form action="modify.php" method="get">
        	Select table to modify: <input  type="text" name="tableChoice" list="tables">
           <?php 
@@ -54,17 +55,54 @@
 				foreach($row as $pointer=>$table) echo("            <option value='$table'>\n");
 			  echo("          </datalist>\n");
           	?>
-        <input name="Confirm choice" type="submit">
-        
+        <input name="Table choice" value="Select Table" type="submit">
         <?php
           if(isset($_GET[tableChoice]))$table = $_GET[tableChoice];
+          /* Let's make the default table choice "bands" for now */
           else $table = "bands";
-		  /*echo"<pre>";
-		  print_r($_GET);
-		  echo"</pre>";*/
-		  echo $table;
         ?>
+        
        </form>
+
+      <?php $rownum=2; ?>
+       <p>Current table: <?php echo $table; ?> &nbsp; Current entry: <?php echo $rownum; ?></p>
+
+      	 <?php
+            /* Before we can display the table data, we need to find 
+       	    out what the field names are for the chosen table */
+            $database->query("SHOW COLUMNS FROM $table");
+	       /* We'd better know if there was a problem */
+	       if($database->error) echo($database->error);
+		  /*echo"<pre>";
+		  print_r($database->result);
+		  echo"</pre>"; */ 
+		   $firstField = "";
+		   while ($row = $database->result->fetch_object())
+		   foreach($row as $pointer=>$field) if($pointer=="Field") if($firstField == "") $firstField = $field;
+		 ?>
+
+       <!-- Now we can display the chosen record -->       
+       <?php   
+           $database->query("SELECT * FROM $table WHERE ($firstField = '$rownum')");
+		   //echo("SELECT * FROM $table WHERE ($firstField = '$rownum')");
+	       /* We'd better know if there was a problem */
+	       if($database->error) echo($database->error);
+           echo("<form action=modify.php method=\"get\">\n");
+		   echo("<table>");
+		   while ($row = $database->result->fetch_object())
+		   foreach($row as $pointer=>$field)
+		   {
+		   	 echo("\n            <tr><td>$pointer:</td><td><input value=\"$field\" type=\"text\"></td></tr>\n");
+		   
+		  /*echo"<pre>";
+		  print_r($row);
+		  echo"</pre>";*/
+		   }
+           echo("        <tr><td></td><td><input name=\"Update record\" value=\"Update Record\" type=\"submit\"></td></tr>\n");
+		   echo("</table>");
+           echo("</form>");
+	   ?>
+
 
        <?php 
          //$database->rebuild();
